@@ -4,132 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calabozos & Dragones</title>
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-      :root {
-        --color-rojo-dd: #7e0000;
-        --color-crema: #f5f5f0;
-        --color-oscuro: #1a1a1a;
-      }
-
-      body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: var(--color-crema);
-      }
-
-      .hero-section {
-        background-image: url('<?= base_url('assets/img/img1.jpg') ?>');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        padding: 6rem 0;
-        position: relative;
-      }
-
-      .overlay-box {
-        background-color: rgba(0, 0, 0, 0.75);
-        padding: 3rem;
-        border-radius: 1rem;
-        text-align: center;v
-        color: white;
-        box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      }
-
-      .overlay-box h1 {
-        font-size: 3rem;
-      }
-
-      .btn-danger {
-        background-color: var(--color-rojo-dd);
-        border: none;
-      }
-
-      .btn-outline-light:hover {
-        background-color: white;
-        color: black;
-      }
-
-      .section-light {
-        background-color: var(--color-crema);
-        padding: 4rem 0;
-        text-align: center;
-      }
-
-      footer {
-        background-color: var(--color-oscuro);
-        color: white;
-        padding: 2rem 0;
-        text-align: center;
-        font-size: 0.9rem;
-      }
-
-      footer a {
-        color: #ccc;
-        text-decoration: none;
-      }
-
-      footer a:hover {
-        color: white;
-      }
-
-      .section-dark {
-        background-color: #1e1e1e;
-        color: white;
-        padding: 4rem 0;
-      }
-
-      .card-custom {
-        border: none;
-        background-color: #2c2c2c;
-        color: white;
-        border-radius: 1rem;
-        transition: transform 0.3s ease;
-      }
-
-      .card-custom:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-      }
-
-      .card-hover {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .card-hover:hover {
-        transform: translateY(-8px) scale(1.03);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        z-index: 2;
-      }
-
-      .card-personaje {
-  background-color: #2c2c2c;
-  color: white;
-  border-radius: 1rem;
-  padding: 2rem 1rem;
-  text-align: center;
-  height: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
-}
-
-.card-personaje:hover {
-  transform: translateY(-10px);
-  background-color: #383838;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-}
-
-.card-personaje img {
-  max-height: 120px;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.card-personaje:hover img {
-  transform: scale(1.05);
-}
-
-
-      </style>
+    <!-- Tu hoja de estilos personalizada -->
+    <link href="<?= base_url('assets/css/estilo.css') ?>" rel="stylesheet">
   </head>
 
   <body>
@@ -140,8 +20,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-10 col-xl-9">
-            <div class="overlay-box">
-              <!-- <img src="<?= base_url('assets/img/logo1.png') ?>" alt="D&D" width="90" class="mb-3"> -->
+            <div class="overlay-box text-white text-center">
               <h1 class="fw-bold">Calabozos & Dragones</h1>
               <p class="lead mt-3">
                 Échale un vistazo a este legendario juego de rol de fantasía y averiguá por qué hay millones de personas
@@ -157,98 +36,96 @@
       </div>
     </section>
 
-<!-- Sección: Productos Destacados -->
-<section class="section-light">
-  <div class="container">
-    <h2 class="mb-4 fw-bold">Productos Destacados</h2>
-    <div class="row g-4 justify-content-center">
-      
-      <!-- Producto 1 -->
-      <div class="col-md-4">
-        <div class="card card-hover h-100 shadow-sm">
-          <img src="<?= base_url('assets/img/img2.jpg') ?>" class="card-img-top" alt="Libro de Monstruos"
-               style="height: 250px; object-fit: cover; object-position: top;">
-          <div class="card-body">
-            <h5 class="card-title">Manual de Monstruos</h5>
-            <p class="card-text">Todo lo que necesitás para poblar tus campañas con criaturas épicas.</p>
+    <!-- Sección: Productos Destacados -->
+    <section class="section-light py-5">
+      <div class="container">
+        <h2 class="mb-4 fw-bold text-center">Productos Destacados</h2>
+        <div class="row g-4 justify-content-center">
+
+          <!-- Producto 1 -->
+          <div class="col-md-4">
+            <div class="card card-hover h-100 shadow-sm">
+              <img src="<?= base_url('assets/img/img2.jpg') ?>" class="card-img-top" alt="Libro de Monstruos"
+                   style="height: 250px; object-fit: cover; object-position: top;">
+              <div class="card-body">
+                <h5 class="card-title">Manual de Monstruos</h5>
+                <p class="card-text">Todo lo que necesitás para poblar tus campañas con criaturas épicas.</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Producto 2 -->
-      <div class="col-md-4">
-        <div class="card card-hover h-100 shadow-sm">
-          <img src="<?= base_url('assets/img/img5.jpg') ?>" class="card-img-top" alt="Guía del Dungeon Master"
-               style="height: 250px; object-fit: cover; object-position: center;">
-          <div class="card-body">
-            <h5 class="card-title">Guía del Dungeon Master</h5>
-            <p class="card-text">Lleva el control de la aventura con esta guía completa para directores de juego.</p>
+          <!-- Producto 2 -->
+          <div class="col-md-4">
+            <div class="card card-hover h-100 shadow-sm">
+              <img src="<?= base_url('assets/img/img5.jpg') ?>" class="card-img-top" alt="Guía del Dungeon Master"
+                   style="height: 250px; object-fit: cover; object-position: center;">
+              <div class="card-body">
+                <h5 class="card-title">Guía del Dungeon Master</h5>
+                <p class="card-text">Llevá el control de la aventura con esta guía completa para directores de juego.</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Producto 3 -->
-      <div class="col-md-4">
-        <div class="card card-hover h-100 shadow-sm">
-          <img src="<?= base_url('assets/img/img4.jpg') ?>" class="card-img-top" alt="Manual del Jugador"
-               style="height: 250px; object-fit: cover; object-position: center;">
-          <div class="card-body">
-            <h5 class="card-title">Manual del Jugador</h5>
-            <p class="card-text">Reglas esenciales, hechizos y clases para crear tu personaje ideal.</p>
+          <!-- Producto 3 -->
+          <div class="col-md-4">
+            <div class="card card-hover h-100 shadow-sm">
+              <img src="<?= base_url('assets/img/img4.jpg') ?>" class="card-img-top" alt="Manual del Jugador"
+                   style="height: 250px; object-fit: cover; object-position: center;">
+              <div class="card-body">
+                <h5 class="card-title">Manual del Jugador</h5>
+                <p class="card-text">Reglas esenciales, hechizos y clases para crear tu personaje ideal.</p>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
-      
-    </div>
-  </div>
-</section>
+    </section>
 
+    <!-- Sección: Clases de Personaje -->
+    <section class="section-light py-5">
+      <div class="container">
+        <h2 class="mb-5 fw-bold text-center">Clases de Personaje</h2>
+        <div class="row justify-content-center g-4">
 
-<!-- Sección: Clases de Personaje -->
-<section class="section-light">
-  <div class="container">
-    <h2 class="mb-5 fw-bold">Clases de Personaje</h2>
-    <div class="row justify-content-center g-4">
+          <div class="col-sm-6 col-md-3">
+            <div class="card-personaje">
+              <img src="<?= base_url('assets/img/guerrero.jpg') ?>" alt="Guerrero" class="img-fluid">
+              <h5 class="fw-bold mt-3">Guerrero</h5>
+              <p>Fuerza bruta y estrategia en combate cuerpo a cuerpo.</p>
+            </div>
+          </div>
 
-      <div class="col-sm-6 col-md-3">
-        <div class="card-personaje">
-          <img src="<?= base_url('assets/img/guerrero.jpg') ?>" alt="Guerrero" class="img-fluid">
-          <h5 class="fw-bold mt-3">Guerrero</h5>
-          <p>Fuerza bruta y estrategia en combate cuerpo a cuerpo.</p>
+          <div class="col-sm-6 col-md-3">
+            <div class="card-personaje">
+              <img src="<?= base_url('assets/img/mago.jpg') ?>" alt="Mago" class="img-fluid">
+              <h5 class="fw-bold mt-3">Mago</h5>
+              <p>Hechizos poderosos para dominar el campo de batalla.</p>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+            <div class="card-personaje">
+              <img src="<?= base_url('assets/img/picaro.jpg') ?>" alt="Pícaro" class="img-fluid">
+              <h5 class="fw-bold mt-3">Pícaro</h5>
+              <p>Sigilo, agilidad y ataques sorpresivos letales.</p>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+            <div class="card-personaje">
+              <img src="<?= base_url('assets/img/clerigo.jpg') ?>" alt="Clérigo" class="img-fluid">
+              <h5 class="fw-bold mt-3">Clérigo</h5>
+              <p>Sanador devoto con poderes divinos y protección.</p>
+            </div>
+          </div>
+
         </div>
       </div>
-
-      <div class="col-sm-6 col-md-3">
-        <div class="card-personaje">
-          <img src="<?= base_url('assets/img/mago.jpg') ?>" alt="Mago" class="img-fluid">
-          <h5 class="fw-bold mt-3">Mago</h5>
-          <p>Hechizos poderosos para dominar el campo de batalla.</p>
-        </div>
-      </div>
-
-      <div class="col-sm-6 col-md-3">
-        <div class="card-personaje">
-          <img src="<?= base_url('assets/img/picaro.jpg') ?>" alt="Pícaro" class="img-fluid">
-          <h5 class="fw-bold mt-3">Pícaro</h5>
-          <p>Sigilo, agilidad y ataques sorpresivos letales.</p>
-        </div>
-      </div>
-
-      <div class="col-sm-6 col-md-3">
-        <div class="card-personaje">
-          <img src="<?= base_url('assets/img/clerigo.jpg') ?>" alt="Clérigo" class="img-fluid">
-          <h5 class="fw-bold mt-3">Clérigo</h5>
-          <p>Sanador devoto con poderes divinos y protección.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- Sección: Suscripción -->
-    <section class="section-dark">
+    <section class="section-dark py-5">
       <div class="container text-center">
         <h2 class="mb-4 fw-bold">¿Querés recibir noticias y novedades?</h2>
         <form class="row justify-content-center">

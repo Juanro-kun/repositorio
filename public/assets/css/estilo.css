@@ -1,46 +1,123 @@
-/*p{ font family: verdana;tipo de letras
-   text-align: justify;/*alineación del texto
-    color: red; /*color de la fuente
-    font-size:24px;/*tamaño de la fuente
-    font-style: italic; /*estilo 
-    font-weight: bold; /* negrito o fuerte
-    text-align:center;
-}
-body{
-    background-color: lightblue; /*color de fondo del body
-}
-    /* color y alineación de la etiqueta h1
-h1 { 
-    color: white;
-    font-weight: bold;/* negrito o fuerte
-    text-align: center;/*alineación
-} 
-.mono{
-    text-align: center;
-    font-weight: bold;
-    font-style: italic;
-}
-*/
 
-{ margin:0;
-    padding:0;
+:root {
+  --color-rojo-dd: #7e0000;
+  --color-crema: #f5f5f0;
+  --color-oscuro: #1a1a1a;
 }
 
-.titulo{
-    background-color: #92a8d1;
-    margin: 20px;
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--color-crema);
 }
 
-.parrafo{
-    background-color: green;
-    padding-top:50px;
-    padding-left: 10px;
-    padding-bottom: 60px;
-    padding-right: 300px;
-} 
+.hero-section {
+    background-image: url('../img/img1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 6rem 0;
+  position: relative;
+}
 
-footer{
-    background-color: GoldenRod;
-    padding: 10px 20px 30px 40px;
-    margin: 10px 200px;
-} 
+.overlay-box {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 3rem;
+  border-radius: 1rem;
+  text-align: center;
+  color: white;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.overlay-box h1 {
+  font-size: 3rem;
+}
+
+.btn-danger {
+  background-color: var(--color-rojo-dd);
+  border: none;
+}
+
+.btn-outline-light:hover {
+  background-color: white;
+  color: black;
+}
+
+.section-light {
+  background-color: var(--color-crema);
+  padding: 4rem 0;
+  text-align: center;
+}
+
+footer {
+  background-color: var(--color-oscuro);
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: white;
+}
+
+.section-dark {
+  background-color: #1e1e1e;
+  color: white;
+  padding: 4rem 0;
+}
+
+.card-custom {
+  border: none;
+  background-color: #2c2c2c;
+  color: white;
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.card-custom:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.card-personaje {
+background-color: #2c2c2c;
+color: white;
+border-radius: 1rem;
+padding: 2rem 1rem;
+text-align: center;
+height: 100%;
+transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
+}
+
+.card-personaje:hover {
+transform: translateY(-10px);
+background-color: #383838;
+box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+.card-personaje img {
+max-height: 120px;
+object-fit: contain;
+transition: transform 0.3s ease;
+}
+
+.card-personaje:hover img {
+transform: scale(1.05);
+}
+
+

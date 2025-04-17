@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand-lg border-bottom shadow-sm" style="background-color: #f5f5f0; border-bottom: 4px solid #7e0000;">
+<nav class="navbar navbar-expand-lg border-bottom shadow-sm" style="background-color: var(--color-crema);">
   <div class="container d-flex justify-content-between align-items-center py-3 px-4">
-
+    
     <!-- Logo -->
     <a class="navbar-brand" href="<?= base_url() ?>">
       <img src="<?= base_url('assets/img/logo1.png') ?>" alt="Dungeons & Dragons" style="height: 60px;">
     </a>
 
-    <!-- Botón hamburguesa para móviles -->
+    <!-- Botón hamburguesa -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
