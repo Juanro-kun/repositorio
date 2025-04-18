@@ -1,22 +1,34 @@
 <?= $this->extend('layout') ?>
 <?= $this->section('contenido') ?>
 
-<section class="section-light text-start">
-  <div class="container">
-    <h2 class="fw-bold mb-4 text-center">Términos y Usos</h2>
-
-    <p>Bienvenido a nuestro sitio de Calabozos & Dragones versión UNNE. Al utilizar este sitio, aceptás los siguientes términos:</p>
-
-    <ul>
-      <li><strong>Contenido:</strong> Todos los materiales disponibles son para fines educativos y de entretenimiento.</li>
-      <li><strong>Uso Personal:</strong> El sitio fue desarrollado con fines académicos para la materia Taller de Programación I.</li>
-      <li><strong>Propiedad Intelectual:</strong> Las imágenes y marcas pertenecen a sus respectivos autores. Este sitio no busca lucro ni apropiación.</li>
-      <li><strong>Privacidad:</strong> No recolectamos ni almacenamos datos personales.</li>
-      <li><strong>Responsabilidad:</strong> Este sitio es ficticio. No representa a ninguna empresa real ni realiza ventas reales.</li>
+<section class="section-scroll">
+  <div class="scroll-container">
+    <h2 class="scroll-title">📜 Términos y Usos</h2>
+    <p class="scroll-intro">
+      Bienvenido a nuestro sitio web Calabozos & Dragones versión UNNE. Al usar esta plataforma, aceptás los siguientes términos:
+    </p>
+    <ul class="scroll-list">
+      <li><strong>🪶 Contenido:</strong> Todo el contenido disponible se proporciona únicamente con fines educativos, informativos y recreativos. No representa actividades comerciales reales.</li>
+      <li><strong>🧙 Uso Personal:</strong> Proyecto académico de la materia Taller de Programación I - Licenciatura en Sistemas (FaCENA - UNNE).</li>
+      <li><strong>🛡️ Propiedad Intelectual:</strong> Las imágenes, íconos y marcas utilizadas pertenecen a sus autores originales. No se reclaman derechos sobre ellas.</li>
+      <li><strong>🧾 Privacidad:</strong> Este sitio no recopila datos personales ni utiliza cookies.</li>
+      <li><strong>⚖️ Responsabilidad:</strong> Este sitio no representa a una empresa real ni realiza ventas.</li>
     </ul>
 
-    <p class="mt-4">Gracias por visitarnos y ser parte de esta experiencia.</p>
+    <h3 class="scroll-subtitle">Condiciones Simuladas de Comercialización</h3>
+    <ul class="scroll-list">
+      <li><strong>💳 Formas de pago:</strong> Tarjetas de crédito, débito y transferencias mágicas interdimensionales.</li>
+      <li><strong>🐉 Métodos de envío:</strong> Portales instantáneos o entrega vía dragones certificados. 🐲</li>
+      <li><strong>🔮 Garantía:</strong> Protección contra dados malditos, hechizos defectuosos y tablas borrosas.</li>
+      <li><strong>🧝 Soporte:</strong> Atención 24/7 por el hechicero jefe (no incluido).</li>
+      <li><strong>⏳ Tiempo de entrega:</strong> 1 a 3 días mágicos, según la alineación astral y el tráfico de trolls 🧌.</li>
+    </ul>
+
+    <p class="scroll-thanks">Gracias por visitarnos. Que tu campaña esté bendecida por los dados de 20. 🎲✨</p>
   </div>
 </section>
 
 <?= $this->endSection() ?>
+
+
+

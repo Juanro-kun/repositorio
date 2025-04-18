@@ -289,5 +289,110 @@ transform: scale(1.05);
   box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
+.section-terminos {
+  background-image: url('../img/img3.jpg'); /* o la que más te guste */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 6rem 1rem;
+  color: #fdfdfd;
+  font-size: 1.05rem;
+}
+
+.card-terminos {
+  background: rgba(18, 18, 18, 0.92);
+  border-left: 5px solid #7e0000;
+  border-radius: 1rem;
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: auto;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(6px);
+}
+
+.card-terminos h2 {
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #ffdddd;
+  text-shadow: 0 0 4px rgba(0,0,0,0.5);
+}
+
+.card-terminos ul {
+  text-align: left;
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+.card-terminos li {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  position: relative;
+}
+
+.card-terminos li::before {
+  content: "🗡️";
+  position: absolute;
+  left: -1.5rem;
+}
+
+.card-terminos h4 {
+  margin-top: 2.5rem;
+  font-size: 1.3rem;
+  color: #ff8888;
+  border-bottom: 1px solid #ff8888;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+.section-scroll {
+  background-image: url('../img/pergamino.jpg'); /* Asegurate que esta imagen exista */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 5rem 1rem;
+}
+
+.scroll-container {
+  background-color: rgba(255, 248, 220, 0.9);
+  border: 2px solid #8b5e3c;
+  border-radius: 15px;
+  padding: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  font-family: 'Cinzel', serif;
+  color: #3b2200;
+}
+
+.scroll-title {
+  font-size: 2.3rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #5e2c00;
+  text-shadow: 1px 1px #fff2c7;
+}
+
+.scroll-subtitle {
+  font-size: 1.5rem;
+  color: #7a3e0e;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.scroll-intro,
+.scroll-thanks {
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.scroll-list {
+  padding-left: 1.2rem;
+  line-height: 1.8;
+}
+
+.scroll-list li {
+  margin-bottom: 0.8rem;
+}
+
 
 
