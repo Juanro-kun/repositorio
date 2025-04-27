@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-lg shadow-sm " style="background-color: var(--color-oscuro);">
+<nav class="navbar navbar-expand-lg border-bottom shadow-sm" style="background-color: var(--color-crema);">
   <div class="container d-flex justify-content-between align-items-center py-3 px-4">
     
     <!-- Logo -->
-    <a class="navbar-brand " href="<?= base_url() ?>">
+    <a class="navbar-brand" href="<?= base_url() ?>">
       <img src="<?= base_url('assets/img/logo1.png') ?>" alt="Dungeons & Dragons" style="height: 60px;">
     </a>
 
@@ -16,6 +16,7 @@
       <ul class="navbar-nav gap-4 text-uppercase fw-semibold">
         <li class="nav-item"><a class="nav-link text-light" href="<?= base_url() ?>">Principal</a></li>
         <li class="nav-item"><a class="nav-link text-light" href="<?= base_url('home/quienes') ?>">Quiénes Somos</a></li>
+        <li class="nav-item"><a class="nav-link text-light" href="<?= base_url('home/comercializacion') ?>">Comercialización</a></li>
         <li class="nav-item"><a class="nav-link text-light" href="<?= base_url('home/contacto') ?>">Contacto</a></li>
         <li class="nav-item"><a class="nav-link text-light" href="<?= base_url('home/terminos') ?>">Términos y Usos</a></li>
       </ul>

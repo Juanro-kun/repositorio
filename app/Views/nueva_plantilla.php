@@ -1,7 +1,7 @@
 <?= $this->extend('layout') ?>
 <?= $this->section('contenido') ?>
 
-<!-- Hero principal --> 
+<!-- Hero principal -->
 <section class="hero-section">
   <div class="container">
     <div class="row justify-content-center">
