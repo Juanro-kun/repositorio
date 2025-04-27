@@ -1,63 +1,55 @@
 <?= $this->extend('layout') ?>
+
 <?= $this->section('contenido') ?>
 
-<section class="section-light text-center py-5">
-  <div class="container">
-    <h2 class="fw-bold mb-4">Comercialización</h2>
-    <p class="mb-5">
-      Descubrí cómo recibir tus productos épicos y las facilidades que ofrecemos para cada aventurero.
-    </p>
+<section class="comercial-section py-5">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4 text-light">Comercialización</h2>
+        <p class="mb-5 text-light">Descubrí cómo recibir tus tesoros épicos y las facilidades que ofrecemos a cada aventurero.</p>
 
-    <div class="row justify-content-center g-4">
-      <!-- Tipos de Entrega -->
-      <div class="col-md-5 col-lg-3">
-        <div class="info-card p-4 card-entrega">
-          <h5 class="fw-bold mb-3">Tipos de Entrega</h5>
-          <ul class="list-unstyled text-start">
-            <li>✅ Retiro en sede UNNE</li>
-            <li>📦 Entrega a domicilio</li>
-            <li>⚡ Servicio exprés</li>
-          </ul>
-        </div>
-      </div>
+        <div class="row g-4 justify-content-center">
 
-      <!-- Formas de Envío -->
-      <div class="col-md-5 col-lg-3">
-        <div class="info-card p-4 card-envio">
-          <h5 class="fw-bold mb-3">Formas de Envío</h5>
-          <ul class="list-unstyled text-start">
-            <li>📬 Correo Argentino / OCA</li>
-            <li>🐉 Dragón Express (VIP)</li>
-          </ul>
-        </div>
-      </div>
+            <?php 
+            $items = [
+                ['icon' => 'fa-box', 'title' => 'Tipos de Entrega', 'details' => [
+                    ['icon' => 'fa-map-marker-alt', 'text' => 'Retiro en sede UNNE'],
+                    ['icon' => 'fa-home', 'text' => 'Entrega a domicilio'],
+                    ['icon' => 'fa-bolt', 'text' => 'Servicio exprés']
+                ]],
+                ['icon' => 'fa-dragon', 'title' => 'Formas de Envío', 'details' => [
+                    ['icon' => 'fa-dungeon', 'text' => 'Dragón Express (VIP)'],
+                    ['icon' => 'fa-truck', 'text' => 'Correo Argentino / OCA']
+                ]],
+                ['icon' => 'fa-coins', 'title' => 'Formas de Pago', 'details' => [
+                    ['icon' => 'fa-hand-holding-usd', 'text' => 'Efectivo / Transferencia'],
+                    ['icon' => 'fa-credit-card', 'text' => 'Tarjeta de crédito/débito'],
+                    ['icon' => 'fa-gem', 'text' => 'Oro de Dragón']
+                ]],
+                ['icon' => 'fa-scroll', 'title' => 'Información Útil', 'details' => [
+                    ['icon' => 'fa-clock', 'text' => 'Entrega: 2-5 días hábiles'],
+                    ['icon' => 'fa-shield-alt', 'text' => 'Garantía por defectos'],
+                    ['icon' => 'fa-headset', 'text' => 'Soporte postventa']
+                ]]
+            ];
 
-      <!-- Formas de Pago -->
-      <div class="col-md-5 col-lg-3">
-        <div class="info-card p-4 card-pago">
-          <h5 class="fw-bold mb-3">Formas de Pago</h5>
-          <ul class="list-unstyled text-start">
-            <li>💵 Efectivo / Transferencia</li>
-            <li>💳 Tarjeta de crédito/débito</li>
-            <li>🪙 Oro de Dragón</li>
-          </ul>
-        </div>
-      </div>
+            foreach($items as $item): ?>
+                <div class="col-md-3">
+                    <div class="glass-card p-4">
+                        <i class="fas <?= $item['icon'] ?> fa-3x mb-3 text-warning"></i>
+                        <h5 class="fw-bold mb-3"><?= $item['title'] ?></h5>
+                        <ul class="list-unstyled">
+                            <?php foreach($item['details'] as $detail): ?>
+                                <li><i class="fas <?= $detail['icon'] ?> me-2"></i><?= $detail['text'] ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            <?php endforeach; ?>
 
-      <!-- Información Útil -->
-      <div class="col-md-5 col-lg-3">
-        <div class="info-card p-4 card-info">
-          <h5 class="fw-bold mb-3">Información Útil</h5>
-          <ul class="list-unstyled text-start">
-            <li>⏱️ Entrega: 2-5 días hábiles</li>
-            <li>🛡️ Garantía por defectos</li>
-            <li>📞 Soporte postventa</li>
-          </ul>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
-<?= $this->endSection() ?>
 
+
+<?= $this->endSection() ?>

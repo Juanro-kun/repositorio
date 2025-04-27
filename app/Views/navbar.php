@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-lg border-bottom shadow-sm" style="background-color: var(--color-crema);">
+<nav class="navbar navbar-expand-lg shadow-sm" style="background-color: var(--color-oscuro);">
   <div class="container d-flex justify-content-between align-items-center py-3 px-4">
     
     <!-- Logo -->
     <a class="navbar-brand" href="<?= base_url() ?>">
-      <img src="<?= base_url('assets/img/logo1.png') ?>" alt="Dungeons & Dragons" style="height: 60px;">
+      <img src="<?= base_url('assets/img/logo.png') ?>" alt="Dungeons & Dragons" style="height: 80px;">
     </a>
 
     <!-- Botón hamburguesa -->

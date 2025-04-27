@@ -10,6 +10,7 @@ $routes->get('home/quienes', 'Home::quienes');
 $routes->get('home/comercializacion', 'Home::comercializacion');
 $routes->get('home/contacto', 'Home::contacto');
 $routes->get('home/terminos', 'Home::terminos');
+$routes->get('home/proximamente', 'Home::proximamente');
 
 
 

@@ -1,4 +1,3 @@
-
 :root {
   --color-rojo-dd: #7e0000;
   --color-crema: #f5f5f0;
@@ -423,3 +422,44 @@ transform: scale(1.05);
   justify-content: center;
   font-size: 14px;
 }
+
+/* 🔥 Nueva sección Comercialización fachera */
+.comercial-section {
+  background: url('../img/img1.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+.comercial-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 0;
+}
+
+.comercial-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.glass-card ul li {
+  margin: 10px 0;
+  font-size: 0.95rem;
+}
+
