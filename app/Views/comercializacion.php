@@ -18,7 +18,8 @@
                 ]],
                 ['icon' => 'fa-dragon', 'title' => 'Formas de Envío', 'details' => [
                     ['icon' => 'fa-dungeon', 'text' => 'Dragón Express (VIP)'],
-                    ['icon' => 'fa-truck', 'text' => 'Correo Argentino / OCA']
+                    ['icon' => 'fa-truck', 'text' => 'Correo Argentino / OCA'],
+                    ['icon' => 'fa-location-arrow', 'text' => 'Teletransportacion']
                 ]],
                 ['icon' => 'fa-coins', 'title' => 'Formas de Pago', 'details' => [
                     ['icon' => 'fa-hand-holding-usd', 'text' => 'Efectivo / Transferencia'],
