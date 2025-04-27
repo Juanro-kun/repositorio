@@ -23,7 +23,7 @@
                 ['icon' => 'fa-coins', 'title' => 'Formas de Pago', 'details' => [
                     ['icon' => 'fa-hand-holding-usd', 'text' => 'Efectivo / Transferencia'],
                     ['icon' => 'fa-credit-card', 'text' => 'Tarjeta de crédito/débito'],
-                    ['icon' => 'fa-gem', 'text' => 'Oro de Dragón']
+                    ['icon' => 'fa-gem', 'text' => 'Oro de Dragón'] 
                 ]],
                 ['icon' => 'fa-scroll', 'title' => 'Información Útil', 'details' => [
                     ['icon' => 'fa-clock', 'text' => 'Entrega: 2-5 días hábiles'],

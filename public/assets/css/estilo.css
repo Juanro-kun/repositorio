@@ -423,12 +423,18 @@ transform: scale(1.05);
   font-size: 14px;
 }
 
-/* 🔥 Nueva sección Comercialización fachera */
+/* Comercialización */
 .comercial-section {
-  background: url('../img/img1.jpg') no-repeat center center;
+  background: url('../img/img1.jpg') no-repeat center 70%;
   background-size: cover;
   position: relative;
+  padding: 3rem 2rem 8rem 2rem;   /* Reducimos el espacio arriba */
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;   /* Alineamos arriba */
 }
+
 
 .comercial-section::before {
   content: "";
@@ -463,3 +469,12 @@ transform: scale(1.05);
   font-size: 0.95rem;
 }
 
+.comercial-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0), var(--color-oscuro));
+}
