@@ -14,11 +14,11 @@
     <!-- Ítems de navegación -->
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav gap-4 text-uppercase fw-semibold">
-        <li class="nav-item"><a class="nav-link text-dark" href="<?= base_url() ?>">Principal</a></li>
-        <li class="nav-item"><a class="nav-link text-dark" href="<?= base_url('home/quienes') ?>">Quiénes Somos</a></li>
-        <li class="nav-item"><a class="nav-link text-dark" href="<?= base_url('home/comercializacion') ?>">Comercialización</a></li>
-        <li class="nav-item"><a class="nav-link text-dark" href="<?= base_url('home/contacto') ?>">Contacto</a></li>
-        <li class="nav-item"><a class="nav-link text-dark" href="<?= base_url('home/terminos') ?>">Términos y Usos</a></li>
+        <li class="nav-item"><a class="nav-link text-light" href="<?= base_url() ?>">Principal</a></li>
+        <li class="nav-item"><a class="nav-link text-light" href="<?= base_url('home/quienes') ?>">Quiénes Somos</a></li>
+        <li class="nav-item"><a class="nav-link text-light" href="<?= base_url('home/comercializacion') ?>">Comercialización</a></li>
+        <li class="nav-item"><a class="nav-link text-light" href="<?= base_url('home/contacto') ?>">Contacto</a></li>
+        <li class="nav-item"><a class="nav-link text-light" href="<?= base_url('home/terminos') ?>">Términos y Usos</a></li>
       </ul>
     </div>
   </div>

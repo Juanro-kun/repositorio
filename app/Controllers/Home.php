@@ -29,7 +29,10 @@ class Home extends BaseController
         return view('terminos');
     }
     
-
+    public function proximamente()
+    {
+        return view('proximamente');
+    }
 }
 
 
