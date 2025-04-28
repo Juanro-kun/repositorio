@@ -459,6 +459,7 @@ transform: scale(1.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+
 .glass-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
@@ -595,3 +596,88 @@ transform: scale(1.05);
   background-color: rgba(150, 150, 150, 0.1);
   transform: scale(1.1);
 }
+
+/* Fondo épico con overlay */
+.nuevos-container {
+  background: url('../img/gif1.gif') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  padding: 5rem 2rem;
+  color: #fff;
+}
+
+
+.nuevos-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+}
+
+.nuevos-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Cards con glassmorphism */
+.nuevos-section-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  color: #fff;
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Títulos épicos */
+.nuevos-section-title, 
+.nuevos-section-subtitle {
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  color: #f9f9f9;
+}
+
+/* Línea decorativa */
+.nuevos-title-decorado::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #7e0000;
+  margin: 10px auto 0 auto;
+  border-radius: 2px;
+}
+
+/* Botones facheros */
+.nuevos-btn-custom {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  backdrop-filter: blur(8px);
+  padding: 12px 25px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.nuevos-btn-custom:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
+  transform: translateY(-3px);
+}
+
+/* Divider */
+.nuevos-divider {
+  height: 2px;
+  background: linear-gradient(to right, transparent, #7e0000, transparent);
+  margin: 4rem 0;
+  border: none;
+}
+

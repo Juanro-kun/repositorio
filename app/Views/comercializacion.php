@@ -8,7 +8,6 @@
         <p class="mb-5 text-light">Descubrí cómo recibir tus tesoros épicos y las facilidades que ofrecemos a cada aventurero.</p>
 
         <div class="row g-4 justify-content-center">
-
             <?php 
             $items = [
                 ['icon' => 'fa-box', 'title' => 'Tipos de Entrega', 'details' => [
