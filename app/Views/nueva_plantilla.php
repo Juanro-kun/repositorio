@@ -17,6 +17,26 @@
   </div>
 </section>
 
+<!-- Sección: Invitación para nuevos jugadores -->
+<section class="section-dark py-5">
+  <div class="container text-center">
+    <div class="p-5 rounded-4" style="
+      border: 4px double rgb(189, 189, 189);
+      box-shadow: 0 0 15px rgb(184, 184, 184);
+      background-color: rgba(0, 0, 0, 0.4);
+      ">
+      
+      <h2 class="fw-bold mb-3 text-light">¿Aún no conoces D&D?</h2>
+      <p class="mb-4 text-light">¡Visita nuestra sección para nuevos jugadores!</p>
+      
+      <a href="<?= base_url('home/nuevos_jugadores') ?>" class="btn btn-danger px-4 py-2">
+        ¡Descubrir ahora!
+      </a>
+
+    </div>
+  </div>
+</section>
+
 <!-- Sección: Productos Destacados -->
 <section class="section-dark py-5">
   <h2 class="text-center">Productos destacados</h2>

@@ -29,6 +29,11 @@ class Home extends BaseController
         return view('terminos');
     }
     
+    public function nuevos_jugadores()
+    {
+        return view('nuevos_jugadores');
+    }
+
     public function proximamente()
     {
         return view('proximamente');

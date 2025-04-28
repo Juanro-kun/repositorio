@@ -6,7 +6,7 @@
   <div class="container">
     <h2 class="fw-bold mb-4">¿Quiénes Somos?</h2>
     <p class="intro-text mb-4">
-      En Calabozos & Dragones somos una startup tecnológica fundada con el objetivo de acercar la magia de los juegos de rol a nuevos públicos, combinando pasión, estrategia y desarrollo digital.
+      En "La Taberna del Gnomo Errante" somos una startup tecnológica fundada con el objetivo de acercar la magia de los juegos de rol a nuevos públicos, combinando pasión, estrategia y desarrollo digital.
     </p>
     <p class="mb-0">
       Nuestro enfoque se basa en la innovación constante, el trabajo en equipo y el compromiso académico. Llevamos adelante este proyecto como parte del trayecto formativo en la carrera de <strong>Licenciatura en Sistemas</strong>, impulsado desde la Facultad de Ciencias Exactas y Naturales y Agrimensura – UNNE.
@@ -63,7 +63,7 @@
       <div class="col-md-5">
         <div class="perfil-card">
           <img src="<?= base_url('assets/img/juan.png') ?>" alt="Juan Román Riquelme">
-          <p class="nombre">Juan Román Riquelme</p>
+          <p class="nombre">Juan Román Zacarias</p>
           <p class="desc">Corrientes</p>
           <p>Especialista en backend y lógica.<br> Garantiza que todo funcione como una tirada perfecta de D20.</p>
         </div>

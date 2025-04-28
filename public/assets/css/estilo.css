@@ -478,3 +478,120 @@ transform: scale(1.05);
   height: 100px;
   background: linear-gradient(to bottom, rgba(0,0,0,0), var(--color-oscuro));
 }
+
+
+/*ESTILO PAG NUEVOS JUGADORES*/
+/* Fondo y texto general */
+.nuevos-container {
+  background-color: #121212;
+  color: #dddddd;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Sección visual */
+.nuevos-section {
+  margin-bottom: 5rem;
+}
+
+/* Títulos */
+.nuevos-section-title,
+.nuevos-section-subtitle {
+  color: #f0f0f0;
+}
+
+.nuevos-section-title {
+  font-size: 3.2rem;
+  font-weight: bold;
+}
+
+.nuevos-section-subtitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+/* Decoración extra en títulos */
+.nuevos-title-decorado {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.nuevos-title-decorado::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background: #6b2c2c;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  border-radius: 2px;
+}
+
+/* Cartas de contenido */
+.nuevos-section-card {
+  background-color: #1b1b1b;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* Texto */
+.nuevos-section-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+/* Botones */
+.nuevos-btn-custom {
+  background-color: #6b2c2c;
+  color: #e0e0e0;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+  min-width: 250px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.nuevos-btn-custom:hover {
+  background-color: #912d2d;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Divisores */
+.nuevos-divider {
+  height: 2px;
+  background: linear-gradient(to right, transparent, #6b2c2c, transparent);
+  margin: 4rem 0;
+  border: none;
+}
+
+/* Texto resaltado */
+.nuevos-highlight {
+  color: #ffffff;
+  text-shadow: 0 0 8px #5a5a5a;
+}
+
+
+/*ESTILO NAVBAR*/
+.nav-link-custom {
+  color: #e0e0e0;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-link-custom:hover {
+  color: #ffffff;
+  border-color: #9b9b9b;
+  background-color: rgba(150, 150, 150, 0.1);
+  transform: scale(1.1);
+}
