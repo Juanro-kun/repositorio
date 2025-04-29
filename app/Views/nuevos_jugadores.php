@@ -13,7 +13,6 @@
       <div class="nuevos-section-card">
         <p>
         Calabozos y Dragones, o Dungeons & Dragons (D&D), es un juego de rol en el que los jugadores crean personajes ficticios que viven aventuras en un mundo de fantasía. En D&D, no solo se lanzan dados, sino que se construyen historias, se toman decisiones, y se interactúa con otros jugadores. Si nunca has escuchado de D&D, ¡estás a punto de embarcarte en una experiencia única!
-        </p>
       </div>
     </section>
 
@@ -26,11 +25,12 @@
       </h2>
       <div class="nuevos-section-card">
         <p>
-          D&D es más que un juego. Es una experiencia narrativa donde cada jugador interpreta un héroe en un mundo de fantasía.
-          Guiados por el "Dungeon Master", los jugadores enfrentan desafíos, exploran tierras misteriosas y forjan su propia leyenda.
+        En D&D, cada jugador crea un personaje que puede ser un valiente guerrero, un sabio mago, o un astuto ladrón, entre muchas otras opciones. Los jugadores viven sus aventuras en un mundo imaginario, controlado por un "Dungeon Master" (DM), quien describe lo que está sucediendo en el mundo y guía a los jugadores a través de sus misiones. El DM también es el encargado de interpretar a todos los personajes no jugables y gestionar las situaciones complejas que los jugadores puedan enfrentar.
         </p>
         <p>
-          Solo necesitas dados, una hoja de personaje y mucha imaginación para comenzar tu travesía.
+          A lo largo de las aventuras, los jugadores interactúan entre ellos, resuelven problemas, luchan contra monstruos y se embarcan en misiones épicas. Las reglas del juego son simples, pero permiten una gran flexibilidad, lo que hace que cada partida sea única. Además, D&D no es solo un juego de estrategia y acción, sino también una forma de contar historias donde la creatividad es clave.
+        </p>
+        <p> Para comenzar, todo lo que necesitas es una hoja de personaje, dados, y un grupo de amigos con los que compartir este viaje.     ¿Estás listo para crear tu propio héroe y ser parte de una leyenda?
         </p>
       </div>
     </section>
