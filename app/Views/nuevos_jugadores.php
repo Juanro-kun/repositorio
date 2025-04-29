@@ -45,7 +45,7 @@
       <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
         <a href="<?= base_url('home/proximamente') ?>" class="nuevos-btn-custom">📚 Player's Handbook</a>
         <a href="<?= base_url('home/proximamente') ?>" class="nuevos-btn-custom">📝 Hoja de Personaje</a>
-        <a href="<?= base_url('home/comercializacion') ?>" class="nuevos-btn-custom">🛒 Productos Aventureros</a>
+        <a href="<?= base_url('home/proximamente') ?>" class="nuevos-btn-custom">🛒 Productos Aventureros</a>
       </div>
     </section>
 

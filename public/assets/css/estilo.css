@@ -668,4 +668,6 @@ transform: scale(1.05);
   margin: 4rem 0;
   border: none;
 }
-
+body{
+  background-color: #1e1e1e
+}

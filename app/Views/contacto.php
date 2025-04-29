@@ -28,7 +28,7 @@
             <input type="email" class="form-control mb-3" placeholder="Correo Electrónico" required>
             <input type="text" class="form-control mb-3" placeholder="Asunto" required>
             <textarea class="form-control mb-3" rows="4" placeholder="Escribí tu mensaje..." required></textarea>
-            <button type="submit" class="btn btn-danger w-100">Enviar Mensaje</button>
+            <a href="<?= base_url('home/proximamente') ?>" class="btn btn-primary">Enviar mensaje</a>
           </form>
         </div>
       </div>
