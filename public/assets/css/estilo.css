@@ -310,22 +310,21 @@ transform: scale(1.05);
   z-index: 0;
 }
 
-/* Contenedor Glassmorphism */
 .scroll-container {
   background: rgba(0, 0, 0, 0.6); /* Más opaco para mejor lectura */
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   border-radius: 1rem;
-  padding: 3rem;
-  max-width: 1000px; /* ✅ Más angosto */
-  padding: 2,5rem;  /* ✅ Un poquito menos de espacio adentro */
+  padding: 2.5rem;  /* ✅ con punto */
+  max-width: 1000px;
   margin: 0 auto;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   position: relative;
   z-index: 1;
-  transform: scale(0.80); /* Escalamos todo el contenedor */
-  transform-origin: center top; /* Desde el centro arriba */
+  transform: scale(0.80);
+  transform-origin: center top;
 }
+
 
 
 /* Título principal */
