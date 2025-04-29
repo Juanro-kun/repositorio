@@ -287,110 +287,99 @@ transform: scale(1.05);
   box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
-.section-terminos {
-  background-image: url('../img/img3.jpg'); /* o la que más te guste */
+/* TERMINOS */
+.section-scroll {
+  background: url('../img/fondo_terminos.png') no-repeat center center fixed; /* Usa la imagen nueva que subiste */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 6rem 1rem;
-  color: #fdfdfd;
-  font-size: 1.05rem;
+  padding: 6rem 2rem;
+  position: relative;
+  min-height: 100vh;
+  color: #ffffff;
 }
 
-.card-terminos {
-  background: rgba(18, 18, 18, 0.92);
-  border-left: 5px solid #7e0000;
+/* Oscurecer suavemente encima */
+.section-scroll::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Le da mejor legibilidad al contenido */
+  z-index: 0;
+}
+
+/* Contenedor Glassmorphism */
+.scroll-container {
+  background: rgba(0, 0, 0, 0.6); /* Más opaco para mejor lectura */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
   border-radius: 1rem;
-  padding: 3rem 2rem;
-  max-width: 900px;
-  margin: auto;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(6px);
+  padding: 3rem;
+  max-width: 1000px; /* ✅ Más angosto */
+  padding: 2,5rem;  /* ✅ Un poquito menos de espacio adentro */
+  margin: 0 auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 1;
+  transform: scale(0.80); /* Escalamos todo el contenedor */
+  transform-origin: center top; /* Desde el centro arriba */
 }
 
-.card-terminos h2 {
-  font-weight: bold;
+
+/* Título principal */
+.scroll-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  text-align: center;
   margin-bottom: 2rem;
   color: #ffdddd;
-  text-shadow: 0 0 4px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
-.card-terminos ul {
-  text-align: left;
-  margin-top: 1rem;
-  padding-left: 1.5rem;
-}
-
-.card-terminos li {
-  margin-bottom: 1rem;
-  line-height: 1.7;
-  position: relative;
-}
-
-.card-terminos li::before {
-  content: "🗡️";
-  position: absolute;
-  left: -1.5rem;
-}
-
-.card-terminos h4 {
-  margin-top: 2.5rem;
-  font-size: 1.3rem;
-  color: #ff8888;
-  border-bottom: 1px solid #ff8888;
-  padding-bottom: 0.5rem;
-  text-align: center;
-}
-.section-scroll {
-  background-image: url('../img/pergamino.jpg'); /* Asegurate que esta imagen exista */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 5rem 1rem;
-}
-
-.scroll-container {
-  background-color: rgba(255, 248, 220, 0.9);
-  border: 2px solid #8b5e3c;
-  border-radius: 15px;
-  padding: 3rem;
-  max-width: 900px;
-  margin: 0 auto;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  font-family: 'Cinzel', serif;
-  color: #3b2200;
-}
-
-.scroll-title {
-  font-size: 2.3rem;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #5e2c00;
-  text-shadow: 1px 1px #fff2c7;
-}
-
+/* Subtítulos */
 .scroll-subtitle {
-  font-size: 1.5rem;
-  color: #7a3e0e;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #ff8888;
   margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid #ff8888;
+  padding-bottom: 0.5rem;
 }
 
+/* Texto intro y cierre */
 .scroll-intro,
 .scroll-thanks {
   font-style: italic;
   text-align: center;
   margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  color: #f0f0f0;
 }
 
+/* Lista de términos */
 .scroll-list {
-  padding-left: 1.2rem;
-  line-height: 1.8;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
 }
 
 .scroll-list li {
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #eeeeee;
 }
+
+/* Íconos */
+.scroll-list li::marker {
+  font-size: 1.5rem;
+}
+
+
 
 .product-card {
   width: 250px;
