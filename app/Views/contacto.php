@@ -6,6 +6,16 @@
     <h2 class="fw-bold text-center mb-4">Contacto</h2>
     <p class="text-center mb-5">¿Tenés dudas, sugerencias o querés unirte a la aventura? ¡Estamos para ayudarte!</p>
 
+    <?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success">
+        <?= session()->getFlashdata('success') ?>
+    </div>
+      <?php elseif (session()->getFlashdata('error')): ?>
+    <div class="alert alert-danger">
+        <?= session()->getFlashdata('error') ?>
+    </div>
+      <?php endif; ?>
+
     <div class="card shadow-lg p-4 section-dark">
       <div class="row">
         <!-- Datos de la Empresa -->
@@ -23,12 +33,12 @@
         <!-- Formulario -->
         <div class="col-md-6">
           <h5 class="fw-bold mb-3"><i class="fas fa-paper-plane text-danger me-2"></i>Envíanos tu Consulta</h5>
-          <form>
-            <input type="text" class="form-control mb-3" placeholder="Nombre Completo" required>
-            <input type="email" class="form-control mb-3" placeholder="Correo Electrónico" required>
-            <input type="text" class="form-control mb-3" placeholder="Asunto" required>
-            <textarea class="form-control mb-3" rows="4" placeholder="Escribí tu mensaje..." required></textarea>
-            <a href="<?= base_url('home/proximamente') ?>" class="btn btn-primary">Enviar mensaje</a>
+          <form action="<?= base_url('home/enviarConsulta') ?>" method="post">
+            <input type="text" name="nombre" class="form-control mb-3" placeholder="Nombre Completo" required>
+            <input type="email" name="email" class="form-control mb-3" placeholder="Correo Electrónico" required>
+            <input type="text" name="asunto" class="form-control mb-3" placeholder="Asunto" required>
+            <textarea name="mensaje" class="form-control mb-3" rows="4" placeholder="Escribí tu mensaje..." required></textarea>
+            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
           </form>
         </div>
       </div>

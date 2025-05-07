@@ -219,7 +219,7 @@ transform: scale(1.05);
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Oscurece la imagen para mayor legibilidad */
+  background-color: rgba(0, 0, 0, 0.5); 
   z-index: 0;
 }
 
@@ -289,7 +289,7 @@ transform: scale(1.05);
 
 /* TERMINOS */
 .section-scroll {
-  background: url('../img/fondo_terminos.png') no-repeat center center fixed; /* Usa la imagen nueva que subiste */
+  background: url('../img/fondo_terminos.png') no-repeat center center fixed; 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -306,16 +306,16 @@ transform: scale(1.05);
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Le da mejor legibilidad al contenido */
+  background: rgba(0, 0, 0, 0.5); 
   z-index: 0;
 }
 
 .scroll-container {
-  background: rgba(0, 0, 0, 0.6); /* Más opaco para mejor lectura */
+  background: rgba(0, 0, 0, 0.6); 
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   border-radius: 1rem;
-  padding: 2.5rem;  /* ✅ con punto */
+  padding: 2.5rem;  
   max-width: 1000px;
   margin: 0 auto;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
@@ -398,7 +398,7 @@ transform: scale(1.05);
 .product-card img {
   width: 100%;
   height: 75%;
-  object-fit: cover; /* Recorta la imagen si es muy grande, para que todo quede uniforme */
+  object-fit: cover; 
 }
 
 .product-description {
@@ -416,11 +416,11 @@ transform: scale(1.05);
   background: url('../img/img1.jpg') no-repeat center 70%;
   background-size: cover;
   position: relative;
-  padding: 3rem 2rem 8rem 2rem;   /* Reducimos el espacio arriba */
+  padding: 3rem 2rem 8rem 2rem;   
   min-height: 75vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;   /* Alineamos arriba */
+  justify-content: flex-start;   
 }
 
 
@@ -585,7 +585,7 @@ transform: scale(1.05);
   transform: scale(1.1);
 }
 
-/* Fondo épico con overlay */
+/* Fondo */
 .nuevos-container {
   background: url('../img/gif1.gif') no-repeat center center fixed;
   background-size: cover;
@@ -622,7 +622,7 @@ transform: scale(1.05);
   margin: auto;
 }
 
-/* Títulos épicos */
+
 .nuevos-section-title, 
 .nuevos-section-subtitle {
   font-family: 'Cinzel', serif;
@@ -631,7 +631,7 @@ transform: scale(1.05);
   color: #f9f9f9;
 }
 
-/* Línea decorativa */
+
 .nuevos-title-decorado::after {
   content: "";
   display: block;
@@ -642,7 +642,7 @@ transform: scale(1.05);
   border-radius: 2px;
 }
 
-/* Botones facheros */
+
 .nuevos-btn-custom {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -661,7 +661,7 @@ transform: scale(1.05);
   transform: translateY(-3px);
 }
 
-/* Divider */
+
 .nuevos-divider {
   height: 2px;
   background: linear-gradient(to right, transparent, #7e0000, transparent);
@@ -670,4 +670,86 @@ transform: scale(1.05);
 }
 body{
   background-color: #1e1e1e
+}
+
+/* Mejorar cards */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 1rem;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+  transition: 0.3s;
+}
+
+.card-title {
+  font-size: 1.2rem;
+}
+
+.card-text {
+  color: #cccccc;
+}
+
+.section-dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Botón ver detalles más vistoso */
+.btn-primary {
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #6a8edb, #2b3f72);
+}
+
+.btn-outline-light:hover {
+  background-color: white;
+  color: black;
+}
+.btn-gradient {
+  background: linear-gradient(45deg, #0040ff, #6600ff);
+  color: white;
+  border-radius: 30px;
+  border: none;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(45deg, #6600ff, #0040ff);
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.card img {
+  height: 300px;
+  object-fit: cover;
+}
+
+.bg-dark a {
+  color: #aaa;
+}
+
+.bg-dark a:hover {
+  color: #fff;
 }

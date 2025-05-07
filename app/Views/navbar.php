@@ -32,6 +32,9 @@
         <li class="nav-item">
           <a class="nav-link nav-link-custom" href="<?= base_url('home/terminos') ?>">Términos y Usos</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom" href="<?= base_url('home/catalogo') ?>">Catalogo</a>
+        </li>
       </ul>
     </div>
   </div>

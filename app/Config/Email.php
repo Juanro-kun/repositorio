@@ -6,8 +6,8 @@ use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
-    public string $fromEmail  = '';
-    public string $fromName   = '';
+    public string $fromEmail  = 'tucorreo@gmail.com'; // 👉 Cambiá por tu Gmail real
+    public string $fromName   = 'La Taberna del Gnomo Errante';
     public string $recipients = '';
 
     /**
@@ -18,7 +18,7 @@ class Email extends BaseConfig
     /**
      * The mail sending protocol: mail, sendmail, smtp
      */
-    public string $protocol = 'mail';
+    public string $protocol = 'mail'; 
 
     /**
      * The server path to Sendmail.
@@ -33,12 +33,11 @@ class Email extends BaseConfig
     /**
      * SMTP Username
      */
-    public string $SMTPUser = '';
-
+    public string $SMTPUser = ''; 
     /**
-     * SMTP Password
+     * SMTP Password (Clave de aplicación de Gmail, no tu contraseña)
      */
-    public string $SMTPPass = '';
+    public string $SMTPPass = ''; 
 
     /**
      * SMTP Port
@@ -57,12 +56,8 @@ class Email extends BaseConfig
 
     /**
      * SMTP Encryption.
-     *
-     * @var string '', 'tls' or 'ssl'. 'tls' will issue a STARTTLS command
-     *             to the server. 'ssl' means implicit SSL. Connection on port
-     *             465 should set this to ''.
      */
-    public string $SMTPCrypto = 'tls';
+    public string $SMTPCrypto = ''; // 
 
     /**
      * Enable word-wrap
@@ -77,7 +72,7 @@ class Email extends BaseConfig
     /**
      * Type of mail, either 'text' or 'html'
      */
-    public string $mailType = 'text';
+    public string $mailType = 'text'; // Podés poner 'html' si querés enviar emails con formato
 
     /**
      * Character set (utf-8, iso-8859-1, etc.)
@@ -95,12 +90,12 @@ class Email extends BaseConfig
     public int $priority = 3;
 
     /**
-     * Newline character. (Use “\r\n” to comply with RFC 822)
+     * Newline character.
      */
     public string $CRLF = "\r\n";
 
     /**
-     * Newline character. (Use “\r\n” to comply with RFC 822)
+     * Newline character.
      */
     public string $newline = "\r\n";
 

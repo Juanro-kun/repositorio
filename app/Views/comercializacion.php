@@ -29,7 +29,7 @@
                     ['icon' => 'fa-clock', 'text' => 'Entrega: 2-5 días hábiles'],
                     ['icon' => 'fa-shield-alt', 'text' => 'Garantía por defectos'],
                     ['icon' => 'fa-headset', 'text' => 'Soporte postventa']
-                ]]
+                ]]  
             ];
 
             foreach($items as $item): ?>
