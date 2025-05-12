@@ -16,6 +16,11 @@ $routes->get('home/catalogo', 'Home::catalogo');
 $routes->get('catalogo', 'Home::catalogo');
 $routes->get('catalogo/(:segment)', 'Home::catalogoDetalle/$1');
 
+$routes->get('usuarios', 'Usuario_Controller::index');
+$routes->get('usuarios/agregar', 'Usuario_Controller::agregar');
+$routes->post('usuarios/guardar', 'Usuario_Controller::guardar');
+$routes->get('usuarios/eliminar/(:num)', 'Usuario_Controller::eliminar/$1');
+
 
 
 
