@@ -59,3 +59,76 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
 - [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
 
+Table user {
+  user_id integer [pk, increment]
+  username varchar [not null]
+  fname varchar 
+  lname varchar 
+  role varchar [not null]
+  mail varchar [not null]
+  password varchar [not null]
+  active boolean [not null]
+}
+
+Table product {
+  product_id integer [pk, increment]
+  name varchar  [not null]
+  description varchar [not null]
+  category_id integer [not null, ref: > category.category_id]
+  discount integer [not null]
+  price float  [not null]
+  stock integer [not null]
+  active boolean [not null]
+}
+
+Table cart_item {
+  cart_item_id integer [pk, increment] 
+  user_id integer [ref: > user.user_id, not null]
+  product_id integer [ref: > product.product_id, not null]
+  quantity integer [not null]
+}
+
+Table invoice {
+  invoice_id integer [pk, increment]
+  user_id integer [ref: > user.user_id, not null]
+  total float [not null]
+  created_at datetime [not null]
+}
+
+Table invoice_item {
+  invoice_item_id integer [pk, increment]
+  invoice_id integer [ref: > invoice.invoice_id, not null]
+  product_id integer [ref: > product.product_id, not null]
+  quantity integer [not null]
+  price_at_purchase float [not null]
+}
+
+Table inquiry {
+  inquiry_id integer [pk, increment]
+  user_id integer [ref: > user.user_id, not null]
+  asunto varchar [not null]
+  mensaje text [not null]
+  fecha datetime [not null]
+  active boolean [not null]
+}
+
+Table contact {
+  contact_id integer [pk, increment]
+  name varchar [not null]
+  mail varchar [not null]
+  message text [not null]
+  created_at datetime [not null]
+  active boolean [not null]
+}
+
+Table category{
+  category_id integer [pk, increment]
+  category_name varchar [not null]
+}
+
+Table wish_item {
+  wish_item_id integer [pk, increment] 
+  user_id integer [ref: > user.user_id, not null]
+  product_id integer [ref: > product.product_id, not null]
+  quantity integer [not null]
+}
