@@ -1,0 +1,66 @@
+CRITICAL - 2025-05-15 12:56:02 --> ErrorException: Undefined variable $usuarios
+[Method: GET, Route: admin]
+in APPPATH\Views\back\usuarios\dashboard.php on line 26.
+ 1 APPPATH\Views\back\usuarios\dashboard.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuarios', 'C:\\xampp\\htdocs\\repositorio\\app\\Views\\back\\usuarios\\dashboard.php', 26)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\repositorio\\app\\Views\\back\\usuarios\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('back/usuarios/dashboard', [], true)
+ 5 APPPATH\Controllers\Usuario_Controller.php(14): view('back/usuarios/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Usuario_Controller->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuario_Controller))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-15 13:05:20 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin_layout.php"
+[Method: GET, Route: admin]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(212): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin_layout.php')
+ 2 SYSTEMPATH\View\View.php(240): CodeIgniter\View\View->render('admin_layout', [], true)
+ 3 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('back/usuarios/dashboard', [], true)
+ 4 APPPATH\Controllers\Usuario_Controller.php(18): view('back/usuarios/dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Usuario_Controller->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuario_Controller))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-15 13:09:15 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin_layout.php"
+[Method: GET, Route: admin]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(212): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin_layout.php')
+ 2 SYSTEMPATH\View\View.php(240): CodeIgniter\View\View->render('admin_layout', [], true)
+ 3 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('back/usuarios/dashboard', [], true)
+ 4 APPPATH\Controllers\Usuario_Controller.php(18): view('back/usuarios/dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Usuario_Controller->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuario_Controller))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-15 13:10:32 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin_layout.php"
+[Method: GET, Route: admin]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(212): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin_layout.php')
+ 2 SYSTEMPATH\View\View.php(240): CodeIgniter\View\View->render('admin_layout', [], true)
+ 3 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('back/usuarios/dashboard', [], true)
+ 4 APPPATH\Controllers\Usuario_Controller.php(18): view('back/usuarios/dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Usuario_Controller->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuario_Controller))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-15 13:17:12 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin_layout.php"
+[Method: GET, Route: admin]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(212): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin_layout.php')
+ 2 SYSTEMPATH\View\View.php(240): CodeIgniter\View\View->render('admin_layout', [], true)
+ 3 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('back/usuarios/dashboard', [], true)
+ 4 APPPATH\Controllers\Usuario_Controller.php(18): view('back/usuarios/dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Usuario_Controller->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuario_Controller))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
