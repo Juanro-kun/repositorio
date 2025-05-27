@@ -7,6 +7,7 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: var(--color-crema);
+  background-color: #1e1e1e;
 }
 
 .hero-section {
@@ -93,34 +94,41 @@ footer a:hover {
 }
 
 .card-personaje {
-background-color: #2c2c2c;
-color: white;
-border-radius: 1rem;
-padding: 2rem 1rem;
-text-align: center;
-height: 100%;
-transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
+  background-color: #2c2c2c;
+  color: white;
+  border-radius: 1rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
 }
 
 .card-personaje:hover {
-transform: translateY(-10px);
-background-color: #383838;
-box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  transform: translateY(-10px);
+  background-color: #383838;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
 }
 
 .card-personaje img {
-max-height: 120px;
-object-fit: contain;
-transition: transform 0.3s ease;
+  max-height: 120px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
 .card-personaje:hover img {
-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .section-quienes {
   background: linear-gradient(to bottom, #f5f5f0, #ecebe3);
   padding: 4rem 0;
+  background-image: url('../img/img3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 6rem 0;
+  color: white;
+  position: relative;
 }
 
 .perfil-card {
@@ -136,6 +144,8 @@ transform: scale(1.05);
 .perfil-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
 .perfil-card img {
@@ -201,16 +211,6 @@ transform: scale(1.05);
   font-size: 1.5rem;
   line-height: 1;
 }
-.section-quienes {
-  background-image: url('../img/img3.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 6rem 0;
-  color: white;
-  position: relative;
-}
-
 
 .section-quienes::before {
   content: "";
@@ -219,7 +219,8 @@ transform: scale(1.05);
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Oscurece la imagen para mayor legibilidad */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Oscurece la imagen para mayor legibilidad */
   z-index: 0;
 }
 
@@ -227,7 +228,6 @@ transform: scale(1.05);
   position: relative;
   z-index: 1;
 }
-
 
 .objetivos-container {
   display: flex;
@@ -272,124 +272,99 @@ transform: scale(1.05);
 .nuestro-equipo {
   margin-top: 5rem;
 }
-.perfil-card {
-  background-color: #2c2c2c;
-  color: white;
-  border-radius: 1rem;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
 
-.perfil-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 0 30px rgba(0,0,0,0.5);
-}
-
-.section-terminos {
-  background-image: url('../img/img3.jpg'); /* o la que más te guste */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 6rem 1rem;
-  color: #fdfdfd;
-  font-size: 1.05rem;
-}
-
-.card-terminos {
-  background: rgba(18, 18, 18, 0.92);
-  border-left: 5px solid #7e0000;
-  border-radius: 1rem;
-  padding: 3rem 2rem;
-  max-width: 900px;
-  margin: auto;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(6px);
-}
-
-.card-terminos h2 {
-  font-weight: bold;
-  margin-bottom: 2rem;
-  color: #ffdddd;
-  text-shadow: 0 0 4px rgba(0,0,0,0.5);
-}
-
-.card-terminos ul {
-  text-align: left;
-  margin-top: 1rem;
-  padding-left: 1.5rem;
-}
-
-.card-terminos li {
-  margin-bottom: 1rem;
-  line-height: 1.7;
-  position: relative;
-}
-
-.card-terminos li::before {
-  content: "🗡️";
-  position: absolute;
-  left: -1.5rem;
-}
-
-.card-terminos h4 {
-  margin-top: 2.5rem;
-  font-size: 1.3rem;
-  color: #ff8888;
-  border-bottom: 1px solid #ff8888;
-  padding-bottom: 0.5rem;
-  text-align: center;
-}
+/* TERMINOS */
 .section-scroll {
-  background-image: url('../img/pergamino.jpg'); /* Asegurate que esta imagen exista */
+  background: url('../img/fondo_terminos.png') no-repeat center center fixed;
+  /* Usa la imagen nueva que subiste */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 5rem 1rem;
+  padding: 6rem 2rem;
+  position: relative;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+/* Oscurecer suavemente encima */
+.section-scroll::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* Le da mejor legibilidad al contenido */
+  z-index: 0;
 }
 
 .scroll-container {
-  background-color: rgba(255, 248, 220, 0.9);
-  border: 2px solid #8b5e3c;
-  border-radius: 15px;
-  padding: 3rem;
-  max-width: 900px;
+  background: rgba(0, 0, 0, 0.6);
+  /* Más opaco para mejor lectura */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  /* ✅ con punto */
+  max-width: 1000px;
   margin: 0 auto;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  font-family: 'Cinzel', serif;
-  color: #3b2200;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 1;
+  transform: scale(0.80);
+  transform-origin: center top;
 }
 
+/* Título principal */
 .scroll-title {
-  font-size: 2.3rem;
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
   text-align: center;
-  margin-bottom: 1.5rem;
-  color: #5e2c00;
-  text-shadow: 1px 1px #fff2c7;
+  margin-bottom: 2rem;
+  color: #ffdddd;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
+/* Subtítulos */
 .scroll-subtitle {
-  font-size: 1.5rem;
-  color: #7a3e0e;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #ff8888;
   margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid #ff8888;
+  padding-bottom: 0.5rem;
 }
 
+/* Texto intro y cierre */
 .scroll-intro,
 .scroll-thanks {
   font-style: italic;
   text-align: center;
   margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  color: #f0f0f0;
 }
 
+/* Lista de términos */
 .scroll-list {
-  padding-left: 1.2rem;
-  line-height: 1.8;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
 }
 
 .scroll-list li {
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #eeeeee;
+}
+
+/* Íconos */
+.scroll-list li::marker {
+  font-size: 1.5rem;
 }
 
 .product-card {
@@ -410,7 +385,8 @@ transform: scale(1.05);
 .product-card img {
   width: 100%;
   height: 75%;
-  object-fit: cover; /* Recorta la imagen si es muy grande, para que todo quede uniforme */
+  object-fit: cover;
+  /* Recorta la imagen si es muy grande, para que todo quede uniforme */;
 }
 
 .product-description {
@@ -428,19 +404,22 @@ transform: scale(1.05);
   background: url('../img/img1.jpg') no-repeat center 70%;
   background-size: cover;
   position: relative;
-  padding: 3rem 2rem 8rem 2rem;   /* Reducimos el espacio arriba */
+  padding: 3rem 2rem 8rem 2rem;
+  /* Reducimos el espacio arriba */
   min-height: 75vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;   /* Alineamos arriba */
+  justify-content: flex-start;
+  /* Alineamos arriba */;
 }
-
 
 .comercial-section::before {
   content: "";
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.6);
   z-index: 0;
 }
@@ -478,7 +457,6 @@ transform: scale(1.05);
   height: 100px;
   background: linear-gradient(to bottom, rgba(0,0,0,0), var(--color-oscuro));
 }
-
 
 /*ESTILO PAG NUEVOS JUGADORES*/
 /* Fondo y texto general */
@@ -563,6 +541,9 @@ transform: scale(1.05);
   background-color: #912d2d;
   color: #ffffff;
   transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
+  transform: translateY(-3px);
 }
 
 /* Divisores */
@@ -579,7 +560,6 @@ transform: scale(1.05);
   text-shadow: 0 0 8px #5a5a5a;
 }
 
-
 /*ESTILO NAVBAR*/
 .nav-link-custom {
   color: #e0e0e0;
@@ -595,3 +575,83 @@ transform: scale(1.05);
   background-color: rgba(150, 150, 150, 0.1);
   transform: scale(1.1);
 }
+
+/* Fondo épico con overlay */
+.nuevos-container {
+  background: url('../img/gif1.gif') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  padding: 5rem 2rem;
+  color: #fff;
+}
+
+.nuevos-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+}
+
+.nuevos-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Cards con glassmorphism */
+.nuevos-section-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  color: #fff;
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Títulos épicos */
+.nuevos-section-title, 
+.nuevos-section-subtitle {
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  color: #f9f9f9;
+}
+
+/* Línea decorativa */
+.nuevos-title-decorado::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #7e0000;
+  margin: 10px auto 0 auto;
+  border-radius: 2px;
+}
+
+/* Botones facheros */
+.nuevos-btn-custom {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  backdrop-filter: blur(8px);
+  padding: 12px 25px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Divider */
+.nuevos-divider {
+  height: 2px;
+  background: linear-gradient(to right, transparent, #7e0000, transparent);
+  margin: 4rem 0;
+  border: none;
+}
+

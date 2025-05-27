@@ -2,7 +2,7 @@
 
 <?= $this->section('contenido') ?>
 
-<div class="container text-center my-5">
+<div class="container text-center text-light my-5">
     <h1 class="display-4">¡Próximamente!</h1>
     <p class="lead mt-4">
         Esta sección todavía se está forjando en las profundidades de la Taberna del Gnomo Errante.<br>

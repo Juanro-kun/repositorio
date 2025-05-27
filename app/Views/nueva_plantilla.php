@@ -29,7 +29,7 @@
       <h2 class="fw-bold mb-3 text-light">¿Aún no conoces D&D?</h2>
       <p class="mb-4 text-light">¡Visita nuestra sección para nuevos jugadores!</p>
       
-      <a href="<?= base_url('home/nuevos_jugadores') ?>" class="btn btn-danger px-4 py-2">
+      <a href="<?= base_url('/nuevos_jugadores') ?>" class="btn btn-danger px-4 py-2">
         ¡Descubrir ahora!
       </a>
 
@@ -46,7 +46,7 @@
       <!-- Primera fila -->
       <div class="col-12 col-md-4 d-flex justify-content-center">
         <div class="product-card">
-          <a href="<?= base_url('home/proximamente') ?>">
+          <a href="<?= base_url('/proximamente') ?>">
             <img src="<?= base_url('assets/img/guerrero.jpg') ?>" alt="Producto 1">
             <div class="product-description">
               <p class="m-0">Producto 1 increíble</p>
@@ -57,7 +57,7 @@
 
       <div class="col-12 col-md-4 d-flex justify-content-center">
         <div class="product-card">
-          <a href="<?= base_url('home/proximamente') ?>">
+          <a href="<?= base_url('/proximamente') ?>">
             <img src="<?= base_url('assets/img/guerrero.jpg') ?>" alt="Producto 2">
             <div class="product-description">
               <p class="m-0">Producto 2 increíble</p>
@@ -68,7 +68,7 @@
 
       <div class="col-12 col-md-4 d-flex justify-content-center">
         <div class="product-card">
-          <a href="<?= base_url('home/proximamente') ?>">
+          <a href="<?= base_url('/proximamente') ?>">
             <img src="<?= base_url('assets/img/guerrero.jpg') ?>" alt="Producto 3">
             <div class="product-description">
               <p class="m-0">Producto 3 increíble</p>
@@ -80,7 +80,7 @@
       <!-- Segunda fila -->
       <div class="col-12 col-md-4 d-flex justify-content-center">
         <div class="product-card">
-          <a href="<?= base_url('home/proximamente') ?>">
+          <a href="<?= base_url('/proximamente') ?>">
             <img src="<?= base_url('assets/img/guerrero.jpg') ?>" alt="Producto 4">
             <div class="product-description">
               <p class="m-0">Producto 4 increíble</p>
@@ -91,7 +91,7 @@
 
       <div class="col-12 col-md-4 d-flex justify-content-center">
         <div class="product-card">
-          <a href="<?= base_url('home/proximamente') ?>">
+          <a href="<?= base_url('/proximamente') ?>">
             <img src="<?= base_url('assets/img/guerrero.jpg') ?>" alt="Producto 5">
             <div class="product-description">
               <p class="m-0">Producto 5 increíble</p>
@@ -102,7 +102,7 @@
 
       <div class="col-12 col-md-4 d-flex justify-content-center">
         <div class="product-card">
-          <a href="<?= base_url('home/proximamente') ?>">
+          <a href="<?= base_url('/proximamente') ?>">
             <img src="<?= base_url('assets/img/guerrero.jpg') ?>" alt="Producto 6">
             <div class="product-description">
               <p class="m-0">Producto 6 increíble</p>

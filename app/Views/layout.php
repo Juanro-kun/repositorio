@@ -13,13 +13,19 @@
 
   <!-- Font Awesome Local -->
   <link rel="stylesheet" href="assets/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>
+
+<!-- Aseguramos altura y estructura flexbox -->
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+
   <?= view('navbar') ?>
 
-  <?= $this->renderSection('contenido') ?>
+  <main style="flex: 1;">
+    <?= $this->renderSection('contenido') ?>
+  </main>
 
-  <?= view('footer') ?>
+  <?= $this->include('footer') ?>
 
   <!-- Bootstrap JS Local -->
   <script src="<?= base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>

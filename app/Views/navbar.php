@@ -18,19 +18,19 @@
           <a class="nav-link nav-link-custom" href="<?= base_url() ?>">Principal</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-custom" href="<?= base_url('home/nuevos_jugadores') ?>">Nuevos Jugadores</a>
+          <a class="nav-link nav-link-custom" href="<?= base_url('/nuevos_jugadores') ?>">Nuevos Jugadores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-custom" href="<?= base_url('home/quienes') ?>">Quiénes Somos</a>
+          <a class="nav-link nav-link-custom" href="<?= base_url('/quienes') ?>">Quiénes Somos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-custom" href="<?= base_url('home/comercializacion') ?>">Comercialización</a>
+          <a class="nav-link nav-link-custom" href="<?= base_url('/comercializacion') ?>">Comercialización</a>
         </li>
         <li class="nav-item">
           <a class="nav-link nav-link-custom" href="<?= base_url('home/contacto') ?>">Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-custom" href="<?= base_url('home/terminos') ?>">Términos y Usos</a>
+          <a class="nav-link nav-link-custom" href="<?= base_url('/terminos') ?>">Términos y Usos</a>
         </li>
       </ul>
     </div>
