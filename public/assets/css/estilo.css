@@ -281,11 +281,17 @@ footer a:hover {
   background-position: center;
   background-repeat: no-repeat;
   padding: 6rem 2rem;
+  padding: 6rem 2rem;
   position: relative;
+  min-height: 100vh;
+  color: #ffffff;
   min-height: 100vh;
   color: #ffffff;
 }
 
+/* Oscurecer suavemente encima */
+.section-scroll::before {
+  content: "";
 /* Oscurecer suavemente encima */
 .section-scroll::before {
   content: "";
@@ -314,20 +320,35 @@ footer a:hover {
   z-index: 1;
   transform: scale(0.80);
   transform-origin: center top;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 1;
+  transform: scale(0.80);
+  transform-origin: center top;
 }
 
 /* Título principal */
 .scroll-title {
   font-family: 'Cinzel', serif;
   font-size: 2.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
   text-align: center;
+  margin-bottom: 2rem;
+  color: #ffdddd;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
   margin-bottom: 2rem;
   color: #ffdddd;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 /* Subtítulos */
+/* Subtítulos */
 .scroll-subtitle {
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #ff8888;
   font-family: 'Cinzel', serif;
   font-weight: bold;
   font-size: 1.8rem;
@@ -337,8 +358,13 @@ footer a:hover {
   text-align: center;
   border-bottom: 2px solid #ff8888;
   padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid #ff8888;
+  padding-bottom: 0.5rem;
 }
 
+/* Texto intro y cierre */
 /* Texto intro y cierre */
 .scroll-intro,
 .scroll-thanks {
@@ -347,10 +373,15 @@ footer a:hover {
   margin-bottom: 1.5rem;
   font-size: 1.2rem;
   color: #f0f0f0;
+  font-size: 1.2rem;
+  color: #f0f0f0;
 }
 
 /* Lista de términos */
+/* Lista de términos */
 .scroll-list {
+  padding-left: 1.5rem;
+  margin-top: 1rem;
   padding-left: 1.5rem;
   margin-top: 1rem;
 }
@@ -365,7 +396,18 @@ footer a:hover {
 /* Íconos */
 .scroll-list li::marker {
   font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #eeeeee;
 }
+
+/* Íconos */
+.scroll-list li::marker {
+  font-size: 1.5rem;
+}
+
+
 
 .product-card {
   width: 250px;
@@ -437,6 +479,7 @@ footer a:hover {
   color: #fff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .glass-card:hover {
   transform: translateY(-10px);
