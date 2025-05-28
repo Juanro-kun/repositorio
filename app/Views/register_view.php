@@ -83,6 +83,9 @@
 </head>
 
 <body class="d-flex align-items-center justify-content-center min-vh-100">
+    <a href="<?= base_url('/') ?>" style="position: absolute; top: 20px; left: 20px; z-index: 10;">
+        <img src="<?= base_url('assets/img/logo.png') ?>" alt="Logo de la tienda" style="height: 60px;">
+    </a>
 
   <div class="register-ritual">
     <h2>Juramento de Ingreso</h2>

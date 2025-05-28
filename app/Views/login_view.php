@@ -99,6 +99,9 @@
 </head>
 
 <body class="d-flex align-items-center justify-content-center min-vh-100 position-relative">
+    <a href="<?= base_url('/') ?>" style="position: absolute; top: 20px; left: 20px; z-index: 10;">
+        <img src="<?= base_url('assets/img/logo.png') ?>" alt="Logo de la tienda" style="height: 60px;">
+    </a>
 
   <!-- Decoración temática -->
   <img src="<?= base_url('assets/img/scroll_lateral.png') ?>" alt="pergamino decorativo" class="scroll-frame">
