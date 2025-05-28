@@ -15,4 +15,5 @@ $routes->get('/nuevos_jugadores', 'StaticController::nuevos_jugadores');
 $routes->get('/login', 'AuthController::login');
 $routes->get('/register', 'AuthController::register');
 $routes->post('/register/process', 'AuthController::process_register');
+$routes->post('/login/process', 'AuthController::process_login');
 

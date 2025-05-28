@@ -104,13 +104,9 @@
   <img src="<?= base_url('assets/img/scroll_lateral.png') ?>" alt="pergamino decorativo" class="scroll-frame">
   <img src="<?= base_url('assets/img/sello_magico.png') ?>" alt="símbolo arcano" class="symbol">
 
-  <?php if (session()->getFlashdata('success')): ?>
-    <div class="alert alert-success">
-        <?= session()->getFlashdata('success') ?>
-    </div>
-  <?php endif; ?>
 
   <div class="login-container">
+    
     <h2>Invocación de Acceso</h2>
 
     <?php if (session()->getFlashdata('error')): ?>
@@ -118,13 +114,19 @@
         <?= session()->getFlashdata('error') ?>
       </div>
     <?php endif; ?>
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success">
+            <?= session()->getFlashdata('success') ?>
+        </div>
+    <?php endif; ?>
+    
 
     <form action="<?= base_url('/login/process') ?>" method="post">
       <?= csrf_field() ?>
 
       <div class="mb-3">
         <label for="mail" class="form-label">Correo del hechicero</label>
-        <input type="email" name="mail" id="mail" class="form-control" required />
+        <input type="email" name="mail" id="mail" class="form-control" value="<?= old('mail')?>" required />
       </div>
 
       <div class="mb-3">
@@ -134,7 +136,7 @@
 
       <button type="submit" class="btn btn-invocar w-100">Entrar al grimorio</button>
 
-      <a href="<?= base_url('home/register') ?>" class="register-link">¿No estás registrado en la orden? Jurá el pacto aquí.</a>
+      <a href="<?= base_url('/register') ?>" class="register-link">¿No estás registrado en la orden? Jurá el pacto aquí.</a>
     </form>
   </div>
 

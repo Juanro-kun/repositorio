@@ -87,10 +87,16 @@
   <div class="register-ritual">
     <h2>Juramento de Ingreso</h2>
 
-    <?php if (session()->getFlashdata('error')): ?>
-      <div class="alert alert-danger">
-        <?= session()->getFlashdata('error') ?>
-      </div>
+    <?php if (session()->getFlashdata('errors')): ?>
+    <div class="alert alert-danger">
+        <ul>
+            <?php foreach (session()->getFlashdata('errors') as $error): ?>
+                <li><?= esc($error) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <?php elseif (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger"><?= esc(session()->getFlashdata('error')) ?></div>
     <?php endif; ?>
 
     <form action="<?= base_url('/register/process') ?>" method="post">
