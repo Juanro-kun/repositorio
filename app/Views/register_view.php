@@ -118,7 +118,7 @@
 
       <button type="submit" class="btn btn-pacto w-100">Jurar el pacto</button>
 
-      <a href="<?= base_url('home/login') ?>" class="login-link">¿Ya juraste? Ingresá al grimorio</a>
+      <a href="<?= base_url('/login') ?>" class="login-link">¿Ya juraste? Ingresá al grimorio</a>
     </form>
   </div>
 

@@ -5,6 +5,13 @@
     <div class="container">
         <h2 class="fw-bold text-center mb-5">Catálogo de Productos</h2>
 
+        <!-- Mensaje de éxito -->
+        <?php if (session()->getFlashdata('mensaje')): ?>
+            <div class="alert alert-success text-center">
+                <?= session()->getFlashdata('mensaje') ?>
+            </div>
+        <?php endif; ?>
+
         <!-- Buscador -->
         <form method="GET" class="mb-5 text-center">
             <input type="text" name="busqueda" placeholder="Buscar producto..." class="form-control w-50 mx-auto" value="<?= esc($_GET['busqueda'] ?? '') ?>">
@@ -43,12 +50,23 @@
                                 <img src="<?= base_url('uploads/' . $producto['image']) ?>" class="card-img-top" alt="<?= esc($producto['name']) ?>" onerror="this.src='<?= base_url('assets/img/default.png') ?>'">
                                 <div class="card-body">
                                     <h5><?= esc($producto['name']) ?></h5>
-                                        <?php $desc = json_decode($producto['description'], true); ?>
-                                        <p><?= esc($desc['descripcion'] ?? $producto['description']) ?></p>
+                                    <?php $desc = json_decode($producto['description'], true); ?>
+                                    <p><?= esc($desc['descripcion'] ?? $producto['description']) ?></p>
                                     <p class="fw-bold <?= $producto['price'] < 50000 ? 'text-success' : 'text-danger' ?>">
                                         $<?= number_format($producto['price'], 0, ',', '.') ?>
                                     </p>
-                                    <a href="<?= base_url('catalogo/' . $producto['product_id']) ?>" class="btn btn-primary w-100 mt-2">Ver Detalles</a>
+
+                                    <a href="<?= base_url('catalogo/' . $producto['product_id']) ?>" class="btn btn-primary w-100 mt-2">
+                                        Ver Detalles
+                                    </a>
+
+                                    <form method="POST" action="<?= base_url('agregar-al-carrito') ?>">
+                                        <input type="hidden" name="product_id" value="<?= $producto['product_id'] ?>">
+                                        <input type="hidden" name="quantity" value="1">
+                                        <button type="submit" class="btn btn-outline-light w-100 mt-2">
+                                            <i class="bi bi-cart-plus"></i> Agregar al carrito
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

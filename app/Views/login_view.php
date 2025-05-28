@@ -134,7 +134,8 @@
 
       <button type="submit" class="btn btn-invocar w-100">Entrar al grimorio</button>
 
-      <a href="<?= base_url('home/register') ?>" class="register-link">¿No estás registrado en la orden? Jurá el pacto aquí.</a>
+        <a href="<?= base_url('/register') ?>" class="register-link">¿No estás registrado en la orden? Jurá el pacto aquí.</a>
+
     </form>
   </div>
 

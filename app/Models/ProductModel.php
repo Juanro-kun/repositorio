@@ -10,7 +10,5 @@ class ProductModel extends Model
     protected $useSoftDeletes   = true;
     protected $deletedField     = 'deleted_at';
     protected $returnType       = 'array';
-    protected $allowedFields    = [
-        'name', 'description', 'category_id', 'discount', 'price', 'stock', 'deleted_at', 'image'
-    ];
+    protected $allowedFields    = ['name', 'description', 'category_id', 'discount', 'price', 'stock', 'deleted_at', 'image'];
 }

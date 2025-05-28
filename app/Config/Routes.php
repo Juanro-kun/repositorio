@@ -19,6 +19,22 @@ $routes->get('/login', 'AuthController::login');
 $routes->get('/register', 'AuthController::register');
 $routes->post('/register/process', 'AuthController::process_register');
 
+
+//Carrito
+$routes->get('carrito', 'CarritoController::index');
+$routes->post('agregar-al-carrito', 'CarritoController::agregar');
+$routes->post('carrito/sumar', 'CarritoController::sumar');
+$routes->post('carrito/restar', 'CarritoController::restar');
+$routes->post('carrito/eliminar', 'CarritoController::eliminar');
+
+//Pago
+$routes->get('checkout', 'CheckoutController::pasoContacto');
+$routes->post('checkout/contacto', 'CheckoutController::guardarContacto');
+$routes->post('checkout/envio', 'CheckoutController::guardarEnvio');
+$routes->post('checkout/pago', 'CheckoutController::guardarPago');
+$routes->post('checkout/confirmar', 'CheckoutController::confirmarPedido');
+$routes->get('checkout/confirmado', 'CheckoutController::confirmado');
+
 //Vista De Administrador
 $routes->get('admin', 'AdminController::index');
 

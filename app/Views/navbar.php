@@ -37,5 +37,20 @@
         </li>
       </ul>
     </div>
+
+
+<!-- Carrito y Login alineados a la derecha -->
+<div class="d-flex align-items-center gap-3">
+  <!-- Carrito -->
+  <a href="<?= base_url('carrito') ?>" class="text-white position-relative" title="Ver carrito" style="font-size: 1.4rem;">
+    <i class="bi bi-cart-fill"></i>
+  </a>
+
+  <!-- Login -->
+  <a href="<?= base_url('login') ?>" class="btn btn-outline-light rounded-pill d-flex align-items-center gap-1 px-3">
+    <i class="bi bi-person-circle"></i> <span>Login</span>
+  </a>
+</div>
+
   </div>
 </nav>

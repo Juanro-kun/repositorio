@@ -18,6 +18,7 @@
 
 <!-- Aseguramos altura y estructura flexbox -->
 <body style="min-height: 100vh; display: flex; flex-direction: column;">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
   <?= view('navbar') ?>
 
