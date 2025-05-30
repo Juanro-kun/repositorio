@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table            = 'users';
+    protected $table            = 'user';
     protected $primaryKey       = 'user_id';
     protected $useAutoIncrement = true;
 
@@ -31,7 +31,7 @@ class UserModel extends Model
         'fname'    => 'permit_empty|max_length[255]',
         'lname'    => 'permit_empty|max_length[255]',
         'role'     => 'required|max_length[50]',
-        'mail'     => 'required|valid_email|max_length[255]|is_unique[users.mail]',
+        'mail'     => 'required|valid_email|max_length[255]|is_unique[user.mail]',
         'password' => 'required|min_length[6]|max_length[255]',
     ];
 

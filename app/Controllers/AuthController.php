@@ -31,7 +31,7 @@ class AuthController extends BaseController{
         unset($data['password_confirm']);
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-        $data['role'] = 1;
+        $data['role'] = 'user';
 
         if (!$userModel->insert($data)) {
             $errors = $userModel->errors();
@@ -66,13 +66,7 @@ class AuthController extends BaseController{
             'isLoggedIn' => true,
         ]);
 
-        if ($user['role'] == 1) {
-            return redirect()->to('/');
-        } elseif ($user['role'] == 2) {
-            return redirect()->to('/pagina-admin');
-        } else {
-            return redirect()->to('/'); // por si tiene otro rol inesperado
-        }
+        return redirect()->to('/');
     }
 
     public function logout()
