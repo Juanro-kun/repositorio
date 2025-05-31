@@ -23,7 +23,7 @@ class ProductModel extends Model
         'discount',
         'price',
         'stock',
-        'deleted_at'
+        'deleted_at',
         'image'
     ];
 }

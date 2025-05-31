@@ -3,38 +3,36 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use App\Models\ProductModel;
 use App\Models\InvoiceModel;
 use App\Models\InquiryModel;
 use App\Models\ContactModel;
-use App\Models\WishItemModel;
-use App\Models\CategoryModel;
-use App\Models\NotificacionModel;
 
 class AdminController extends BaseController
 {
     public function index()
     {
         $usuarios = new UserModel();
-        $productos = new ProductModel();
         $facturas  = new InvoiceModel();
         $consultas = new InquiryModel();
         $contactos = new ContactModel();
-        $wishlist  = new WishItemModel();
-
-        $ingresos = $facturas->selectSum('total')->first();
-        $ingresosTotales = isset($ingresos['total']) ? $ingresos['total'] : 0;
+    
+        // Ingresos del mes actual
+        $ingresosMesActual = $facturas
+            ->where('created_at >=', date('Y-m-01'))
+            ->selectSum('total')
+            ->first();
+        $ingresosDelMes = isset($ingresosMesActual['total']) ? $ingresosMesActual['total'] : 0;
+    
         $cantidadClientes = $usuarios->where('role', 'user')->where('deleted_at', null)->countAllResults();
-        $cantidadPedidos = $facturas->countAllResults();
-        $pendientesEnvio = 0;
-
+        $cantidadVentas = $facturas->countAllResults();
+    
         $ventasRaw = $facturas->select("DATE(created_at) as fecha, SUM(total) as total")
             ->where("created_at >=", date('Y-m-d', strtotime('-6 days')))
             ->groupBy("DATE(created_at)")
             ->orderBy("fecha", "ASC")
             ->get()
             ->getResultArray();
-
+    
         $dias = ['Lun' => 0, 'Mar' => 0, 'Mié' => 0, 'Jue' => 0, 'Vie' => 0, 'Sáb' => 0, 'Dom' => 0];
         foreach ($ventasRaw as $row) {
             $diaEn = date('D', strtotime($row['fecha']));
@@ -42,12 +40,12 @@ class AdminController extends BaseController
             $nombreDia = $map[$diaEn] ?? $diaEn;
             $dias[$nombreDia] = (float) $row['total'];
         }
-
+    
         $ventasSemanal = [
             'dias'    => array_keys($dias),
             'totales' => array_values($dias),
         ];
-
+    
         $db = \Config\Database::connect();
         $ultimosPedidos = $db->table('invoice i')
             ->select('i.*, u.fname as nombre, u.lname as apellido')
@@ -56,65 +54,27 @@ class AdminController extends BaseController
             ->limit(5)
             ->get()
             ->getResultArray();
-
+    
+        // Suma de consultas registradas + no registradas (contactos)
+        $consultasPendientes = $consultas->where('deleted_at', null)->countAllResults()
+            + $contactos->where('deleted_at', null)->countAllResults();
+    
         $data = [
-            'ingresosTotales'  => $ingresosTotales,
-            'cantidadPedidos'  => $cantidadPedidos,
+            'ingresosDelMes'   => $ingresosDelMes,
+            'cantidadVentas'   => $cantidadVentas,
             'cantidadClientes' => $cantidadClientes,
-            'pendientesEnvio'  => $pendientesEnvio,
+            'consultasPendientes' => $consultasPendientes,
             'ventasSemanal'    => $ventasSemanal,
             'ultimosPedidos'   => $ultimosPedidos,
-            'totalUsuarios'  => $usuarios->where('deleted_at', null)->countAllResults(),
-            'totalProductos' => $productos->where('deleted_at', null)->countAllResults(),
-            'totalFacturas'  => $cantidadPedidos,
-            'totalConsultas' => $consultas->where('deleted_at', null)->countAllResults(),
-            'totalContactos' => $contactos->where('deleted_at', null)->countAllResults(),
-            'totalDeseos'    => $wishlist->countAllResults(),
+            'totalUsuarios'    => $usuarios->where('deleted_at', null)->countAllResults(),
+            'totalFacturas'    => $cantidadVentas,
         ];
-
+    
         return view('admin/dashboard', $data);
     }
+    
 
-    public function pedidos()
-    {
-        $db = \Config\Database::connect();
-        $pedidos = $db->table('invoice i')
-            ->select('i.*, u.fname, u.lname, COUNT(ii.invoice_item_id) as cantidad_productos')
-            ->join('user u', 'i.user_id = u.user_id')
-            ->join('invoice_item ii', 'i.invoice_id = ii.invoice_id')
-            ->groupBy('i.invoice_id')
-            ->orderBy('i.created_at', 'DESC')
-            ->get()->getResultArray();
-
-        return view('admin/pedidos', ['pedidos' => $pedidos]);
-    }
-
-    public function verPedido($id)
-    {
-        $db = \Config\Database::connect();
-        $pedido = $db->table('invoice i')
-            ->select('i.*, u.fname as nombre, u.lname as apellido, u.mail')
-            ->join('user u', 'i.user_id = u.user_id')
-            ->where('i.invoice_id', $id)
-            ->get()
-            ->getRowArray();
-
-        $productos = $db->table('invoice_item ii')
-            ->select('ii.*, p.name, p.image, p.description')
-            ->join('product p', 'ii.product_id = p.product_id')
-            ->where('ii.invoice_id', $id)
-            ->get()
-            ->getResultArray();
-
-        if (!$pedido) {
-            return redirect()->to('admin/pedidos')->with('error', 'Pedido no encontrado.');
-        }
-
-        return view('admin/ver_pedido', [
-            'pedido' => $pedido,
-            'productos' => $productos
-        ]);
-    }
+    
 
     public function inventario()
     {

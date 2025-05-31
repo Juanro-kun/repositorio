@@ -4,25 +4,24 @@
 <h2 class="mb-3 fw-bold">Dashboard</h2>
 <p class="text-muted mb-4">Resumen general de la tienda y actividad reciente.</p>
 
-<div class="row g-4 mb-4">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4 mb-4">
   <!-- Card: Ingresos -->
   <div class="col-md-3">
     <div class="card shadow-sm border-0">
       <div class="card-body">
-        <h6 class="text-muted">Ingresos</h6>
-        <h4 class="fw-bold text-success">$<?= number_format($ingresosTotales, 2, ',', '.') ?></h4>
-        <small class="text-muted">+20.1% desde el mes pasado</small>
+        <h6 class="text-muted">Ingresos del mes</h6>
+        <h4 class="fw-bold text-success">$<?= number_format($ingresosDelMes, 2, ',', '.') ?></h4>
       </div>
     </div>
   </div>
 
-  <!-- Card: Pedidos -->
+  <!-- Card: Ventas -->
   <div class="col-md-3">
     <div class="card shadow-sm border-0">
       <div class="card-body">
-        <h6 class="text-muted">Pedidos</h6>
-        <h4 class="fw-bold"><?= $cantidadPedidos ?></h4>
-        <small class="text-muted">+12.4% desde el mes pasado</small>
+        <h6 class="text-muted">Ventas</h6>
+        <h4 class="fw-bold"><?= $cantidadVentas ?></h4>
+        <small class="text-muted">Total registradas</small>
       </div>
     </div>
   </div>
@@ -38,27 +37,21 @@
     </div>
   </div>
 
-  <!-- Card: Pendientes de envío -->
+  <!-- Card: Consultas sin responder -->
   <div class="col-md-3">
     <div class="card shadow-sm border-0">
       <div class="card-body">
-        <h6 class="text-muted">Pendientes de Envío</h6>
-        <h4 class="fw-bold"><?= $pendientesEnvio ?></h4>
-        <small class="text-muted">-4 desde ayer</small>
+        <h6 class="text-muted">Consultas sin responder</h6>
+        <h4 class="fw-bold"><?= $consultasPendientes ?></h4>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Tabs -->
-<ul class="nav nav-tabs mb-3">
-  <li class="nav-item"><a class="nav-link active" href="#">Resumen</a></li>
-  
-</ul>
-
 <div class="row g-4 mb-4">
+
   <!-- Gráfico -->
-  <div class="col-lg-8">
+  <div class="col-lg-6 d-none d-lg-block">
     <div class="card shadow-sm border-0">
       <div class="card-header bg-white fw-bold">Ventas Semanales</div>
       <div class="card-body">
@@ -67,12 +60,12 @@
     </div>
   </div>
 
-  <!-- Pedidos recientes -->
-  <div class="col-lg-4">
+  <!-- Ventas recientes -->
+  <div class="col-lg-6">
     <div class="card shadow-sm border-0">
       <div class="card-header bg-white fw-bold">
-        Pedidos Recientes
-        <div class="small text-muted">Has recibido <?= count($ultimosPedidos) ?> pedidos hoy.</div>
+        Ventas Recientes
+        <div class="small text-muted">Has recibido <?= count($ultimosPedidos) ?> ventas hoy.</div>
       </div>
       <div class="card-body p-0">
         <table class="table table-sm table-hover mb-0">
@@ -97,7 +90,7 @@
         </table>
       </div>
       <div class="card-footer text-end">
-        <a href="<?= base_url('admin/pedidos') ?>"><i class="bi bi-cart"></i> Ver Todos los Pedidos</a>
+        <a href="<?= base_url('admin/pedidos') ?>"><i class="bi bi-cart"></i> Ver Todas las Ventas</a>
       </div>
     </div>
   </div>
@@ -126,3 +119,4 @@
 </script>
 
 <?= $this->endSection() ?>
+

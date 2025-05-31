@@ -1,0 +1,172 @@
+DEBUG - 2025-05-31 01:58:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-05-31 01:58:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-05-31 01:58:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-05-31 01:58:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-05-31 01:58:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-05-31 02:00:06 --> ParseError: syntax error, unexpected single-quoted string "image", expecting "]"
+[Method: GET, Route: admin]
+in APPPATH\Models\ProductModel.php on line 27.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\repositorio\\app\\Models\\ProductModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\ProductModel')
+ 3 APPPATH\Controllers\AdminController.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\ProductModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-05-31 02:01:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-05-31 03:18:15 --> ErrorException: Undefined variable $ingresosMesActual
+[Method: GET, Route: admin]
+in APPPATH\Views\admin\dashboard.php on line 13.
+ 1 APPPATH\Views\admin\dashboard.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ingresosMesActual', 'C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\dashboard.php', 13)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\AdminController.php(78): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-31 03:19:43 --> ErrorException: Undefined variable $ingresosMesActual
+[Method: GET, Route: admin]
+in APPPATH\Views\admin\dashboard.php on line 13.
+ 1 APPPATH\Views\admin\dashboard.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ingresosMesActual', 'C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\dashboard.php', 13)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\AdminController.php(78): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-31 03:25:15 --> ErrorException: Undefined variable $productos
+[Method: GET, Route: admin]
+in APPPATH\Controllers\AdminController.php on line 70.
+ 1 APPPATH\Controllers\AdminController.php(70): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $productos', 'C:\\xampp\\htdocs\\repositorio\\app\\Controllers\\AdminController.php', 70)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-31 03:26:08 --> ErrorException: Undefined variable $consultasPendientes
+[Method: GET, Route: admin]
+in APPPATH\Views\admin\dashboard.php on line 45.
+ 1 APPPATH\Views\admin\dashboard.php(45): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $consultasPendientes', 'C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\dashboard.php', 45)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\AdminController.php(73): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-31 03:44:35 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/pedidos.php"
+[Method: GET, Route: admin/pedidos]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(212): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/pedidos.php')
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/pedidos', [], true)
+ 3 APPPATH\Controllers\PedidosController.php(24): view('admin/pedidos', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PedidosController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PedidosController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-31 17:57:56 --> ErrorException: Undefined variable $facturas
+[Method: GET, Route: admin/facturas]
+in APPPATH\Views\admin\ventas.php on line 25.
+ 1 APPPATH\Views\admin\ventas.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $facturas', 'C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\ventas.php', 25)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\ventas.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/ventas', [], true)
+ 5 APPPATH\Controllers\FacturasController.php(24): view('admin/ventas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\FacturasController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FacturasController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-31 17:58:54 --> ErrorException: Undefined variable $pedidos
+[Method: GET, Route: admin/facturas]
+in APPPATH\Controllers\FacturasController.php on line 24.
+ 1 APPPATH\Controllers\FacturasController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pedidos', 'C:\\xampp\\htdocs\\repositorio\\app\\Controllers\\FacturasController.php', 24)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\FacturasController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FacturasController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-31 18:02:06 --> ErrorException: Undefined variable $productos
+[Method: GET, Route: admin/facturas/1]
+in APPPATH\Controllers\FacturasController.php on line 50.
+ 1 APPPATH\Controllers\FacturasController.php(50): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $productos', 'C:\\xampp\\htdocs\\repositorio\\app\\Controllers\\FacturasController.php', 50)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\FacturasController->verFactura('1')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FacturasController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-31 18:02:33 --> ErrorException: Undefined variable $pedido
+[Method: GET, Route: admin/facturas/1]
+in APPPATH\Views\admin\ver_factura.php on line 44.
+ 1 APPPATH\Views\admin\ver_factura.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pedido', 'C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\ver_factura.php', 44)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\ver_factura.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/ver_factura', [], true)
+ 5 APPPATH\Controllers\FacturasController.php(48): view('admin/ver_factura', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\FacturasController->verFactura('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FacturasController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-31 18:03:13 --> ErrorException: Undefined variable $pedido
+[Method: GET, Route: admin/facturas/1]
+in APPPATH\Views\admin\ver_factura.php on line 44.
+ 1 APPPATH\Views\admin\ver_factura.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pedido', 'C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\ver_factura.php', 44)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\ver_factura.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/ver_factura', [], true)
+ 5 APPPATH\Controllers\FacturasController.php(48): view('admin/ver_factura', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\FacturasController->verFactura('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FacturasController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-31 18:03:19 --> ErrorException: Undefined variable $pedido
+[Method: GET, Route: admin/facturas/1]
+in APPPATH\Views\admin\ver_factura.php on line 44.
+ 1 APPPATH\Views\admin\ver_factura.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pedido', 'C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\ver_factura.php', 44)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\ver_factura.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/ver_factura', [], true)
+ 5 APPPATH\Controllers\FacturasController.php(48): view('admin/ver_factura', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\FacturasController->verFactura('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FacturasController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-31 18:03:22 --> ErrorException: Undefined variable $pedido
+[Method: GET, Route: admin/facturas/1]
+in APPPATH\Views\admin\ver_factura.php on line 44.
+ 1 APPPATH\Views\admin\ver_factura.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pedido', 'C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\ver_factura.php', 44)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\repositorio\\app\\Views\\admin\\ver_factura.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/ver_factura', [], true)
+ 5 APPPATH\Controllers\FacturasController.php(48): view('admin/ver_factura', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\FacturasController->verFactura('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FacturasController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

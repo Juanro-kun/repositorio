@@ -11,11 +11,6 @@
       background-color: #f8f9fa;
       font-family: 'Segoe UI', sans-serif;
     }
-    .sidebar {
-      min-height: 100vh;
-      background-color: #ffffff;
-      border-right: 1px solid #dee2e6;
-    }
     .sidebar a {
       color: #495057;
       padding: 12px 20px;
@@ -36,6 +31,14 @@
     .content {
       padding: 2rem;
     }
+    @media (min-width: 768px) {
+      .offcanvas-md {
+        position: static;
+        transform: none;
+        visibility: visible !important;
+        border-right: 1px solid #dee2e6;
+      }
+    }
   </style>
 </head>
 <body>
@@ -44,7 +47,11 @@
 <header class="bg-white border-bottom shadow-sm sticky-top">
   <div class="container-fluid py-2 px-4 d-flex justify-content-between align-items-center">
     <div class="d-flex align-items-center gap-2">
-      <i class="bi bi-box-fill text-danger fs-4"></i>
+      <!-- Botón hamburguesa en mobile -->
+      <button class="btn btn-outline-secondary d-lg-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+        <i class="bi bi-list"></i>
+      </button>
+      <i class="bi bi-box-fill text-danger fs-4 d-none d-md-inline"></i>
       <h5 class="mb-0 fw-bold">D&D Admin</h5>
     </div>
     <div class="d-flex align-items-center gap-3">
@@ -58,11 +65,15 @@
 
 <div class="container-fluid">
   <div class="row">
-    <!-- Sidebar -->
-    <nav class="col-md-2 sidebar p-3">
+    <!-- Sidebar como offcanvas -->
+    <nav id="sidebarMenu" class="col-lg-2 offcanvas-lg offcanvas-start sidebar p-3 bg-white" tabindex="-1">
+      <div class="offcanvas-header d-md-none">
+        <h5 class="offcanvas-title">Menú</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
       <div class="nav flex-column">
         <a href="<?= base_url('admin') ?>"><i class="bi bi-bar-chart"></i> Dashboard</a>
-        <a href="<?= base_url('admin/pedidos') ?>"><i class="bi bi-cart"></i> Pedidos</a>
+        <a href="<?= base_url('admin/facturas') ?>"><i class="bi bi-cart"></i> Facturas</a>
         <a href="<?= base_url('admin/inventario') ?>"><i class="bi bi-box-seam"></i> Inventario</a>
         <a href="<?= base_url('admin/categorias') ?>"><i class="bi bi-layers"></i> Categorías</a>
         <a href="<?= base_url('admin/informes') ?>"><i class="bi bi-file-earmark-text"></i> Informes</a>
@@ -72,7 +83,7 @@
     </nav>
 
     <!-- Contenido principal -->
-    <main class="col-md-10 content">
+    <main class="col-12 col-lg-10 content">
       <?= $this->renderSection('contenido') ?>
     </main>
   </div>
