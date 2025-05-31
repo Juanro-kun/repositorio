@@ -31,15 +31,30 @@
                 <div class="small"><?= $item['quantity'] ?> x $<?= number_format($item['price_at_purchase'], 2, ',', '.') ?></div>
               </div>
             </div>
-            <div class="fw-medium">$<?= number_format($item['subtotal'], 2, ',', '.') ?></div>
+            <div class="d-flex flex-column">
+              <?php if ($item['discount'] > 0): ?>
+                  <div class="text-muted text-decoration-line-through">
+                      $<?= number_format(($item['price_at_purchase'] * $item['quantity']), 2, ',', '.') ?>
+                  </div>
+                  <div class="text-success">
+                      <?= $item['discount'] ?>% de descuento
+                  </div>
+                  <div class="fw-bold">
+                      $<?= number_format(
+                          $item['subtotal'],
+                          2, ',', '.'
+                      ) ?>
+                  </div>
+              <?php else: ?>
+                  <div class="fw-bold">
+                      $<?= number_format($item['subtotal'], 2, ',', '.') ?>
+                  </div>
+              <?php endif; ?>
+            </div>
           </div>
         <?php endforeach ?>
 
-        <div class="border-top pt-3 text-end">
-          <div class="d-flex justify-content-between"><span class="text-muted">Subtotal</span><span>$<?= number_format($factura['total'] - 16, 2, ',', '.') ?></span></div>
-          <div class="d-flex justify-content-between"><span class="text-muted">Envío</span><span>$5,00</span></div>
-          <div class="d-flex justify-content-between"><span class="text-muted">Impuestos</span><span>$11,00</span></div>
-          <hr>
+        <div class="pt-3 text-end">
           <div class="d-flex justify-content-between fw-bold fs-5"><span>Total</span><span>$<?= number_format($factura['total'], 2, ',', '.') ?></span></div>
         </div>
       </div>

@@ -30,34 +30,10 @@
       <label for="discount" class="form-label">Descuento (%)</label>
       <input type="number" class="form-control" name="discount" value="<?= esc($producto['discount']) ?>">
     </div>
-
-    <?php $extra = json_decode($producto['description'], true); ?>
-    
     <div class="col-md-12 mb-3">
       <label for="description" class="form-label">Descripción</label>
-      <textarea name="description" class="form-control" rows="3"><?= esc($extra['descripcion'] ?? $producto['description']) ?></textarea>
+      <textarea name="description" class="form-control" rows="3"><?= esc($producto['description']) ?></textarea>
     </div>
-
-    <div class="col-md-6 mb-3">
-      <label for="marca" class="form-label">Marca</label>
-      <input type="text" class="form-control" name="extra[marca]" value="<?= esc($extra['marca'] ?? '') ?>">
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <label for="edad" class="form-label">Edad sugerida</label>
-      <input type="text" class="form-control" name="extra[edad]" value="<?= esc($extra['edad'] ?? '') ?>">
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <label for="jugadores" class="form-label">Jugadores</label>
-      <input type="text" class="form-control" name="extra[jugadores]" value="<?= esc($extra['jugadores'] ?? '') ?>">
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <label for="formato" class="form-label">Formato</label>
-      <input type="text" class="form-control" name="extra[formato]" value="<?= esc($extra['formato'] ?? '') ?>">
-    </div>
-
     <div class="col-md-12 mb-4">
       <label for="category_id" class="form-label">Categoría *</label>
       <select name="category_id" class="form-select" required>

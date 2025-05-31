@@ -3,11 +3,11 @@
 
 <h2 class="fw-bold mb-3">Añadir Nuevo Producto</h2>
 
-<form action="<?= base_url('admin/inventario/guardar') ?>" method="post" enctype="multipart/form-data">
+<form action="<?= base_url('admin/inventario/cargar') ?>" method="post" enctype="multipart/form-data">
   <div class="row">
     <div class="col-md-12 mb-4">
       <label for="image" class="form-label">Imagen del producto (opcional)</label>
-      <input type="file" name="image" class="form-control" accept="image/*">
+      <input type="file" name="image" id="image" class="form-control" accept="image/*">
     </div>  
     <div class="col-md-6 mb-3">
       <label for="name" class="form-label">Nombre del Producto *</label>

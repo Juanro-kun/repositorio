@@ -26,4 +26,12 @@ class ProductModel extends Model
         'deleted_at',
         'image'
     ];
+
+    public function getProductosConCategoria()
+    {
+        return $this->select('product.*, category.category_name as categoria')
+                    ->join('category', 'product.category_id = category.category_id')
+                    ->where('product.deleted_at', null)
+                    ->findAll();
+    }
 }

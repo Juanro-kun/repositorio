@@ -1,4 +1,4 @@
-<?php // categorias.php (vista de categorias) ?>
+<?php?>
 
 <?= $this->extend('admin/layout_admin') ?>
 <?= $this->section('contenido') ?>
@@ -34,11 +34,11 @@
                       data-nombre="<?= esc($cat['category_name']) ?>">
                 <i class="bi bi-pencil"></i> Editar
               </button>
-              <a href="<?= base_url('admin/categorias/eliminar/' . $cat['category_id']) ?>"
-                class="btn btn-sm btn-outline-danger"
-                onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?');">
-                <i class="bi bi-trash"></i> Eliminar
-                </a>
+              <form action="<?= base_url('admin/categorias/eliminar/' . $cat['category_id']) ?>" method="post" class="d-inline" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta categoría?');">
+                  <button type="submit" class="btn btn-sm btn-outline-danger">
+                      <i class="bi bi-trash"></i> Eliminar
+                  </button>
+              </form>
             </td>
           </tr>
         <?php endforeach ?>
@@ -85,7 +85,7 @@
 <!-- Modal Nueva Categoría -->
 <div class="modal fade" id="modalNuevaCategoria" tabindex="-1" aria-labelledby="modalNuevaCategoriaLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form action="<?= base_url('admin/categorias/guardar') ?>" method="post">
+    <form action="<?= base_url('admin/categorias/cargar') ?>" method="post">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Nueva Categoría</h5>
@@ -95,10 +95,6 @@
           <div class="mb-3">
             <label for="category_name" class="form-label">Nombre</label>
             <input type="text" name="category_name" id="category_name" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label for="description" class="form-label">Descripción</label>
-            <textarea name="description" id="description" class="form-control" rows="3"></textarea>
           </div>
         </div>
         <div class="modal-footer">
