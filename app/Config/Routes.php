@@ -23,6 +23,9 @@ $routes->get('admin/inventario/nuevo', 'InventarioController::nuevoProducto');
 $routes->get('admin/inventario/editar/(:num)', 'InventarioController::editarProducto/$1');
 $routes->get('admin/categorias', 'CategoriaController::index');
 $routes->get('admin/categorias/actualizar/(:num)', 'CategoriaController::actualizarCategoria/$1');
+$routes->get('admin/usuarios', 'UsuariosController::index');
+$routes->get('admin/usuarios/nuevo', 'UsuariosController::nuevoUsuario');
+$routes->get('admin/usuarios/editar/(:num)', 'UsuariosController::editarUsuario/$1');
 
 
 //post
@@ -34,3 +37,6 @@ $routes->post('/admin/inventario/actualizar/(:num)', 'InventarioController::actu
 $routes->post('/admin/categorias/cargar', 'CategoriaController::cargarCategoria');
 $routes->post('/admin/categorias/eliminar/(:num)', 'CategoriaController::eliminarCategoria/$1');
 $routes->post('admin/categorias/actualizar', 'CategoriaController::actualizarCategoria');
+$routes->post('admin/usuarios/guardar', 'UsuariosController::guardarUsuario');
+$routes->post('admin/usuarios/actualizar/(:num)', 'UsuariosController::actualizarUsuario/$1');
+$routes->post('admin/usuarios/eliminar/(:num)', 'UsuariosController::eliminarUsuario/$1');

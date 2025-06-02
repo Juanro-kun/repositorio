@@ -50,9 +50,9 @@
             </td>
             <td>
               <a href="<?= base_url('admin/usuarios/editar/' . $u['user_id']) ?>" class="btn btn-sm btn-outline-dark">Editar</a>
-              <a href="<?= base_url('admin/usuarios/eliminar/' . $u['user_id']) ?>" 
-                class="btn btn-outline-danger btn-sm" 
-                onclick="return confirm('¿Estás seguro de que querés eliminar este usuario?')"> Eliminar</a>
+              <form action="<?= base_url('admin/usuarios/eliminar/' . $u['user_id']) ?>" method="post" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que querés eliminar este usuario?')">
+                  <button type="submit" class="btn btn-outline-danger btn-sm">Eliminar</button>
+              </form>
             </td>
           </tr>
         <?php endforeach ?>
