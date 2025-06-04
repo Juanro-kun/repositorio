@@ -3,74 +3,302 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\ProductModel;
 use App\Models\InvoiceModel;
 use App\Models\InquiryModel;
 use App\Models\ContactModel;
+use App\Models\WishItemModel;
+use App\Models\CategoryModel;
+use App\Models\NotificacionModel;
 
 class AdminController extends BaseController
 {
     public function index()
     {
-        $usuarios = new UserModel();
-        $facturas  = new InvoiceModel();
-        $consultas = new InquiryModel();
-        $contactos = new ContactModel();
-    
-        // Ingresos del mes actual
-        $ingresosMesActual = $facturas
-            ->where('created_at >=', date('Y-m-01'))
-            ->selectSum('total')
-            ->first();
-        $ingresosDelMes = isset($ingresosMesActual['total']) ? $ingresosMesActual['total'] : 0;
-    
-        $cantidadClientes = $usuarios->where('role', 'user')->where('deleted_at', null)->countAllResults();
-        $cantidadVentas = $facturas->countAllResults();
-    
-        $ventasRaw = $facturas->select("DATE(created_at) as fecha, SUM(total) as total")
-            ->where("created_at >=", date('Y-m-d', strtotime('-6 days')))
-            ->groupBy("DATE(created_at)")
-            ->orderBy("fecha", "ASC")
-            ->get()
-            ->getResultArray();
-    
-        $dias = ['Lun' => 0, 'Mar' => 0, 'Mié' => 0, 'Jue' => 0, 'Vie' => 0, 'Sáb' => 0, 'Dom' => 0];
-        foreach ($ventasRaw as $row) {
-            $diaEn = date('D', strtotime($row['fecha']));
-            $map = ['Mon' => 'Lun', 'Tue' => 'Mar', 'Wed' => 'Mié', 'Thu' => 'Jue', 'Fri' => 'Vie', 'Sat' => 'Sáb', 'Sun' => 'Dom'];
-            $nombreDia = $map[$diaEn] ?? $diaEn;
-            $dias[$nombreDia] = (float) $row['total'];
-        }
-    
-        $ventasSemanal = [
-            'dias'    => array_keys($dias),
-            'totales' => array_values($dias),
-        ];
-    
+    $usuarios  = new UserModel();
+    $productos = new ProductModel();
+    $facturas  = new InvoiceModel();
+    $consultas = new InquiryModel();
+    $contactos = new ContactModel();
+    $wishlist  = new WishItemModel();
+
+    // Ingresos totales (histórico)
+    $ingresosTotales = $facturas->selectSum('total')->first()['total'] ?? 0;
+
+    // Ingresos del mes actual
+    $inicioMes = date('Y-m-01');
+    $ingresosMes = $facturas
+        ->selectSum('total')
+        ->where('created_at >=', $inicioMes)
+        ->first();
+    $ingresosDelMes = $ingresosMes['total'] ?? 0;
+
+    $cantidadClientes = $usuarios->where('role', 'user')->where('deleted_at', null)->countAllResults();
+    $cantidadPedidos  = $facturas->countAllResults();
+    $pendientesEnvio  = 0;
+
+    // Ventas de los últimos 7 días
+    $ventasRaw = $facturas->select("DATE(created_at) as fecha, SUM(total) as total")
+        ->where("created_at >=", date('Y-m-d', strtotime('-6 days')))
+        ->groupBy("DATE(created_at)")
+        ->orderBy("fecha", "ASC")
+        ->get()
+        ->getResultArray();
+
+    $dias = ['Lun' => 0, 'Mar' => 0, 'Mié' => 0, 'Jue' => 0, 'Vie' => 0, 'Sáb' => 0, 'Dom' => 0];
+    foreach ($ventasRaw as $row) {
+        $diaEn = date('D', strtotime($row['fecha']));
+        $map = ['Mon' => 'Lun', 'Tue' => 'Mar', 'Wed' => 'Mié', 'Thu' => 'Jue', 'Fri' => 'Vie', 'Sat' => 'Sáb', 'Sun' => 'Dom'];
+        $nombreDia = $map[$diaEn] ?? $diaEn;
+        $dias[$nombreDia] = (float) $row['total'];
+    }
+
+    $ventasSemanal = [
+        'dias'    => array_keys($dias),
+        'totales' => array_values($dias),
+    ];
+
+    $db = \Config\Database::connect();
+    $ultimosPedidos = $db->table('invoice i')
+        ->select('i.*, u.fname as nombre, u.lname as apellido')
+        ->join('user u', 'i.user_id = u.user_id')
+        ->orderBy('i.created_at', 'DESC')
+        ->limit(5)
+        ->get()
+        ->getResultArray();
+
+    $data = [
+        'ingresosDelMes'      => $ingresosDelMes,
+        'ingresosTotales'     => $ingresosTotales,
+        'cantidadPedidos'     => $cantidadPedidos,
+        'cantidadClientes'    => $cantidadClientes,
+        'pendientesEnvio'     => $pendientesEnvio,
+        'ventasSemanal'       => $ventasSemanal,
+        'ultimosPedidos'      => $ultimosPedidos,
+        'totalUsuarios'       => $usuarios->where('deleted_at', null)->countAllResults(),
+        'totalProductos'      => $productos->where('deleted_at', null)->countAllResults(),
+        'totalFacturas'       => $cantidadPedidos,
+        'totalConsultas'      => $consultas->where('deleted_at', null)->countAllResults(),
+        'totalContactos'      => $contactos->where('deleted_at', null)->countAllResults(),
+        'totalDeseos'         => $wishlist->countAllResults(),
+        'consultasPendientes' => $consultas->where('deleted_at', null)->countAllResults(),
+    ];
+
+    return view('admin/dashboard', $data);
+}
+
+
+    public function pedidos()
+    {
         $db = \Config\Database::connect();
-        $ultimosPedidos = $db->table('invoice i')
-            ->select('i.*, u.fname as nombre, u.lname as apellido')
+        $pedidos = $db->table('invoice i')
+            ->select('i.*, u.fname, u.lname, COUNT(ii.invoice_item_id) as cantidad_productos')
             ->join('user u', 'i.user_id = u.user_id')
+            ->join('invoice_item ii', 'i.invoice_id = ii.invoice_id')
+            ->groupBy('i.invoice_id')
             ->orderBy('i.created_at', 'DESC')
-            ->limit(5)
+            ->get()->getResultArray();
+
+        return view('admin/pedidos', ['pedidos' => $pedidos]);
+    }
+
+    public function verPedido($id)
+    {
+        $db = \Config\Database::connect();
+        $pedido = $db->table('invoice i')
+            ->select('i.*, u.fname as nombre, u.lname as apellido, u.mail')
+            ->join('user u', 'i.user_id = u.user_id')
+            ->where('i.invoice_id', $id)
+            ->get()
+            ->getRowArray();
+
+        $productos = $db->table('invoice_item ii')
+            ->select('ii.*, p.name, p.image, p.description')
+            ->join('product p', 'ii.product_id = p.product_id')
+            ->where('ii.invoice_id', $id)
             ->get()
             ->getResultArray();
-    
-        // Suma de consultas registradas + no registradas (contactos)
-        $consultasPendientes = $consultas->where('deleted_at', null)->countAllResults()
-            + $contactos->where('deleted_at', null)->countAllResults();
-    
+
+        if (!$pedido) {
+            return redirect()->to('admin/pedidos')->with('error', 'Pedido no encontrado.');
+        }
+
+        return view('admin/ver_pedido', [
+            'pedido' => $pedido,
+            'productos' => $productos
+        ]);
+    }
+
+    public function inventario()
+    {
+        $db = \Config\Database::connect();
+        $productos = $db->table('product p')
+            ->select('p.*, c.category_name as categoria')
+            ->join('category c', 'p.category_id = c.category_id')
+            ->where('p.deleted_at', null)
+            ->get()
+            ->getResultArray();
+
+        $total = count($productos);
+        $stockBajo = 0;
+        $agotados = 0;
+
+        foreach ($productos as &$prod) {
+        $stock = (int) $prod['stock'];
+        if ($stock == 0) {
+            $prod['estado'] = 'Agotado';
+            $agotados++;
+        } elseif ($stock <= 10) {
+            $prod['estado'] = 'Stock Bajo';
+            $stockBajo++;
+        } else {
+            $prod['estado'] = 'En Stock';
+            }
+        }
+
+
         $data = [
-            'ingresosDelMes'   => $ingresosDelMes,
-            'cantidadVentas'   => $cantidadVentas,
-            'cantidadClientes' => $cantidadClientes,
-            'consultasPendientes' => $consultasPendientes,
-            'ventasSemanal'    => $ventasSemanal,
-            'ultimosPedidos'   => $ultimosPedidos,
-            'totalUsuarios'    => $usuarios->where('deleted_at', null)->countAllResults(),
-            'totalFacturas'    => $cantidadVentas,
+            'productos' => $productos,
+            'total'     => $total,
+            'stockBajo' => $stockBajo,
+            'agotados'  => $agotados
         ];
-    
-        return view('admin/dashboard', $data);
+
+        return view('admin/inventario', $data);
+    }
+
+public function nuevoProducto()
+    {
+        $categorias = (new CategoryModel())->findAll();
+        return view('admin/inventario_agregar', ['categorias' => $categorias]);
+    }
+
+    public function guardarProducto()
+    {
+        $producto = new ProductModel();
+        $imageName = null;
+
+        $imagen = $this->request->getFile('image');
+        if ($imagen && $imagen->isValid() && !$imagen->hasMoved()) {
+            $imageName = $imagen->getRandomName();
+            $imagen->move(ROOTPATH . 'public/uploads', $imageName);
+        }
+
+        $producto->save([
+            'name'        => $this->request->getPost('name'),
+            'description' => $this->request->getPost('description'),
+            'price'       => $this->request->getPost('price'),
+            'discount'    => $this->request->getPost('discount'),
+            'stock'       => $this->request->getPost('stock'),
+            'category_id' => $this->request->getPost('category_id'),
+            'image'       => $imageName
+        ]);
+
+        return redirect()->to(base_url('admin/inventario'))->with('success', 'Producto agregado correctamente.');
+    }
+
+    public function editarProducto($id)
+    {
+        $producto = (new ProductModel())->find($id);
+        $categorias = (new CategoryModel())->findAll();
+
+        if (!$producto) return redirect()->to('admin/inventario')->with('error', 'Producto no encontrado');
+
+        return view('admin/inventario_editar', [
+            'producto' => $producto,
+            'categorias' => $categorias
+        ]);
+    }
+
+public function actualizarProducto($id)
+{
+    $model = new ProductModel();
+    $producto = $model->find($id);
+
+    // Empaquetar JSON con descripción extendida
+    $descripcionJson = json_encode([
+        'descripcion' => $this->request->getPost('description'),
+        'marca'       => $this->request->getPost('extra')['marca'] ?? '',
+        'edad'        => $this->request->getPost('extra')['edad'] ?? '',
+        'jugadores'   => $this->request->getPost('extra')['jugadores'] ?? '',
+        'formato'     => $this->request->getPost('extra')['formato'] ?? ''
+    ], JSON_UNESCAPED_UNICODE);
+
+    $data = [
+        'name'        => $this->request->getPost('name'),
+        'price'       => $this->request->getPost('price'),
+        'stock'       => $this->request->getPost('stock'),
+        'discount'    => $this->request->getPost('discount'),
+        'description' => $descripcionJson,
+        'category_id' => $this->request->getPost('category_id')
+    ];
+
+    // Imagen
+    $imagen = $this->request->getFile('image');
+    if ($imagen && $imagen->isValid() && !$imagen->hasMoved()) {
+        $nombreImagen = $imagen->getRandomName();
+        $imagen->move(ROOTPATH . 'public/uploads', $nombreImagen);
+
+        // Eliminar anterior
+        if (!empty($producto['image']) && file_exists(ROOTPATH . 'public/uploads/' . $producto['image'])) {
+            unlink(ROOTPATH . 'public/uploads/' . $producto['image']);
+        }
+
+        $data['image'] = $nombreImagen;
+    }
+
+    $model->update($id, $data);
+    return redirect()->to('admin/inventario')->with('success', 'Producto actualizado correctamente.');
+}
+
+
+    public function categorias()
+    {
+        $db = \Config\Database::connect();
+
+        $categorias = $db->table('category c')
+            ->select('c.*, COUNT(p.product_id) as total_productos')
+            ->join('product p', 'p.category_id = c.category_id', 'left')
+            ->groupBy('c.category_id')
+            ->get()
+            ->getResultArray();
+
+        return view('admin/categorias', ['categorias' => $categorias]);
+    }
+
+    public function actualizarCategoria()
+    {
+        $model = new \App\Models\CategoryModel();
+        $id = $this->request->getPost('category_id');
+        $data = [
+            'category_name' => $this->request->getPost('category_name'),
+            
+        ];
+        $model->update($id, $data);
+        return redirect()->to('admin/categorias')->with('success', 'Categoría actualizada.');
+    }
+
+    public function guardarCategoria()
+    {
+        $categoria = new \App\Models\CategoryModel();
+
+        $data = [
+            'category_name' => $this->request->getPost('category_name'),
+            'description'   => $this->request->getPost('description')
+        ];
+
+        $categoria->insert($data);
+
+        return redirect()->to(base_url('admin/categorias'))->with('success', 'Categoría agregada correctamente.');
+    }
+
+    public function eliminarCategoria($id)
+    {
+        $categoria = new \App\Models\CategoryModel();
+
+        $categoria->delete($id);
+
+        return redirect()->to('admin/categorias')->with('success', 'Categoría eliminada correctamente.');
     }
 
     public function usuarios()
@@ -239,5 +467,4 @@ class AdminController extends BaseController
     }
 
 }
-
 

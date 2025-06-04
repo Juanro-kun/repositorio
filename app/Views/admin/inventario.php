@@ -24,12 +24,22 @@
       <div class="text-danger">Agotados</div>
     </div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 d-flex flex-column gap-2">
     <a href="<?= base_url('admin/inventario/nuevo') ?>" class="btn btn-danger w-100">
       <i class="bi bi-plus-circle"></i> Añadir Producto
     </a>
+    <a href="<?= base_url('admin/inventario/eliminados') ?>" class="btn btn-dark w-100">
+      <i class="bi bi-archive"></i> Ver Productos Eliminados
+    </a>
   </div>
 </div>
+
+<?php if (session()->getFlashdata('success')): ?>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <?= session()->getFlashdata('success') ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+  </div>
+<?php endif ?>
 
 <!-- LISTADO -->
 <div class="card shadow-sm border-0">
@@ -64,8 +74,11 @@
               ?>
               <span class="badge bg-<?= $colores[$estado] ?? 'secondary' ?>"><?= $p['estado'] ?></span>
             </td>
-            <td>
-                <a href="<?= base_url('admin/inventario/editar/' . $p['product_id']) ?>" class="btn btn-sm btn-danger">Editar</a>
+            <td class="d-flex gap-1">
+              <a href="<?= base_url('admin/inventario/editar/' . $p['product_id']) ?>" class="btn btn-sm btn-danger">Editar</a>
+              <a href="<?= base_url('admin/inventario/eliminar/' . $p['product_id']) ?>" class="btn btn-sm btn-outline-secondary" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">
+                Eliminar
+              </a>
             </td>
           </tr>
         <?php endforeach ?>

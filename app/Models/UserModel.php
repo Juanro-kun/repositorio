@@ -23,6 +23,7 @@ class UserModel extends Model
         'role',
         'mail',
         'password',
+        'deleted_at',
     ];
 
     // Validaciones
@@ -41,7 +42,9 @@ class UserModel extends Model
         ]
     ];
 
-    public function restore($id){
+    public function restore($id)
+    {
         return $this->update($id, ['deleted_at' => null]);
     }
+
 }
