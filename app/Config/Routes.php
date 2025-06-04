@@ -84,4 +84,5 @@ $routes->get('admin/usuarios/eliminar/(:num)', 'AdminController::eliminarUsuario
 $routes->get('admin/informes', 'AdminController::informes');
 
 $routes->get('admin/notificaciones', 'AdminController::notificaciones');
+$routes->get('admin/notificaciones', 'NotificacionesController::index');
 

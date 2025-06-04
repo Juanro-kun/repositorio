@@ -2,26 +2,56 @@
 <?= $this->section('contenido') ?>
 
 <h2 class="fw-bold mb-3">Notificaciones</h2>
-<p class="text-muted">Gestiona las notificaciones y alertas del sistema.</p>
+<p class="text-muted">Gestión de eventos, alertas y acciones recientes del sistema.</p>
 
-<div class="row mb-4">
-  <div class="col-md-3"><div class="bg-white border p-3 rounded text-center shadow-sm"><h4><?= $noLeidas ?></h4><div class="text-muted">No Leídas</div></div></div>
-  <div class="col-md-3"><div class="bg-white border p-3 rounded text-center shadow-sm"><h4><?= $porTipo['pedido'] ?></h4><div class="text-muted">Pedidos</div></div></div>
-  <div class="col-md-3"><div class="bg-white border p-3 rounded text-center shadow-sm"><h4><?= $porTipo['inventario'] ?></h4><div class="text-muted">Inventario</div></div></div>
-  <div class="col-md-3"><div class="bg-white border p-3 rounded text-center shadow-sm"><h4><?= $porTipo['sistema'] ?></h4><div class="text-muted">Sistema</div></div></div>
-</div>
-
-<h5 class="fw-bold mb-3">Todas las Notificaciones</h5>
-<div class="list-group">
-  <?php foreach ($notificaciones as $n): ?>
-    <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-      <div>
-        <div class="fw-bold"><?= esc($n['fname']) ?> <?= esc($n['lname']) ?></div>
-        <div class="text-muted">Usuario con rol <strong><?= esc($n['role']) ?></strong> registrado con email <?= esc($n['mail']) ?></div>
-      </div>
-      <small class="text-muted">Usuario ID #<?= $n['user_id'] ?></small>
+<!-- Resumen -->
+<div class="row mb-4 text-center">
+  <div class="col-md-3">
+    <div class="bg-white border rounded p-3 shadow-sm">
+      <div class="text-danger fs-2 mb-2"><i class="bi bi-people-fill"></i></div>
+      <h4><?= $notificaciones['usuarios'] ?></h4>
+      <div class="text-muted small">Usuarios</div>
     </div>
-  <?php endforeach ?>
+  </div>
+  <div class="col-md-3">
+    <div class="bg-white border rounded p-3 shadow-sm">
+      <div class="text-warning fs-2 mb-2"><i class="bi bi-box-seam"></i></div>
+      <h4><?= $notificaciones['productos'] ?></h4>
+      <div class="text-muted small">Productos</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="bg-white border rounded p-3 shadow-sm">
+      <div class="text-primary fs-2 mb-2"><i class="bi bi-tags-fill"></i></div>
+      <h4><?= $notificaciones['categorias'] ?></h4>
+      <div class="text-muted small">Categorías</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="bg-white border rounded p-3 shadow-sm">
+      <div class="text-success fs-2 mb-2"><i class="bi bi-receipt"></i></div>
+      <h4><?= $notificaciones['pedidos'] ?></h4>
+      <div class="text-muted small">Pedidos</div>
+    </div>
+  </div>
 </div>
+
+<!-- Lista de Notificaciones -->
+<h5 class="fw-bold mb-3">Todas las Notificaciones</h5>
+
+<?php if (!empty($mensajes)): ?>
+  <ul class="list-group shadow-sm">
+    <?php foreach ($mensajes as $m): ?>
+      <li class="list-group-item d-flex align-items-center">
+        <i class="bi bi-bell-fill me-2 text-secondary"></i>
+        <span><?= esc($m) ?></span>
+      </li>
+    <?php endforeach ?>
+  </ul>
+<?php else: ?>
+  <div class="alert alert-secondary text-center">
+    No hay notificaciones recientes.
+  </div>
+<?php endif ?>
 
 <?= $this->endSection() ?>
