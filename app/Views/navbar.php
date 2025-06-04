@@ -32,6 +32,9 @@
         <li class="nav-item">
           <a class="nav-link nav-link-custom" style="color: white;" href="<?= base_url('/terminos') ?>">Términos y Usos</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom" style="color: white;" href="<?= base_url('/catalogo') ?>">Catálogo</a>
+        </li>
       </ul>
 
       <!-- Mostrar según sesión -->
@@ -50,7 +53,7 @@
           <?php endif; ?>
 
           <!-- Ícono carrito -->
-          <a href="<?= base_url('cart') ?>" class="text-white" title="Carrito">
+          <a href="<?= base_url('carrito') ?>" class="text-white" title="Carrito">
             <i class="bi bi-cart-fill fs-5"></i>
           </a>
 

@@ -12,7 +12,7 @@ class CarritoController extends BaseController
         $cartModel = new CartItemModel();
         $productModel = new ProductModel();
 
-        $user_id = 1; // TODO: Reemplazar con session()->get('user_id')
+        $user_id = session()->get('user_id'); 
 
         $carrito = $cartModel->where('user_id', $user_id)->findAll();
 
@@ -41,7 +41,7 @@ class CarritoController extends BaseController
         $product_id = $this->request->getPost('product_id');
         $quantity = $this->request->getPost('quantity');
 
-        $user_id = 1; // TODO: Reemplazar con session()->get('user_id')
+        $user_id = session()->get('user_id');
 
         $cartModel = new CartItemModel();
 
@@ -68,7 +68,7 @@ class CarritoController extends BaseController
     public function sumar()
     {
         $product_id = $this->request->getPost('product_id');
-        $user_id = 1; // Reemplazar con session()->get('user_id') cuando uses login
+        $user_id = session()->get('user_id'); 
         $cartModel = new \App\Models\CartItemModel();
 
         $item = $cartModel->where('user_id', $user_id)
@@ -87,7 +87,7 @@ class CarritoController extends BaseController
     public function restar()
     {
         $product_id = $this->request->getPost('product_id');
-        $user_id = 1;
+        $user_id = session()->get('user_id');
         $cartModel = new \App\Models\CartItemModel();
 
         $item = $cartModel->where('user_id', $user_id)
@@ -109,7 +109,7 @@ class CarritoController extends BaseController
     public function eliminar()
     {
         $product_id = $this->request->getPost('product_id');
-        $user_id = 1;
+        $user_id = session()->get('user_id');
         $cartModel = new \App\Models\CartItemModel();
 
         $item = $cartModel->where('user_id', $user_id)

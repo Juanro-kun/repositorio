@@ -26,7 +26,10 @@ $routes->get('admin/categorias/actualizar/(:num)', 'CategoriaController::actuali
 $routes->get('admin/usuarios', 'UsuariosController::index');
 $routes->get('admin/usuarios/nuevo', 'UsuariosController::nuevoUsuario');
 $routes->get('admin/usuarios/editar/(:num)', 'UsuariosController::editarUsuario/$1');
-
+$routes->get('admin/informes', 'InformeController::index');
+$routes->get('/catalogo', 'CatalogoController::index');
+$routes->get('/catalogo/(:num)', 'CatalogoController::catalogoDetalle/$1');
+$routes->get('/carrito', 'CarritoController::index');
 
 //post
 $routes->post('/register/process', 'AuthController::process_register');
@@ -40,3 +43,7 @@ $routes->post('admin/categorias/actualizar', 'CategoriaController::actualizarCat
 $routes->post('admin/usuarios/guardar', 'UsuariosController::guardarUsuario');
 $routes->post('admin/usuarios/actualizar/(:num)', 'UsuariosController::actualizarUsuario/$1');
 $routes->post('admin/usuarios/eliminar/(:num)', 'UsuariosController::eliminarUsuario/$1');
+$routes->post('agregar-al-carrito', 'CarritoController::agregar');
+$routes->post('carrito/restar', 'CarritoController::restar');
+$routes->post('carrito/sumar', 'CarritoController::sumar');
+$routes->post('carrito/eliminar', 'CarritoController::eliminar');

@@ -78,7 +78,6 @@
         <a href="<?= base_url('admin/categorias') ?>"><i class="bi bi-layers"></i> Categorías</a>
         <a href="<?= base_url('admin/informes') ?>"><i class="bi bi-file-earmark-text"></i> Informes</a>
         <a href="<?= base_url('admin/usuarios') ?>"><i class="bi bi-people"></i> Usuarios</a>
-        <a href="<?= base_url('admin/notificaciones') ?>"><i class="bi bi-bell-fill"></i> Notificaciones</a>
       </div>
     </nav>
 

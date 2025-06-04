@@ -60,13 +60,15 @@
                                         Ver Detalles
                                     </a>
 
-                                    <form method="POST" action="<?= base_url('agregar-al-carrito') ?>">
-                                        <input type="hidden" name="product_id" value="<?= $producto['product_id'] ?>">
-                                        <input type="hidden" name="quantity" value="1">
-                                        <button type="submit" class="btn btn-outline-light w-100 mt-2">
-                                            <i class="bi bi-cart-plus"></i> Agregar al carrito
-                                        </button>
-                                    </form>
+                                    <?php if (session()->get('isLoggedIn')): ?>
+                                        <form method="POST" action="<?= base_url('agregar-al-carrito') ?>">
+                                            <input type="hidden" name="product_id" value="<?= $producto['product_id'] ?>">
+                                            <input type="hidden" name="quantity" value="1">
+                                            <button type="submit" class="btn btn-outline-light w-100 mt-2">
+                                                <i class="bi bi-cart-plus"></i> Agregar al carrito
+                                            </button>
+                                        </form>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
