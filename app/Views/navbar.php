@@ -27,7 +27,7 @@
           <a class="nav-link nav-link-custom" style="color: white;" href="<?= base_url('/comercializacion') ?>">Comercialización</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-custom" style="color: white;" href="<?= base_url('home/contacto') ?>">Contacto</a>
+          <a class="nav-link nav-link-custom" style="color: white;" href="<?= base_url('/contacto') ?>">Contacto</a>
         </li>
         <li class="nav-item">
           <a class="nav-link nav-link-custom" style="color: white;" href="<?= base_url('/terminos') ?>">Términos y Usos</a>

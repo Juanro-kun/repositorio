@@ -39,82 +39,29 @@
 
 <!-- Sección: Productos Destacados -->
 <section class="section-dark py-5">
-  <h2 class="text-center">Productos destacados</h2>
-  <div class="container mt-5">
-    
-    <div class="row justify-content-center g-4">
-      <!-- Primera fila -->
-      <div class="col-12 col-md-4 d-flex justify-content-center">
-        <div class="product-card">
-          <a href="<?= base_url('/proximamente') ?>">
-            <img src="<?= base_url('assets/img/guerrero.jpg') ?>" alt="Producto 1">
-            <div class="product-description">
-              <p class="m-0">Producto 1 increíble</p>
+  <h2 class="text-center text-light mb-4">Productos destacados</h2>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+      <?php foreach ($destacados as $producto): ?>
+        <div class="col">
+          <div class="card h-100 bg-dark text-light shadow-sm border-0">
+            <img src="<?= base_url('assets/uploads/' . $producto['image']) ?>" class="card-img-top" alt="<?= esc($producto['name']) ?>">
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <h5 class="card-title"><?= esc($producto['name']) ?></h5>
+                <p class="card-text mb-3">$<?= number_format($producto['price'], 0, ',', '.') ?></p>
+              </div>
+              <a href="<?= base_url('catalogo/' . $producto['product_id']) ?>" class="btn btn-outline-light w-100">
+                <i class="bi bi-cart-plus"></i> Comprar
+              </a>
             </div>
-          </a>
+          </div>
         </div>
-      </div>
-
-      <div class="col-12 col-md-4 d-flex justify-content-center">
-        <div class="product-card">
-          <a href="<?= base_url('/proximamente') ?>">
-            <img src="<?= base_url('assets/img/guerrero.jpg') ?>" alt="Producto 2">
-            <div class="product-description">
-              <p class="m-0">Producto 2 increíble</p>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-4 d-flex justify-content-center">
-        <div class="product-card">
-          <a href="<?= base_url('/proximamente') ?>">
-            <img src="<?= base_url('assets/img/guerrero.jpg') ?>" alt="Producto 3">
-            <div class="product-description">
-              <p class="m-0">Producto 3 increíble</p>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Segunda fila -->
-      <div class="col-12 col-md-4 d-flex justify-content-center">
-        <div class="product-card">
-          <a href="<?= base_url('/proximamente') ?>">
-            <img src="<?= base_url('assets/img/guerrero.jpg') ?>" alt="Producto 4">
-            <div class="product-description">
-              <p class="m-0">Producto 4 increíble</p>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-4 d-flex justify-content-center">
-        <div class="product-card">
-          <a href="<?= base_url('/proximamente') ?>">
-            <img src="<?= base_url('assets/img/guerrero.jpg') ?>" alt="Producto 5">
-            <div class="product-description">
-              <p class="m-0">Producto 5 increíble</p>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-4 d-flex justify-content-center">
-        <div class="product-card">
-          <a href="<?= base_url('/proximamente') ?>">
-            <img src="<?= base_url('assets/img/guerrero.jpg') ?>" alt="Producto 6">
-            <div class="product-description">
-              <p class="m-0">Producto 6 increíble</p>
-            </div>
-          </a>
-        </div>
-      </div>
-
+      <?php endforeach; ?>
     </div>
-
   </div>
 </section>
+
 
 
 <?= $this->endSection() ?>

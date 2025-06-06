@@ -34,4 +34,17 @@ class ProductModel extends Model
                     ->where('product.deleted_at', null)
                     ->findAll();
     }
+
+    public function getMasVendidos($limite = 6)
+    {
+        return $this->db->table('invoice_item ii')
+            ->select('p.*, SUM(ii.quantity) as total_vendidos')
+            ->join('product p', 'ii.product_id = p.product_id')
+            ->where('p.deleted_at', null)
+            ->groupBy('ii.product_id')
+            ->orderBy('total_vendidos', 'DESC')
+            ->limit($limite)
+            ->get()
+            ->getResultArray();
+    }
 }

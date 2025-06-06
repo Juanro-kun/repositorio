@@ -21,16 +21,31 @@
         </div>
 
         <!-- Formulario -->
-        <div class="col-md-6">
-          <h5 class="fw-bold mb-3"><i class="fas fa-paper-plane text-danger me-2"></i>Envíanos tu Consulta</h5>
-          <form>
-            <input type="text" class="form-control mb-3" placeholder="Nombre Completo" required>
-            <input type="email" class="form-control mb-3" placeholder="Correo Electrónico" required>
-            <input type="text" class="form-control mb-3" placeholder="Asunto" required>
-            <textarea class="form-control mb-3" rows="4" placeholder="Escribí tu mensaje..." required></textarea>
-            <a href="<?= base_url('home/proximamente') ?>" class="btn btn-primary">Enviar mensaje</a>
-          </form>
-        </div>
+        <?php $isLoggedIn = session()->get('isLoggedIn'); ?>
+          <div class="col-md-6">
+            <h5 class="fw-bold mb-3">
+              <i class="fas fa-paper-plane text-danger me-2"></i>
+              <?= $isLoggedIn ? 'Realizá tu Consulta' : 'Envíanos tu Consulta' ?>
+            </h5>
+
+            <form method="POST" action="<?= base_url($isLoggedIn ? 'inquiry/enviar' : 'contacto/enviar') ?>">
+              <?php if (!$isLoggedIn): ?>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <input type="text" name="fname" class="form-control" placeholder="Nombre" required>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <input type="text" name="lname" class="form-control" placeholder="Apellido" required>
+                  </div>
+                </div>
+                <input type="email" name="mail" class="form-control mb-3" placeholder="Correo Electrónico" required>
+              <?php endif; ?>
+
+              <input type="text" name="subject" class="form-control mb-3" placeholder="Asunto" required>
+              <textarea name="message" class="form-control mb-3" rows="4" placeholder="Escribí tu mensaje..." required></textarea>
+              <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            </form>
+          </div>
       </div>
     </div>
   </div>
