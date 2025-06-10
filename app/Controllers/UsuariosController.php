@@ -85,4 +85,20 @@ class UsuariosController extends BaseController
             return redirect()->to(base_url('admin/usuarios'))->with('error', 'Usuario no encontrado.');
         }
     }
+
+    public function eliminados()
+    {
+        $usuarioModel = new \App\Models\UserModel();
+        $usuarios = $usuarioModel->onlyDeleted()->findAll();
+
+        return view('admin/usuarios_eliminados', ['usuarios' => $usuarios]);
+    }
+
+    public function restaurar($id)
+    {
+        $usuarioModel = new \App\Models\UserModel();
+        $usuarioModel->update($id, ['deleted_at' => null]);
+
+        return redirect()->to('admin/usuarios/eliminados')->with('success', 'Usuario restaurado correctamente.');
+    }
 }

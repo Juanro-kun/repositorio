@@ -23,6 +23,7 @@ class UserModel extends Model
         'role',
         'mail',
         'password',
+        'deleted_at'
     ];
 
     // Validaciones

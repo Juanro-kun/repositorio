@@ -112,4 +112,36 @@ class InventarioController extends BaseController
         $model->update($id, $data);
         return redirect()->to('admin/inventario')->with('success', 'Producto actualizado correctamente.');
     }
+
+    public function eliminar($id)
+    {
+        $productoModel = new \App\Models\ProductModel();
+        $productoModel->delete($id); // Soft delete
+
+        return redirect()->to('admin/inventario')->with('success', 'Producto eliminado correctamente.');
     }
+
+    public function eliminados()
+    {
+        $productoModel = new \App\Models\ProductModel();
+        $productosEliminados = $productoModel
+        ->select('product.*, category.category_name as categoria')
+        ->join('category', 'product.category_id = category.category_id')
+        ->onlyDeleted()
+        ->findAll();
+
+
+        return view('admin/productos_eliminados', [
+            'productos' => $productosEliminados
+        ]);
+    }
+
+    public function restaurar($id)
+    {
+        $productoModel = new \App\Models\ProductModel();
+        $productoModel->update($id, ['deleted_at' => null]);
+
+        return redirect()->to('admin/inventario/eliminados')->with('success', 'Producto restaurado correctamente.');
+    }
+
+}
