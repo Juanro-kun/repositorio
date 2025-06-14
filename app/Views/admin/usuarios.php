@@ -35,6 +35,7 @@
     <table class="table align-middle mb-0">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Nombre</th>
           <th>Email</th>
           <th>Rol</th>
@@ -44,6 +45,7 @@
       <tbody>
         <?php foreach ($usuarios as $u): ?>
           <tr>
+            <td><?= esc($u['user_id']) ?></td>
             <td><?= esc($u['fname'] . ' ' . $u['lname']) ?></td>
             <td><?= esc($u['mail']) ?></td>
             <td>
