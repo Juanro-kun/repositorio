@@ -8,7 +8,11 @@
 
     <!-- Botón hamburguesa -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<<<<<<< HEAD
       <i class="bi bi-list text-white fs-2"></i>
+=======
+      <span class="navbar-toggler-icon"></span>
+>>>>>>> prueba-catalogo
     </button>
 
     <!-- Ítems de navegación -->
@@ -58,7 +62,11 @@
           </a>
 
           <!-- Ícono perfil -->
+<<<<<<< HEAD
           <a href="<?= base_url('profile') ?>" class="text-white" title="Perfil">
+=======
+          <a href="<?= base_url('perfil') ?>" class="text-white" title="Perfil">
+>>>>>>> prueba-catalogo
             <i class="bi bi-person-circle fs-5"></i>
           </a>
 

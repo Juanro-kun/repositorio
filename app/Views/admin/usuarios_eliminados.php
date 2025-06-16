@@ -16,6 +16,10 @@
     <table class="table align-middle mb-0">
       <thead>
         <tr>
+<<<<<<< HEAD
+=======
+          <th>ID</th>
+>>>>>>> prueba-catalogo
           <th>Nombre</th>
           <th>Email</th>
           <th>Rol</th>
@@ -26,6 +30,10 @@
         <?php if (!empty($usuarios)): ?>
           <?php foreach ($usuarios as $u): ?>
             <tr>
+<<<<<<< HEAD
+=======
+              <td><?= esc($u['user_id']) ?></td>
+>>>>>>> prueba-catalogo
               <td><?= esc($u['fname'] . ' ' . $u['lname']) ?></td>
               <td><?= esc($u['mail']) ?></td>
               <td>

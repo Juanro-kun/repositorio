@@ -32,7 +32,11 @@
       <div class="card-body">
         <h6 class="text-muted">Clientes</h6>
         <h4 class="fw-bold"><?= $cantidadClientes ?></h4>
+<<<<<<< HEAD
         <small class="text-muted">+18.2% desde el mes pasado</small>
+=======
+        
+>>>>>>> prueba-catalogo
       </div>
     </div>
   </div>

@@ -9,7 +9,11 @@ use App\Models\InvoiceItemModel;
 
 class CheckoutController extends BaseController
 {
+<<<<<<< HEAD
     public function pasoContacto()
+=======
+    public function envio()
+>>>>>>> prueba-catalogo
     {
         // Solo usuarios logueados pueden iniciar checkout
         if (!session()->has('user_id')) {
@@ -98,27 +102,64 @@ class CheckoutController extends BaseController
 
         $invoiceModel = new InvoiceModel();
         $invoiceData = [
+<<<<<<< HEAD
             'user_id' => $user_id,
             'total' => $total,
+=======
+            'user_id'    => $user_id,
+            'total'      => $total,
+>>>>>>> prueba-catalogo
             'created_at' => date('Y-m-d H:i:s')
         ];
         $invoice_id = $invoiceModel->insert($invoiceData);
 
         $invoiceItemModel = new InvoiceItemModel();
         foreach ($productos as $prod) {
+<<<<<<< HEAD
             $invoiceItemModel->insert([
                 'invoice_id' => $invoice_id,
                 'product_id' => $prod['product_id'],
                 'quantity' => $prod['cantidad'],
                 'price_at_purchase' => $prod['price']
             ]);
+=======
+            // Insertar ítem en la factura
+            $invoiceItemModel->insert([
+                'invoice_id' => $invoice_id,
+                'product_id' => $prod['product_id'],
+                'quantity'   => $prod['cantidad'],
+                'price_at_purchase' => $prod['price']
+            ]);
+
+            // Descontar stock
+            if ($prod['stock'] >= $prod['cantidad']) {
+                $productoModel->update($prod['product_id'], [
+                    'stock' => $prod['stock'] - $prod['cantidad']
+                ]);
+            }
+>>>>>>> prueba-catalogo
         }
 
         // Vaciar el carrito
         $carritoModel->where('user_id', $user_id)->delete();
 
+<<<<<<< HEAD
         // Redirigir al mensaje de éxito
         return redirect()->to('/checkout/confirmado');
+=======
+        // Limpiar sesiones de checkout
+        session()->remove(['checkout_contacto', 'checkout_envio', 'checkout_pago']);
+
+        // Redirigir al mensaje de éxito
+        return view('checkout/confirmado', [
+        'invoice_id'  => $invoice_id,
+        'productos'   => $productos,
+        'subtotal'    => $subtotal,
+        'costoEnvio'  => $costoEnvio,
+        'impuestos'   => $impuestos,
+        'total'       => $total
+    ]);
+>>>>>>> prueba-catalogo
     }
 
     public function confirmado()

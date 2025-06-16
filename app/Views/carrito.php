@@ -60,7 +60,11 @@
                 <p>Impuestos: $<?= number_format($impuestos, 2, ',', '.') ?></p>
                 <hr>
                 <h5>Total: $<?= number_format($total, 2, ',', '.') ?></h5>
+<<<<<<< HEAD
                 <a href="<?= base_url('checkout') ?>" class="btn btn-danger w-100 mt-3">Proceder al Pago</a>
+=======
+                <a href="<?= base_url('checkout/envio') ?>" class="btn btn-danger w-100 mt-3">Proceder al Pago</a>
+>>>>>>> prueba-catalogo
             </div>
         </div>
     </div>

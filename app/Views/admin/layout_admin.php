@@ -77,6 +77,10 @@
         <a href="<?= base_url('admin/inventario') ?>"><i class="bi bi-box-seam"></i> Inventario</a>
         <a href="<?= base_url('admin/categorias') ?>"><i class="bi bi-layers"></i> Categorías</a>
         <a href="<?= base_url('admin/informes') ?>"><i class="bi bi-file-earmark-text"></i> Informes</a>
+<<<<<<< HEAD
+=======
+        <a href="<?= base_url('admin/consultas') ?>"><i class="bi bi-question-circle"></i> Consultas</a>
+>>>>>>> prueba-catalogo
         <a href="<?= base_url('admin/usuarios') ?>"><i class="bi bi-people"></i> Usuarios</a>
       </div>
     </nav>
