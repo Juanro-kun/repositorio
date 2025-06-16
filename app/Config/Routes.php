@@ -40,6 +40,11 @@ $routes->get('admin/informes', 'InformeController::index');
 $routes->get('/catalogo', 'CatalogoController::index');
 $routes->get('/catalogo/(:num)', 'CatalogoController::catalogoDetalle/$1');
 $routes->get('/carrito', 'CarritoController::index');
+$routes->get('checkout/confirmado', 'CheckoutController::confirmado');
+$routes->get('checkout/envio', 'CheckoutController::envio');
+$routes->get('perfil', 'PerfilController::index');
+$routes->get('perfil/pedidos', 'PerfilController::pedidos');
+
 
 //post
 $routes->post('/register/process', 'AuthController::process_register');
@@ -60,3 +65,7 @@ $routes->post('carrito/eliminar', 'CarritoController::eliminar');
 $routes->post('contacto/enviar', 'ContactoController::enviarContacto');
 $routes->post('contacto/confirmacion', 'ContactController::confirmacion');
 $routes->post('inquiry/enviar', 'ContactoController::enviarInquiry');
+$routes->post('checkout/guardarContacto', 'CheckoutController::guardarContacto');
+$routes->post('checkout/guardarEnvio', 'CheckoutController::guardarEnvio');
+$routes->post('checkout/guardarPago', 'CheckoutController::guardarPago');
+$routes->post('checkout/confirmarPedido', 'CheckoutController::confirmarPedido');

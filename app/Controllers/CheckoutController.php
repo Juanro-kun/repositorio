@@ -9,7 +9,7 @@ use App\Models\InvoiceItemModel;
 
 class CheckoutController extends BaseController
 {
-    public function pasoContacto()
+    public function envio()
     {
         // Solo usuarios logueados pueden iniciar checkout
         if (!session()->has('user_id')) {
@@ -98,27 +98,45 @@ class CheckoutController extends BaseController
 
         $invoiceModel = new InvoiceModel();
         $invoiceData = [
-            'user_id' => $user_id,
-            'total' => $total,
+            'user_id'    => $user_id,
+            'total'      => $total,
             'created_at' => date('Y-m-d H:i:s')
         ];
         $invoice_id = $invoiceModel->insert($invoiceData);
 
         $invoiceItemModel = new InvoiceItemModel();
         foreach ($productos as $prod) {
+            // Insertar ítem en la factura
             $invoiceItemModel->insert([
                 'invoice_id' => $invoice_id,
                 'product_id' => $prod['product_id'],
-                'quantity' => $prod['cantidad'],
+                'quantity'   => $prod['cantidad'],
                 'price_at_purchase' => $prod['price']
             ]);
+
+            // Descontar stock
+            if ($prod['stock'] >= $prod['cantidad']) {
+                $productoModel->update($prod['product_id'], [
+                    'stock' => $prod['stock'] - $prod['cantidad']
+                ]);
+            }
         }
 
         // Vaciar el carrito
         $carritoModel->where('user_id', $user_id)->delete();
 
+        // Limpiar sesiones de checkout
+        session()->remove(['checkout_contacto', 'checkout_envio', 'checkout_pago']);
+
         // Redirigir al mensaje de éxito
-        return redirect()->to('/checkout/confirmado');
+        return view('checkout/confirmado', [
+        'invoice_id'  => $invoice_id,
+        'productos'   => $productos,
+        'subtotal'    => $subtotal,
+        'costoEnvio'  => $costoEnvio,
+        'impuestos'   => $impuestos,
+        'total'       => $total
+    ]);
     }
 
     public function confirmado()

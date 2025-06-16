@@ -58,7 +58,7 @@
           </a>
 
           <!-- Ícono perfil -->
-          <a href="<?= base_url('profile') ?>" class="text-white" title="Perfil">
+          <a href="<?= base_url('perfil') ?>" class="text-white" title="Perfil">
             <i class="bi bi-person-circle fs-5"></i>
           </a>
 
