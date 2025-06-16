@@ -8,7 +8,7 @@
 
   <style>
     body {
-      background: url("<?= base_url('assets/img/fondo_login.jpg') ?>") no-repeat center center fixed;
+      background: url("<?= base_url('assets/img/login_fondo.png') ?>") no-repeat center center fixed;
       background-size: cover;
       font-family: 'Cinzel', serif;
       color: #f5f5f0;

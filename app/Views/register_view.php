@@ -8,7 +8,7 @@
 
   <style>
     body {
-      background: url("<?= base_url('assets/img/bg_grimorio.jpg') ?>") no-repeat center center fixed;
+      background: url("<?= base_url('assets/img/login_fondo.png') ?>") no-repeat center center fixed;
       background-size: cover;
       font-family: 'Cinzel', serif;
       color: #f5f5f0;
@@ -127,7 +127,7 @@
 
       <button type="submit" class="btn btn-pacto w-100">Jurar el pacto</button>
 
-      <a href="<?= base_url('home/login') ?>" class="login-link">¿Ya juraste? Ingresá al grimorio</a>
+      <a href="<?= base_url('/login') ?>" class="login-link">¿Ya juraste? Ingresá al grimorio</a>
     </form>
   </div>
 
