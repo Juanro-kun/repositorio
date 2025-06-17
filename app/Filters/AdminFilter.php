@@ -14,7 +14,6 @@ class AdminFilter implements FilterInterface
         if (!$session->get('isLoggedIn') || $session->get('role') !== 'admin') {
             return redirect()->to('/login')->with('error', 'No tenés permiso para entrar ahí.');
         }
-        dd('pasó el filtro');
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)

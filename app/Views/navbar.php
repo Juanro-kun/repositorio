@@ -57,11 +57,6 @@
             <i class="bi bi-cart-fill fs-5"></i>
           </a>
 
-          <!-- Ícono perfil -->
-          <a href="<?= base_url('profile') ?>" class="text-white" title="Perfil">
-            <i class="bi bi-person-circle fs-5"></i>
-          </a>
-
           <!-- Ícono cerrar sesión -->
           <form id="logout-form" action="<?= base_url('logout') ?>" method="post" class="d-inline">
             <button type="submit" class="btn p-0 text-white" title="Cerrar sesión">
