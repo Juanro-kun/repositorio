@@ -1,3 +1,13 @@
+<p align="center">
+  <img src="./assets/facena.png" alt="Logo de FACENA" width="100"/>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white"/>
+  <img src="https://img.shields.io/badge/CodeIgniter-EE4623?style=for-the-badge&logo=codeigniter&logoColor=white"/>
+  <img src="https://img.shields.io/badge/UNNE-Taller_de_Programación_I-blue?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Estado-EnCurso-black?style=for-the-badge"/>
+</p>
 
 # 🐲 La Taberna del Gnomo Errante - Ecommerce D&D (UNNE 2025)
 
@@ -77,6 +87,4 @@ Este proyecto representó la culminación de los contenidos de la materia:
 ---
 
 <p align="center"><b>⚔️ Desarrollado con pasión, lógica y una pizca de magia por Tobias y Juan</b></p>
-
-CURLRequest library
 
