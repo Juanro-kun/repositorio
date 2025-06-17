@@ -66,23 +66,36 @@ class CarritoController extends BaseController
     }
 
     public function sumar()
-    {
-        $product_id = $this->request->getPost('product_id');
-        $user_id = session()->get('user_id'); 
-        $cartModel = new \App\Models\CartItemModel();
+{
+    $product_id = $this->request->getPost('product_id');
+    $user_id = session()->get('user_id'); 
 
-        $item = $cartModel->where('user_id', $user_id)
-                        ->where('product_id', $product_id)
-                        ->first();
+    $cartModel = new \App\Models\CartItemModel();
+    $productModel = new \App\Models\ProductModel();
 
-        if ($item) {
+    // Traer el item del carrito
+    $item = $cartModel->where('user_id', $user_id)
+                      ->where('product_id', $product_id)
+                      ->first();
+
+    // Traer el producto para conocer el stock
+    $producto = $productModel->find($product_id);
+
+    if ($item && $producto) {
+        $cantidadActual = $item['quantity'];
+        $stockDisponible = $producto['stock'];
+
+        // Si la cantidad en carrito es menor al stock, se permite sumar
+        if ($cantidadActual < $stockDisponible) {
             $cartModel->update($item['cart_item_id'], [
-                'quantity' => $item['quantity'] + 1
+                'quantity' => $cantidadActual + 1
             ]);
         }
-
-        return redirect()->to('/carrito');
+        // Si no, simplemente no se hace nada (mantiene el valor)
     }
+
+    return redirect()->to('/carrito');
+}
 
     public function restar()
     {
@@ -99,8 +112,9 @@ class CarritoController extends BaseController
                 'quantity' => $item['quantity'] - 1
             ]);
         } elseif ($item) {
-            // Si la cantidad es 1, lo eliminamos directamente
-            $cartModel->delete($item['cart_item_id']);
+            $cartModel->update($item['cart_item_id'], [
+                'quantity' => $item['quantity'] 
+            ]);
         }
 
         return redirect()->to('/carrito');

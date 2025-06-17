@@ -45,7 +45,7 @@
       <?php foreach ($destacados as $producto): ?>
         <div class="col">
           <div class="card h-100 bg-dark text-light shadow-sm border-0">
-            <img src="<?= base_url('assets/uploads/' . $producto['image']) ?>" class="card-img-top" alt="<?= esc($producto['name']) ?>">
+            <img src="<?= base_url('uploads/' . $producto['image']) ?>" class="card-img-top" alt="<?= esc($producto['name']) ?>" onerror="this.src='<?= base_url('assets/img/default.png') ?>'">
             <div class="card-body d-flex flex-column justify-content-between">
               <div>
                 <h5 class="card-title"><?= esc($producto['name']) ?></h5>

@@ -42,7 +42,11 @@
     .form-control {
       background-color: #1e1e1e;
       border: 1px solid #555;
-      color: #f0f0f0;
+            color: #ffffff;
+    }
+
+    .form-control::placeholder {
+      color: #e8e8e8;
     }
 
     .form-control:focus {

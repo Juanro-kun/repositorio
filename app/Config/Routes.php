@@ -35,6 +35,9 @@ $routes->group('admin', ['filter' => 'adminFilter'], function($routes) {
     $routes->get('usuarios/eliminados', 'UsuariosController::eliminados');
     $routes->get('usuarios/restaurar/(:num)', 'UsuariosController::restaurar/$1');
     $routes->get('informes', 'InformeController::index');
+    $routes->get('consultas', 'ConsultasController::index');
+    $routes->get('consultas/eliminar/(:alpha)/(:num)', 'ConsultasController::eliminar/$1/$2');
+
 });
 
 $routes->get('/catalogo', 'CatalogoController::index');

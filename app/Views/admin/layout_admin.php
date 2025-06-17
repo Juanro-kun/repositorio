@@ -55,9 +55,6 @@
       <h5 class="mb-0 fw-bold">D&D Admin</h5>
     </div>
     <div class="d-flex align-items-center gap-3">
-      <a href="<?= base_url('admin/notificaciones') ?>" class="text-dark">
-        <i class="bi bi-bell fs-5"></i>
-      </a>
       <a href="<?= base_url('/') ?>" class="text-dark"><i class="bi bi-house fs-5"></i></a>
     </div>
   </div>
@@ -76,6 +73,7 @@
         <a href="<?= base_url('admin/facturas') ?>"><i class="bi bi-cart"></i> Facturas</a>
         <a href="<?= base_url('admin/inventario') ?>"><i class="bi bi-box-seam"></i> Inventario</a>
         <a href="<?= base_url('admin/categorias') ?>"><i class="bi bi-layers"></i> Categorías</a>
+        <a href="<?= base_url('admin/consultas') ?>"><i class="bi bi-question-circle"></i> Consultas</a>
         <a href="<?= base_url('admin/informes') ?>"><i class="bi bi-file-earmark-text"></i> Informes</a>
         <a href="<?= base_url('admin/usuarios') ?>"><i class="bi bi-people"></i> Usuarios</a>
       </div>

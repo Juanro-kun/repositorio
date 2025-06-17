@@ -14,6 +14,8 @@
                     <?php
                         $desc = json_decode($item['description'], true);
                         $descripcion = is_array($desc) && isset($desc['descripcion']) ? $desc['descripcion'] : $item['description'];
+                        $cantidad = (int)$item['cantidad'];
+                        $stock = (int)$item['stock']; // Asegurate de que esta clave exista
                     ?>
                     <div class="list-group-item d-flex justify-content-between align-items-center bg-dark text-white mb-2 rounded">
                         <div class="d-flex align-items-center">
@@ -26,17 +28,25 @@
                         <div class="d-flex align-items-center gap-3">
                             <span>$<?= number_format($item['price'], 2, ',', '.') ?></span>
                             
-                            <form method="POST" action="<?= base_url('carrito/restar') ?>" class="d-inline">
-                                <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
-                                <button class="btn btn-sm btn-outline-light" type="submit">−</button>
-                            </form>
+                            <?php if ($cantidad > 1): ?>
+                                <form method="POST" action="<?= base_url('carrito/restar') ?>" class="d-inline">
+                                    <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
+                                    <button class="btn btn-sm btn-outline-light" type="submit">−</button>
+                                </form>
+                            <?php else: ?>
+                                <div style="width: 34px;"></div> <!-- Para que no se mueva el diseño -->
+                            <?php endif; ?>
 
-                            <span><?= $item['cantidad'] ?></span>
+                            <span><?= $cantidad ?></span>
 
-                            <form method="POST" action="<?= base_url('carrito/sumar') ?>" class="d-inline">
-                                <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
-                                <button class="btn btn-sm btn-outline-light" type="submit">+</button>
-                            </form>
+                            <?php if ($cantidad < $stock): ?>
+                                <form method="POST" action="<?= base_url('carrito/sumar') ?>" class="d-inline">
+                                    <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
+                                    <button class="btn btn-sm btn-outline-light" type="submit">+</button>
+                                </form>
+                            <?php else: ?>
+                                <div style="width: 34px;"></div>
+                            <?php endif; ?>
 
                             <span>= $<?= number_format($item['total'], 2, ',', '.') ?></span>
 
