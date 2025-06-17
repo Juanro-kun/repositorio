@@ -45,6 +45,29 @@ $routes->get('/catalogo/(:num)', 'CatalogoController::catalogoDetalle/$1');
 $routes->get('/carrito', 'CarritoController::index');
 $routes->get('/checkout', 'CheckoutController::index');
 
+//Vistas de Perfil
+$routes->get('perfil', 'PerfilController::index');
+$routes->get('perfil/editar', 'PerfilController::editar');
+$routes->post('perfil/actualizar', 'PerfilController::actualizar');
+$routes->get('perfil/pedidos', 'PerfilController::pedidos');
+$routes->get('perfil/pedidos/(:num)', 'PerfilController::verPedido/$1');
+
+//Vistas de Checkout
+$routes->get('checkout/contacto', 'CheckoutController::pasoContacto');
+$routes->post('checkout/guardarContacto', 'CheckoutController::guardarContacto');
+
+$routes->get('checkout/envio', 'CheckoutController::guardarContacto'); // si querés permitir volver
+$routes->post('checkout/guardarEnvio', 'CheckoutController::guardarEnvio');
+
+$routes->get('checkout/pago', 'CheckoutController::guardarEnvio'); // opcional
+$routes->post('checkout/guardarPago', 'CheckoutController::guardarPago');
+
+$routes->get('checkout/revision', 'CheckoutController::guardarPago'); // opcional
+$routes->get('checkout/confirmar', 'CheckoutController::confirmarPedido');
+
+$routes->get('checkout/confirmado', 'CheckoutController::confirmado');
+
+
 //post
 $routes->post('/register/process', 'AuthController::process_register');
 $routes->post('/login/process', 'AuthController::process_login');

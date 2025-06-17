@@ -46,24 +46,29 @@
         </div>
 
       <?php else: ?>
-        <!-- Íconos para usuario logueado -->
-        <div class="d-flex gap-3 align-items-center me-4">
-          <?php if (session()->get('role') === 'admin'): ?>
-            <a href="<?= base_url('admin') ?>" class="btn btn-warning btn-sm text-dark">Admin</a>
-          <?php endif; ?>
+      <!-- Íconos para usuario logueado -->
+      <div class="d-flex gap-3 align-items-center me-4">
+        <?php if (session()->get('role') === 'admin'): ?>
+          <a href="<?= base_url('admin') ?>" class="btn btn-warning btn-sm text-dark">Admin</a>
+        <?php endif; ?>
 
-          <!-- Ícono carrito -->
-          <a href="<?= base_url('carrito') ?>" class="text-white" title="Carrito">
-            <i class="bi bi-cart-fill fs-5"></i>
-          </a>
+        <!-- Ícono perfil -->
+        <a href="<?= base_url('perfil') ?>" class="text-white" title="Mi perfil">
+          <i class="bi bi-person-circle fs-5"></i>
+        </a>
 
-          <!-- Ícono cerrar sesión -->
-          <form id="logout-form" action="<?= base_url('logout') ?>" method="post" class="d-inline">
-            <button type="submit" class="btn p-0 text-white" title="Cerrar sesión">
-              <i class="bi bi-box-arrow-right fs-5"></i>
-            </button>
-          </form>
-        </div>
+        <!-- Ícono carrito -->
+        <a href="<?= base_url('carrito') ?>" class="text-white" title="Carrito">
+          <i class="bi bi-cart-fill fs-5"></i>
+        </a>
+
+        <!-- Ícono cerrar sesión -->
+        <form id="logout-form" action="<?= base_url('logout') ?>" method="post" class="d-inline">
+          <button type="submit" class="btn p-0 text-white" title="Cerrar sesión">
+            <i class="bi bi-box-arrow-right fs-5"></i>
+          </button>
+        </form>
+      </div>
       <?php endif; ?>
     </div>
   </div>

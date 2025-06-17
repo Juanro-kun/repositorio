@@ -70,7 +70,7 @@
                 <p>Impuestos: $<?= number_format($impuestos, 2, ',', '.') ?></p>
                 <hr>
                 <h5>Total: $<?= number_format($total, 2, ',', '.') ?></h5>
-                <a href="<?= base_url('checkout') ?>" class="btn btn-danger w-100 mt-3">Proceder al Pago</a>
+                <a href="<?= base_url('checkout/contacto') ?>" class="btn btn-danger w-100 mt-3">Proceder al Pago</a>
             </div>
         </div>
     </div>
