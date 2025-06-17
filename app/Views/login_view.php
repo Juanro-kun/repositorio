@@ -175,4 +175,8 @@
 
   <script src="<?= base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> prueba-catalogo

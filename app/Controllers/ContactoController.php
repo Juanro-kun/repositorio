@@ -29,6 +29,7 @@ class ContactoController extends BaseController
     }
 
     public function enviarInquiry()
+<<<<<<< HEAD
 {
     $inquiryModel = new \App\Models\InquiryModel();
 
@@ -42,4 +43,24 @@ class ContactoController extends BaseController
     $inquiryModel->insert($data);
     return redirect()->back()->with('success', 'Consulta enviada correctamente.');
 }
+=======
+    {
+        $inquiryModel = new \App\Models\InquiryModel();
+    
+        $data = [
+            'user_id' => session()->get('user_id'),
+            'subject' => $this->request->getPost('subject'),
+            'message' => $this->request->getPost('message'),
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+    
+        $inquiryModel->insert($data);
+    
+        return redirect()->to(base_url('contacto/confirmacion'))->with('success', 'Consulta enviada correctamente');
+    }
+    public function confirmacion()
+    {
+        return view('confirmacion');
+    }
+>>>>>>> prueba-catalogo
 }
