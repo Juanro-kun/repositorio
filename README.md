@@ -1,21 +1,3 @@
-# CodeIgniter 4 Framework
-
-## What is CodeIgniter?
-
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
-
-This repository holds the distributable version of the framework.
-<p align="center">
-  <img src="./assets/facena.png" alt="Logo de FACENA" width="100"/>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white"/>
-  <img src="https://img.shields.io/badge/CodeIgniter-EE4623?style=for-the-badge&logo=codeigniter&logoColor=white"/>
-  <img src="https://img.shields.io/badge/UNNE-Taller_de_Programación_I-blue?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Estado-EnCurso-black?style=for-the-badge"/>
-</p>
 
 # 🐲 La Taberna del Gnomo Errante - Ecommerce D&D (UNNE 2025)
 
