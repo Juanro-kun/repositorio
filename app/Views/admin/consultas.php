@@ -2,6 +2,13 @@
 <?= $this->section('contenido') ?>
 
 <h2 class="fw-bold mb-3">Consultas</h2>
+<div class="d-flex justify-content-end mb-3">
+  <div style="width: 250px;">
+    <a href="<?= base_url('admin/consultas/eliminadas') ?>" class="btn btn-dark w-100">
+      <i class="bi bi-eye-slash"></i> Ver Consultas Eliminadas
+    </a>
+  </div>
+</div>
 <p class="text-muted mb-4">Listado de consultas realizadas por los usuarios.</p>
 
 <div class="row g-4">

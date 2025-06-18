@@ -32,5 +32,33 @@ class ConsultasController extends BaseController
 
         return redirect()->to('admin/consultas')->with('error', 'Consulta no encontrada.');
     }
+
+    public function eliminadas()
+    {
+        $inquiryModel = new InquiryModel();
+        $contactModel = new ContactModel();
+
+        $inquiries = $inquiryModel->onlyDeleted()->findAll();
+        $contacts  = $contactModel->onlyDeleted()->findAll();
+
+        return view('admin/consultas_eliminadas', [
+            'inquiries' => $inquiries,
+            'contacts'  => $contacts,
+        ]);
+    }
+
+    public function restaurar($tipo, $id)
+    {
+        $model = $tipo === 'inquiry' ? new \App\Models\InquiryModel() : new \App\Models\ContactModel();
+
+        if ($model->onlyDeleted()->find($id)) {
+            $model->update($id, ['deleted_at' => null]);
+            return redirect()->to('admin/consultas/eliminadas')->with('success', 'Consulta restaurada correctamente.');
+        }
+
+        return redirect()->to('admin/consultas/eliminadas')->with('error', 'No se pudo restaurar la consulta.');
+    }
+
+
 }
 

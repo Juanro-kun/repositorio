@@ -61,14 +61,31 @@
                                     </a>
 
                                     <?php if (session()->get('isLoggedIn')): ?>
-                                        <form method="POST" action="<?= base_url('agregar-al-carrito') ?>">
-                                            <input type="hidden" name="product_id" value="<?= $producto['product_id'] ?>">
-                                            <input type="hidden" name="quantity" value="1">
-                                            <button type="submit" class="btn btn-outline-light w-100 mt-2">
-                                                <i class="bi bi-cart-plus"></i> Agregar al carrito
-                                            </button>
-                                        </form>
+                                        <?php
+                                            $cartModel = new \App\Models\CartItemModel();
+                                            $cartItem = $cartModel->where('user_id', session('user_id'))
+                                                                  ->where('product_id', $producto['product_id'])
+                                                                  ->first();
+                                            $enCarrito = $cartItem['quantity'] ?? 0;
+                                            $stockRestante = $producto['stock'] - $enCarrito;
+                                        ?>
+
+                                        <?php if ($stockRestante > 0): ?>
+                                            <form method="POST" action="<?= base_url('agregar-al-carrito') ?>">
+                                                <input type="hidden" name="product_id" value="<?= $producto['product_id'] ?>">
+                                                <input type="hidden" name="quantity" value="1">
+                                                <button type="submit" class="btn btn-outline-light w-100 mt-2">
+                                                    <i class="bi bi-cart-plus"></i> Agregar al carrito
+                                                </button>
+                                                <small class="text-muted d-block mt-1">Stock disponible: <?= $stockRestante ?></small>
+                                            </form>
+                                        <?php else: ?>
+                                            <div class="alert alert-warning text-center py-2 mt-2 mb-0">
+                                                📦 Límite de stock alcanzado
+                                            </div>
+                                        <?php endif; ?>
                                     <?php endif; ?>
+
                                 </div>
                             </div>
                         </div>

@@ -3,6 +3,10 @@
 
 <h2 class="fw-bold mb-3">Productos Eliminados</h2>
 
+<a href="<?= base_url('admin/inventario') ?>" class="btn btn-outline-dark mb-4">
+  <i class="bi bi-arrow-left"></i> Volver al Inventario
+</a>
+
 <?php if (session()->getFlashdata('success')): ?>
   <div class="alert alert-success alert-dismissible fade show" role="alert">
     <?= session()->getFlashdata('success') ?>

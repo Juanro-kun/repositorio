@@ -5,7 +5,6 @@
 <p class="text-muted mb-4">Resumen general de la tienda y actividad reciente.</p>
 
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4 mb-4">
-  <!-- Card: Ingresos -->
   <div class="col-md-3">
     <div class="card shadow-sm border-0">
       <div class="card-body">
@@ -15,7 +14,6 @@
     </div>
   </div>
 
-  <!-- Card: Ventas -->
   <div class="col-md-3">
     <div class="card shadow-sm border-0">
       <div class="card-body">
@@ -26,7 +24,6 @@
     </div>
   </div>
 
-  <!-- Card: Clientes -->
   <div class="col-md-3">
     <div class="card shadow-sm border-0">
       <div class="card-body">
@@ -36,7 +33,6 @@
     </div>
   </div>
 
-  <!-- Card: Consultas sin responder -->
   <div class="col-md-3">
     <div class="card shadow-sm border-0">
       <div class="card-body">
@@ -48,18 +44,22 @@
 </div>
 
 <div class="row g-4 mb-4">
-
-  <!-- Gráfico -->
   <div class="col-lg-6 d-none d-lg-block">
     <div class="card shadow-sm border-0">
-      <div class="card-header bg-white fw-bold">Ventas Semanales</div>
+      <div class="card-header bg-white d-flex justify-content-between align-items-center">
+        <span class="fw-bold">Gráfico de Ventas</span>
+        <div>
+          <button class="btn btn-sm btn-outline-secondary me-1" onclick="cargarGrafico('semanal')">Semanales</button>
+          <button class="btn btn-sm btn-outline-secondary me-1" onclick="cargarGrafico('mensual')">Mensuales</button>
+          <button class="btn btn-sm btn-outline-secondary" onclick="cargarGrafico('anual')">Anuales</button>
+        </div>
+      </div>
       <div class="card-body">
         <canvas id="ventasChart" height="130"></canvas>
       </div>
     </div>
   </div>
 
-  <!-- Ventas recientes -->
   <div class="col-lg-6">
     <div class="card shadow-sm border-0">
       <div class="card-header bg-white fw-bold">
@@ -89,23 +89,37 @@
         </table>
       </div>
       <div class="card-footer text-end">
-        <a href="<?= base_url('admin/pedidos') ?>"><i class="bi bi-cart"></i> Ver Todas las Ventas</a>
+        <a href="<?= base_url('admin/facturas') ?>"><i class="bi bi-cart"></i> Ver Todas las Ventas</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Chart JS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+  const datosVentas = {
+    semanal: {
+      labels: <?= json_encode($ventasSemanal['dias']) ?>,
+      data: <?= json_encode($ventasSemanal['totales']) ?>
+    },
+    mensual: {
+      labels: <?= json_encode($ventasMensual['dias']) ?>,
+      data: <?= json_encode($ventasMensual['totales']) ?>
+    },
+    anual: {
+      labels: <?= json_encode($ventasAnual['meses']) ?>,
+      data: <?= json_encode($ventasAnual['totales']) ?>
+    }
+  };
+
   const ctx = document.getElementById('ventasChart').getContext('2d');
-  new Chart(ctx, {
+  const chart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: <?= json_encode($ventasSemanal['dias']) ?>,
+      labels: datosVentas.semanal.labels,
       datasets: [{
         label: 'Ventas ($)',
-        data: <?= json_encode($ventasSemanal['totales']) ?>,
+        data: datosVentas.semanal.data,
         backgroundColor: '#dc3545'
       }]
     },
@@ -115,6 +129,12 @@
       }
     }
   });
+
+  function cargarGrafico(rango) {
+    chart.data.labels = datosVentas[rango].labels;
+    chart.data.datasets[0].data = datosVentas[rango].data;
+    chart.update();
+  }
 </script>
 
 <?= $this->endSection() ?>

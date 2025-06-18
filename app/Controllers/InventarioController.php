@@ -86,12 +86,21 @@ class InventarioController extends BaseController
         $model = new ProductModel();
         $producto = $model->find($id);
 
+        // Armar el JSON desde los campos individuales
+        $descripcionJson = json_encode([
+            'descripcion' => $this->request->getPost('descripcion'),
+            'marca'       => $this->request->getPost('marca'),
+            'edad'        => $this->request->getPost('edad'),
+            'jugadores'   => $this->request->getPost('jugadores'),
+            'formato'     => $this->request->getPost('formato'),
+        ]);
+
         $data = [
             'name'        => $this->request->getPost('name'),
             'price'       => $this->request->getPost('price'),
             'stock'       => $this->request->getPost('stock'),
             'discount'    => $this->request->getPost('discount'),
-            'description' => $this->request->getPost('description'),
+            'description' => $descripcionJson,
             'category_id' => $this->request->getPost('category_id')
         ];
 
@@ -101,7 +110,7 @@ class InventarioController extends BaseController
             $nombreImagen = $imagen->getRandomName();
             $imagen->move(ROOTPATH . 'public/uploads', $nombreImagen);
 
-            // Eliminar anterior
+            // Eliminar anterior si existe
             if (!empty($producto['image']) && file_exists(ROOTPATH . 'public/uploads/' . $producto['image'])) {
                 unlink(ROOTPATH . 'public/uploads/' . $producto['image']);
             }
@@ -112,6 +121,7 @@ class InventarioController extends BaseController
         $model->update($id, $data);
         return redirect()->to('admin/inventario')->with('success', 'Producto actualizado correctamente.');
     }
+
 
     public function eliminar($id)
     {

@@ -39,20 +39,34 @@ class CarritoController extends BaseController
     public function agregar()
     {
         $product_id = $this->request->getPost('product_id');
-        $quantity = $this->request->getPost('quantity');
+        $quantity = (int) $this->request->getPost('quantity');
 
         $user_id = session()->get('user_id');
+        $cartModel = new \App\Models\CartItemModel();
+        $productModel = new \App\Models\ProductModel();
 
-        $cartModel = new CartItemModel();
+        $producto = $productModel->find($product_id);
 
-        // Si el producto ya está en el carrito, actualizar cantidad
+        if (!$producto) {
+            return redirect()->back()->with('error', 'Producto no encontrado');
+        }
+
+        // Consultar si ya hay ese producto en el carrito
         $item = $cartModel->where('user_id', $user_id)
-                          ->where('product_id', $product_id)
-                          ->first();
+                        ->where('product_id', $product_id)
+                        ->first();
+
+        $enCarrito = $item ? $item['quantity'] : 0;
+        $totalSolicitado = $enCarrito + $quantity;
+
+        // Validar stock disponible
+        if ($totalSolicitado > $producto['stock']) {
+            return redirect()->back()->with('error', 'No hay suficiente stock disponible');
+        }
 
         if ($item) {
             $cartModel->update($item['cart_item_id'], [
-                'quantity' => $item['quantity'] + $quantity
+                'quantity' => $totalSolicitado
             ]);
         } else {
             $cartModel->insert([
@@ -64,6 +78,7 @@ class CarritoController extends BaseController
 
         return redirect()->back()->with('mensaje', 'Producto agregado al carrito');
     }
+
 
     public function sumar()
 {

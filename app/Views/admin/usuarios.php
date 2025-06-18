@@ -35,6 +35,7 @@
     <table class="table align-middle mb-0">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Nombre</th>
           <th>Email</th>
           <th>Rol</th>
@@ -44,6 +45,7 @@
       <tbody>
         <?php foreach ($usuarios as $u): ?>
           <tr>
+            <td><?= esc($u['user_id']) ?></td>
             <td><?= esc($u['fname'] . ' ' . $u['lname']) ?></td>
             <td><?= esc($u['mail']) ?></td>
             <td>
@@ -55,9 +57,9 @@
             </td>
             <td>
               <a href="<?= base_url('admin/usuarios/editar/' . $u['user_id']) ?>" class="btn btn-sm btn-outline-dark">Editar</a>
-              <a href="<?= base_url('admin/usuarios/eliminar/' . $u['user_id']) ?>" 
-                class="btn btn-outline-danger btn-sm" 
-                onclick="return confirm('¿Estás seguro de que querés eliminar este usuario?')"> Eliminar</a>
+              <a href="<?= base_url('admin/usuarios/eliminar/' . $u['user_id']) ?>"
+                class="btn btn-outline-danger btn-sm"
+                onclick="return confirm('¿Estás seguro de que querés eliminar este usuario?')">Eliminar</a>
             </td>
           </tr>
         <?php endforeach ?>

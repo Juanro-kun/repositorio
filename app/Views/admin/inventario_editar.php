@@ -3,6 +3,10 @@
 
 <h2 class="fw-bold mb-3">Editar Producto</h2>
 
+<?php
+  $detalles = json_decode($producto['description'], true) ?? [];
+?>
+
 <form action="<?= base_url('admin/inventario/actualizar/' . $producto['product_id']) ?>" method="post" enctype="multipart/form-data">
   <div class="row">
     <div class="col-md-12 mb-4">
@@ -30,10 +34,28 @@
       <label for="discount" class="form-label">Descuento (%)</label>
       <input type="number" class="form-control" name="discount" value="<?= esc($producto['discount']) ?>">
     </div>
+
     <div class="col-md-12 mb-3">
-      <label for="description" class="form-label">Descripción</label>
-      <textarea name="description" class="form-control" rows="3"><?= esc($producto['description']) ?></textarea>
+      <label for="descripcion" class="form-label">Descripción principal</label>
+      <input type="text" class="form-control" name="descripcion" value="<?= esc($detalles['descripcion'] ?? '') ?>">
     </div>
+    <div class="col-md-6 mb-3">
+      <label for="marca" class="form-label">Marca</label>
+      <input type="text" class="form-control" name="marca" value="<?= esc($detalles['marca'] ?? '') ?>">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="edad" class="form-label">Edad sugerida</label>
+      <input type="text" class="form-control" name="edad" value="<?= esc($detalles['edad'] ?? '') ?>">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="jugadores" class="form-label">Cantidad de jugadores</label>
+      <input type="text" class="form-control" name="jugadores" value="<?= esc($detalles['jugadores'] ?? '') ?>">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="formato" class="form-label">Formato</label>
+      <input type="text" class="form-control" name="formato" value="<?= esc($detalles['formato'] ?? '') ?>">
+    </div>
+
     <div class="col-md-12 mb-4">
       <label for="category_id" class="form-label">Categoría *</label>
       <select name="category_id" class="form-select" required>
