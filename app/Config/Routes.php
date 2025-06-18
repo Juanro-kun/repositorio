@@ -11,7 +11,7 @@ $routes->get('/quienes', 'StaticController::quienes');
 $routes->get('/comercializacion', 'StaticController::comercializacion');
 $routes->get('/contacto', 'ContactoController::index');
 $routes->get('/terminos', 'StaticController::terminos');
-$routes->get('/proximamente', 'StaticController::proximamente');
+$routes->get('home/proximamente', 'StaticController::proximamente');
 $routes->get('/nuevos_jugadores', 'StaticController::nuevos_jugadores');
 $routes->get('/login', 'AuthController::login');
 $routes->get('/register', 'AuthController::register');
@@ -44,6 +44,7 @@ $routes->get('/catalogo', 'CatalogoController::index');
 $routes->get('/catalogo/(:num)', 'CatalogoController::catalogoDetalle/$1');
 $routes->get('/carrito', 'CarritoController::index');
 $routes->get('/checkout', 'CheckoutController::index');
+$routes->get('/descargar/hoja_de_personaje', 'DescargasController::hoja_de_personaje');
 
 //Vistas de Perfil
 $routes->get('perfil', 'PerfilController::index');

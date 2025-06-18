@@ -3,7 +3,16 @@
 
 <section class="section-dark py-5">
     <div class="container">
-        <div class="row align-items-center">
+        <!-- Fila con botón de volver -->
+        <div class="row mb-3">
+            <div class="col">
+                <a href="<?= base_url('catalogo') ?>" class="btn btn-secondary">
+                    ← Volver al catálogo
+                </a>
+            </div>
+        </div>
+
+        <div class="row align-items-start">
             <div class="col-md-6">
                 <img src="<?= base_url('uploads/' . $producto['image']) ?>" class="img-fluid rounded shadow" alt="<?= esc($producto['name']) ?>" onerror="this.src='<?= base_url('assets/img/default.png') ?>'">
             </div>
@@ -23,7 +32,15 @@
                     <?php if (!empty($extra['formato'])): ?><tr><th>Formato</th><td><?= esc($extra['formato']) ?></td></tr><?php endif; ?>
                 </table>
 
-                <a href="<?= base_url('catalogo') ?>" class="btn btn-secondary mt-3">← Volver al catálogo</a>
+                <?php if (session()->get('isLoggedIn')): ?>
+                    <form method="POST" action="<?= base_url('agregar-al-carrito') ?>">
+                        <input type="hidden" name="product_id" value="<?= $producto['product_id'] ?>">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-outline-light w-100 mt-2">
+                            <i class="bi bi-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </form>                   
+                <?php endif; ?>
             </div>
         </div>
     </div>
