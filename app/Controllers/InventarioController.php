@@ -44,20 +44,29 @@ class InventarioController extends BaseController
         return view('admin/inventario_agregar', ['categorias' => $categorias]);
     }
 
-    public function cargarProducto()
+    public function cargarProducto() 
     {
         $producto = new ProductModel();
-        $imageName = null;
+        $imageName = 'default.png'; // Imagen por defecto ubicada en public/uploads
 
         $imagen = $this->request->getFile('image');
         if ($imagen && $imagen->isValid() && !$imagen->hasMoved()) {
             $imageName = $imagen->getRandomName();
-            $imagen->move(ROOTPATH . 'public/img/productos', $imageName);
+            $imagen->move(ROOTPATH . 'public/uploads', $imageName);
         }
+
+        // Armar JSON de descripción extendida
+        $descripcionJson = json_encode([
+            'descripcion' => $this->request->getPost('description'),
+            'marca'       => $this->request->getPost('brand'),
+            'edad'        => $this->request->getPost('age'),
+            'jugadores'   => $this->request->getPost('players'),
+            'formato'     => $this->request->getPost('format'),
+        ]);
 
         $producto->insert([
             'name'        => $this->request->getPost('name'),
-            'description' => $this->request->getPost('description'),
+            'description' => $descripcionJson,
             'price'       => $this->request->getPost('price'),
             'discount'    => $this->request->getPost('discount'),
             'stock'       => $this->request->getPost('stock'),
