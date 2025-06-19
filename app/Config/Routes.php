@@ -10,6 +10,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/quienes', 'StaticController::quienes');
 $routes->get('/comercializacion', 'StaticController::comercializacion');
 $routes->get('/contacto', 'ContactoController::index');
+$routes->get('contacto/confirmacion', 'ContactoController::confirmacion');
 $routes->get('/terminos', 'StaticController::terminos');
 $routes->get('home/proximamente', 'StaticController::proximamente');
 $routes->get('/nuevos_jugadores', 'StaticController::nuevos_jugadores');

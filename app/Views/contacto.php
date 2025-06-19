@@ -9,7 +9,7 @@
     <div class="card shadow-lg p-4 section-dark">
       <div class="row">
         <!-- Datos de la Empresa -->
-        <div class="col-md-6 border-end ">
+        <div class="col-md-6 border-end">
           <h5 class="fw-bold mb-3"><i class="fas fa-dragon text-danger me-2"></i>Datos de la Empresa</h5>
           <ul class="list-unstyled">
             <li><i class="fas fa-user-tie me-2 text-dark"></i><strong>Titulares:</strong> Tobias Naim Orban & Juan Román Zacarias</li>
@@ -22,30 +22,60 @@
 
         <!-- Formulario -->
         <?php $isLoggedIn = session()->get('isLoggedIn'); ?>
-          <div class="col-md-6">
-            <h5 class="fw-bold mb-3">
-              <i class="fas fa-paper-plane text-danger me-2"></i>
-              <?= $isLoggedIn ? 'Realizá tu Consulta' : 'Envíanos tu Consulta' ?>
-            </h5>
+        <div class="col-md-6">
+          <h5 class="fw-bold mb-3">
+            <i class="fas fa-paper-plane text-danger me-2"></i>
+            <?= $isLoggedIn ? 'Realizá tu Consulta' : 'Envíanos tu Consulta' ?>
+          </h5>
 
-            <form method="POST" action="<?= base_url($isLoggedIn ? 'inquiry/enviar' : 'contacto/enviar') ?>">
-              <?php if (!$isLoggedIn): ?>
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <input type="text" name="fname" class="form-control" placeholder="Nombre" required>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <input type="text" name="lname" class="form-control" placeholder="Apellido" required>
-                  </div>
+          <?php if (session('errors')): ?>
+            <div class="alert alert-danger">
+              Por favor corregí los errores marcados abajo.
+            </div>
+          <?php endif; ?>
+
+          <form method="POST" action="<?= base_url($isLoggedIn ? 'inquiry/enviar' : 'contacto/enviar') ?>">
+            <?php if (!$isLoggedIn): ?>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input type="text" name="fname" class="form-control" placeholder="Nombre" value="<?= old('fname') ?>">
+                  <?php if (isset(session('errors')['fname'])): ?>
+                    <small class="text-danger"><?= session('errors')['fname'] ?></small>
+                  <?php endif; ?>
                 </div>
-                <input type="email" name="mail" class="form-control mb-3" placeholder="Correo Electrónico" required>
-              <?php endif; ?>
+                <div class="col-md-6 mb-3">
+                  <input type="text" name="lname" class="form-control" placeholder="Apellido" value="<?= old('lname') ?>">
+                  <?php if (isset(session('errors')['lname'])): ?>
+                    <small class="text-danger"><?= session('errors')['lname'] ?></small>
+                  <?php endif; ?>
+                </div>
+              </div>
 
-              <input type="text" name="subject" class="form-control mb-3" placeholder="Asunto" required>
-              <textarea name="message" class="form-control mb-3" rows="4" placeholder="Escribí tu mensaje..." required></textarea>
-              <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-            </form>
-          </div>
+              <div class="mb-3">
+                <input type="email" name="mail" class="form-control" placeholder="Correo Electrónico" value="<?= old('mail') ?>">
+                <?php if (isset(session('errors')['mail'])): ?>
+                  <small class="text-danger"><?= session('errors')['mail'] ?></small>
+                <?php endif; ?>
+              </div>
+            <?php endif; ?>
+
+            <div class="mb-3">
+              <input type="text" name="subject" class="form-control" placeholder="Asunto" value="<?= old('subject') ?>">
+              <?php if (isset(session('errors')['subject'])): ?>
+                <small class="text-danger"><?= session('errors')['subject'] ?></small>
+              <?php endif; ?>
+            </div>
+
+            <div class="mb-3">
+              <textarea name="message" class="form-control" rows="4" placeholder="Escribí tu mensaje..."><?= old('message') ?></textarea>
+              <?php if (isset(session('errors')['message'])): ?>
+                <small class="text-danger"><?= session('errors')['message'] ?></small>
+              <?php endif; ?>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
