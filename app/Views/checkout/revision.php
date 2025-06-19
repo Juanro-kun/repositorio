@@ -42,12 +42,6 @@
             <li class="list-group-item d-flex justify-content-between">
               <span>Subtotal</span><span>$<?= number_format($subtotal ?? 0, 2, ',', '.') ?></span>
             </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Envío</span><span>$<?= number_format($costoEnvio ?? 0, 2, ',', '.') ?></span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Impuestos</span><span>$<?= number_format($impuestos ?? 0, 2, ',', '.') ?></span>
-            </li>
             <li class="list-group-item d-flex justify-content-between fw-bold text-danger">
               <span>Total</span><span>$<?= number_format($total ?? 0, 2, ',', '.') ?></span>
             </li>

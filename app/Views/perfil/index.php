@@ -8,13 +8,6 @@
 
   <div class="card bg-dark text-white shadow-lg rounded-4 border-light p-4">
     <div class="row g-4 align-items-center">
-      <div class="col-md-3 text-center">
-        <img src="<?= base_url('uploads/' . ($usuario['foto'] ?? 'default.png')) ?>" 
-            alt="Avatar" 
-            class="img-thumbnail rounded-circle border border-light" 
-            width="140" height="140"
-            onerror="this.src='<?= base_url('assets/img/default.png') ?>'">
-      </div>
 
       <div class="col-md-9">
         <h4 class="mb-2"><?= esc($usuario['fname']) . ' ' . esc($usuario['lname']) ?></h4>

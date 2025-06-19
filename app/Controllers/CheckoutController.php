@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\UserModel;
 use App\Models\ProductModel;
 use App\Models\CartItemModel;
 use App\Models\InvoiceModel;
@@ -9,6 +10,24 @@ use App\Models\InvoiceItemModel;
 
 class CheckoutController extends BaseController
 {
+    public function index(){
+        $model = new UserModel;
+        $session = session();
+        $user_id = $session->get('user_id');
+
+        if ($model->where('user_id', $user_id)
+              ->where('fname IS NOT NULL', null, false)
+              ->where('lname IS NOT NULL', null, false)
+              ->where('fname !=', '')
+              ->where('lname !=', '')
+              ->countAllResults() > 0)
+        {
+            return redirect()->to('checkout/revision');
+        } else {
+            return view('checkout/contacto');
+        }
+    }
+
     public function pasoContacto()
     {
         if (!session()->has('user_id')) {
@@ -25,8 +44,6 @@ class CheckoutController extends BaseController
         $rules = [
             'nombre'   => 'required|min_length[2]',
             'apellido' => 'required|min_length[2]',
-            'telefono' => 'required|numeric',
-            'email'    => 'required|valid_email'
         ];
 
         if (!$this->validate($rules)) {
@@ -35,8 +52,14 @@ class CheckoutController extends BaseController
             ]);
         }
 
-        session()->set('checkout_contacto', $data);
-        return view('checkout/envio');
+        $user_id = session()->get('user_id');
+        $userModel = new UserModel;
+        $userModel->update($user_id, [
+            'fname' => $data['nombre'],
+            'lname' => $data['apellido']
+        ]);
+        
+        return view('checkout/revision');
     }
 
 
@@ -66,37 +89,14 @@ class CheckoutController extends BaseController
 
     public function guardarPago()
     {
+        $cartModel = new CartItemModel;
         if (!session()->has('user_id')) {
             return redirect()->to('login')->with('error', 'Debes iniciar sesión para continuar.');
         }
 
-        // Saneamos los datos ANTES de validar
-        $data = $this->request->getPost();
-        $data['numero_tarjeta']  = preg_replace('/\D/', '', $data['numero_tarjeta']);
-        $data['cvv']             = preg_replace('/\D/', '', $data['cvv']);
-        $data['vencimiento']     = trim($data['vencimiento']);
-        $data['nombre_tarjeta'] = trim($data['nombre_tarjeta']);
-
-        // Validaciones
-        $rules = [
-            'envio'           => 'required|in_list[standard,express]',
-            'nombre_tarjeta'  => 'required|min_length[3]',
-            'numero_tarjeta'  => 'required|regex_match[/^[0-9]{13,16}$/]',
-            'vencimiento'     => 'required|regex_match[/^(0[1-9]|1[0-2])\/[0-9]{2}$/]',
-            'cvv'             => 'required|regex_match[/^[0-9]{3}$/]'
-        ];
-
-        // Usamos validateData para validar los datos saneados
-        if (!$this->validateData($data, $rules)) {
-            return view('checkout/pago', [
-                'validation' => $this->validator
-            ]);
-        }
-
-        session()->set('checkout_pago', $data);
-
-        $user_id = session('user_id');
-        $carrito = (new CartItemModel())->where('user_id', $user_id)->findAll();
+        $session = session();
+        $user_id = $session->get('user_id');
+        $carrito = $cartModel->where('user_id', $user_id)->findAll();
         $productos = [];
         $subtotal = 0;
 
@@ -109,13 +109,9 @@ class CheckoutController extends BaseController
                 $subtotal += $prod['total'];
             }
         }
+        $total = $subtotal;
 
-        $pago = session('checkout_pago');
-        $costoEnvio = ($pago['envio'] === 'express') ? 2500 : 1000;
-        $impuestos = round($subtotal * 0.1, 2);
-        $total = $subtotal + $costoEnvio + $impuestos;
-
-        return view('checkout/revision', compact('productos', 'subtotal', 'costoEnvio', 'impuestos', 'total'));
+        return view('checkout/revision', compact('productos', 'subtotal', 'total'));
     }
 
 
@@ -151,9 +147,8 @@ public function confirmarPedido()
     $contacto = session('checkout_contacto');
     $pago = session('checkout_pago');
 
-    $costoEnvio = ($pago['envio'] === 'express') ? 2500 : 1000;
-    $impuestos = round($subtotal * 0.1, 2);
-    $total = $subtotal + $costoEnvio + $impuestos;
+
+    $total = $subtotal;
 
     $invoiceModel = new InvoiceModel();
     $invoiceData = [
@@ -184,8 +179,6 @@ public function confirmarPedido()
     session()->set('invoice_id', $invoice_id);
     session()->set('checkout_productos', $productos);
     session()->set('checkout_subtotal', $subtotal);
-    session()->set('checkout_envio_costo', $costoEnvio);
-    session()->set('checkout_impuestos', $impuestos);
     session()->set('checkout_total', $total);
 
     return redirect()->to('/checkout/confirmado');

@@ -15,7 +15,6 @@ class CarritoController extends BaseController
         $user_id = session()->get('user_id'); 
 
         $carrito = $cartModel->where('user_id', $user_id)->findAll();
-
         $items = [];
         $subtotal = 0;
 
@@ -29,11 +28,9 @@ class CarritoController extends BaseController
             }
         }
 
-        $envio = 1000;
-        $impuestos = round($subtotal * 0.1, 2);
-        $total = $subtotal + $envio + $impuestos;
+        $total = $subtotal;
 
-        return view('carrito', compact('items', 'subtotal', 'envio', 'impuestos', 'total'));
+        return view('carrito', compact('items', 'subtotal', 'total'));
     }
 
     public function agregar()

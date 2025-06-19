@@ -33,14 +33,6 @@ class PerfilController extends BaseController
             'mail'  => $this->request->getPost('mail'),
         ];
 
-        $img = $this->request->getFile('image');
-        if ($img && $img->isValid() && !$img->hasMoved()) {
-            $imgName = $img->getRandomName();
-            $img->move(FCPATH . 'uploads', $imgName);
-            $data['foto'] = $imgName;
-            session()->set('avatar', $imgName); // actualiza sesión
-        }
-
         $userModel->update($id, $data);
         session()->set('nombre', $data['fname']);
 

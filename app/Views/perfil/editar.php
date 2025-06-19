@@ -17,10 +17,6 @@
       <label>Email</label>
       <input type="email" name="mail" value="<?= esc($usuario['mail']) ?>" class="form-control" required>
     </div>
-    <div class="mb-3">
-      <label>Foto de perfil</label>
-      <input type="file" name="image" class="form-control">
-    </div>
     <button type="submit" class="btn btn-warning">Guardar cambios</button>
     <a href="<?= base_url('perfil') ?>" class="btn btn-outline-light">Cancelar</a>
   </form>

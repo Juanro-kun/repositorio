@@ -57,6 +57,7 @@ $routes->get('perfil/pedidos', 'PerfilController::pedidos');
 $routes->get('perfil/pedidos/(:num)', 'PerfilController::verPedido/$1');
 
 //Vistas de Checkout
+$routes->get('checkout/index', 'CheckoutController::index');
 $routes->get('checkout/contacto', 'CheckoutController::pasoContacto');
 $routes->post('checkout/guardarContacto', 'CheckoutController::guardarContacto');
 

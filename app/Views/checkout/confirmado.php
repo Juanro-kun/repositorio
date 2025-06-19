@@ -24,7 +24,7 @@
         <div class="card-body">
           <div class="d-flex justify-content-between text-muted small mb-3">
             <span>Pedido N.º <strong>#<?= str_pad($invoice_id, 6, '0', STR_PAD_LEFT) ?></strong></span>
-            <span>Fecha: <?= date('d/m/Y') ?> · Entrega estimada: <?= date('d/m/Y', strtotime('+5 days')) ?></span>
+            <span>Fecha: <?= date('d/m/Y') ?></span>
           </div>
 
           <table class="table table-borderless align-middle mb-3">
@@ -50,14 +50,6 @@
             <li class="list-group-item d-flex justify-content-between">
               <span>Subtotal</span>
               <span>$<?= number_format($subtotal, 2, ',', '.') ?></span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Envío</span>
-              <span>$<?= number_format($costoEnvio, 2, ',', '.') ?></span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Impuestos</span>
-              <span>$<?= number_format($impuestos, 2, ',', '.') ?></span>
             </li>
             <li class="list-group-item d-flex justify-content-between fw-bold text-danger">
               <span>Total</span>
