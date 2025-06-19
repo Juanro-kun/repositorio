@@ -9,9 +9,8 @@
   <div>
     <h2 class="fw-bold">Factura #<?= $factura['invoice_id'] ?></h2>
     <?php
-      $dt = new DateTime($factura['created_at'], new DateTimeZone('UTC'));
-      $dt->setTimezone(new DateTimeZone('America/Argentina/Buenos_Aires'));
-    ?>
+          $dt = new DateTime($factura['created_at']);
+        ?>
     <p class="text-muted mb-1">
       <i class="bi bi-calendar me-1"></i> <?= $dt->format('d/m/Y') ?>
       <i class="bi bi-clock ms-3 me-1"></i> <?= $dt->format('H:i') ?>

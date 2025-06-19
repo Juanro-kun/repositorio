@@ -12,8 +12,7 @@
   </div>
 
   <?php
-    $dt = new DateTime($factura['created_at'], new DateTimeZone('UTC'));
-    $dt->setTimezone(new DateTimeZone('America/Argentina/Buenos_Aires'));
+    $dt = new DateTime($factura['created_at']); // ✅ Sin convertir desde UTC
 
     $subtotal = 0;
     foreach ($productos as &$item) {

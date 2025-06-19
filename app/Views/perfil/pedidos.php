@@ -25,8 +25,7 @@
         <tbody>
           <?php foreach ($pedidos as $p): ?>
           <?php
-            $dt = new DateTime($p['created_at'], new DateTimeZone('UTC'));
-            $dt->setTimezone(new DateTimeZone('America/Argentina/Buenos_Aires'));
+            $dt = new DateTime($p['created_at']); // ✅ ya no se convierte desde UTC
           ?>
           <tr>
             <td>#<?= $p['invoice_id'] ?></td>
@@ -46,4 +45,3 @@
 </div>
 
 <?= $this->endSection() ?>
-
