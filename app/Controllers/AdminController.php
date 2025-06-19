@@ -11,6 +11,9 @@ class AdminController extends BaseController
 {
     public function index()
     {
+        // ✅ CORREGIDO: Aseguramos zona horaria correcta
+        date_default_timezone_set('America/Argentina/Buenos_Aires');
+
         $usuarios = new UserModel();
         $facturas  = new InvoiceModel();
         $consultas = new InquiryModel();
@@ -25,6 +28,11 @@ class AdminController extends BaseController
 
         $cantidadClientes = $usuarios->where('role', 'user')->where('deleted_at', null)->countAllResults();
         $cantidadVentas = $facturas->countAllResults();
+
+        // ✅ CORREGIDO: Ventas de hoy
+        $ventasHoy = $facturas
+            ->where('DATE(created_at)', date('Y-m-d'))
+            ->countAllResults();
 
         // Ventas Semanales
         $ventasRaw = $facturas->select("DATE(created_at) as fecha, SUM(total) as total")
@@ -111,7 +119,8 @@ class AdminController extends BaseController
             'ventasSemanal'    => $ventasSemanal,
             'ventasMensual'    => $ventasMensual,
             'ventasAnual'      => $ventasAnual,
-            'ultimosPedidos'   => $ultimosPedidos
+            'ultimosPedidos'   => $ultimosPedidos,
+            'ventasHoy'        => $ventasHoy  // ✅ CORREGIDO
         ];
 
         return view('admin/dashboard', $data);

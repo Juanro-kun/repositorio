@@ -21,7 +21,7 @@
         <h4 class="fw-bold"><?= $cantidadVentas ?></h4>
         <small class="text-muted">Total registradas</small>
       </div>
-    </div>
+    </div> 
   </div>
 
   <div class="col-md-3">
@@ -64,7 +64,12 @@
     <div class="card shadow-sm border-0">
       <div class="card-header bg-white fw-bold">
         Ventas Recientes
-        <div class="small text-muted">Has recibido <?= count($ultimosPedidos) ?> ventas hoy.</div>
+                <!-- ✅ CORREGIDO -->
+        <?php if ($ventasHoy > 0): ?>
+          <div class="small text-muted">Has recibido <?= $ventasHoy ?> ventas hoy.</div>
+        <?php else: ?>
+          <div class="small text-danger">No se registraron ventas hoy.</div>
+        <?php endif; ?>
       </div>
       <div class="card-body p-0">
         <table class="table table-sm table-hover mb-0">
