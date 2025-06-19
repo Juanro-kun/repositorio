@@ -27,14 +27,30 @@ class PerfilController extends BaseController
         $userModel = new UserModel();
         $id = session('user_id');
 
+        $fname = $this->request->getPost('fname');
+        $lname = $this->request->getPost('lname');
+        $mail = $this->request->getPost('mail');
+        $pass1 = $this->request->getPost('contraseña');
+        $pass2 = $this->request->getPost('contraseña2');
+
+        // Datos básicos obligatorios
         $data = [
-            'fname' => $this->request->getPost('fname'),
-            'lname' => $this->request->getPost('lname'),
-            'mail'  => $this->request->getPost('mail'),
+            'fname' => $fname,
+            'lname' => $lname,
+            'mail'  => $mail
         ];
 
+        // Si el usuario escribió una nueva contraseña...
+        if (!empty($pass1) || !empty($pass2)) {
+            if ($pass1 !== $pass2) {
+                return redirect()->back()->withInput()->with('error', 'Las contraseñas no coinciden.');
+            }
+
+            // Hasheamos la nueva contraseña
+            $data['password'] = password_hash($pass1, PASSWORD_DEFAULT);
+        }
+
         $userModel->update($id, $data);
-        session()->set('nombre', $data['fname']);
 
         return redirect()->to('/perfil')->with('success', 'Datos actualizados correctamente.');
     }

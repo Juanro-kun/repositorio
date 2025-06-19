@@ -5,6 +5,11 @@
   <h2 class="mb-4 text-white">
     <i class="bi bi-person-circle me-2"></i> Mi Perfil
   </h2>
+  <?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success">
+      <?= session('success') ?>
+    </div>
+  <?php endif; ?>
 
   <div class="card bg-dark text-white shadow-lg rounded-4 border-light p-4">
     <div class="row g-4 align-items-center">
