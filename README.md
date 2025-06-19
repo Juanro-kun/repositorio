@@ -86,5 +86,36 @@ Este proyecto representó la culminación de los contenidos de la materia:
 
 ---
 
-<p align="center"><b>⚔️ Desarrollado con pasión, lógica y una pizca de magia por Tobias y Juan</b></p>
+## 🗃️ Script para la Base de Datos
 
+Para probar el sistema con datos reales, podés importar el archivo `taberna_del_gnomo.sql` incluido en el repositorio.  
+Este contiene:
+
+- 🧪 **20 productos**
+- 📦 **28 pedidos**
+- 👥 **9 usuarios**
+- 🛡️ **1 cuenta admin preconfigurada**
+
+### ▶️ Pasos para importar
+
+1. Abrí **phpMyAdmin** o tu gestor de base de datos MySQL.
+2. Creá una base de datos nueva llamada: `taberna_del_gnomo`
+3. Importá el archivo `taberna_del_gnomo.sql`
+
+---
+
+### 🔐 Cuentas para acceder al sistema
+
+#### 👑 Administrador
+- **Correo:** `admin@gmail.com`
+- **Contraseña:** `admin`  
+- *(la contraseña real está hasheada con bcrypt)*
+
+#### 🙋 Cliente
+- **Correo:** `cliente@cliente.com`
+- **Contraseña:** `cliente123`  
+- *(ya precargado en la base de datos)*
+
+---
+
+<p align="center"><b>⚔️ Desarrollado con pasión, lógica y una pizca de magia por Tobias y Juan</b></p>
