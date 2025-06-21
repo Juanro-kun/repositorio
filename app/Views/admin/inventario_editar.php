@@ -28,7 +28,7 @@
     </div>
     <div class="col-md-6 mb-3">
       <label for="stock" class="form-label">Stock *</label>
-      <input type="number" class="form-control" name="stock" value="<?= esc($producto['stock']) ?>" required>
+      <input type="number" class="form-control" name="stock" value="<?= esc($producto['stock']) ?>" min="0" required>
     </div>
     <div class="col-md-6 mb-3">
       <label for="discount" class="form-label">Descuento (%)</label>
