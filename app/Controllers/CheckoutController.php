@@ -37,30 +37,60 @@ class CheckoutController extends BaseController
         return view('checkout/contacto');
     }
 
-    public function guardarContacto()
-    {
-        $data = $this->request->getPost();
+public function guardarContacto()
+{
+    $data = $this->request->getPost();
 
-        $rules = [
-            'nombre'   => 'required|min_length[2]',
-            'apellido' => 'required|min_length[2]',
-        ];
+    $rules = [
+        'nombre'   => 'required|min_length[2]',
+        'apellido' => 'required|min_length[2]',
+    ];
 
-        if (!$this->validate($rules)) {
-            return view('checkout/contacto', [
-                'validation' => $this->validator
-            ]);
-        }
-
-        $user_id = session()->get('user_id');
-        $userModel = new UserModel;
-        $userModel->update($user_id, [
-            'fname' => $data['nombre'],
-            'lname' => $data['apellido']
+    if (!$this->validate($rules)) {
+        return view('checkout/contacto', [
+            'validation' => $this->validator
         ]);
-        
-        return view('checkout/revision');
     }
+
+    $user_id = session()->get('user_id');
+    $userModel = new UserModel;
+    $userModel->update($user_id, [
+        'fname' => $data['nombre'],
+        'lname' => $data['apellido']
+    ]);
+
+    // 🚀 Ahora cargar el carrito correctamente
+    $cartModel = new CartItemModel;
+    $productoModel = new ProductModel;
+    $carrito = $cartModel->where('user_id', $user_id)->findAll();
+
+    $productos = [];
+    $subtotal = 0;
+
+    foreach ($carrito as $item) {
+        $prod = $productoModel->find($item['product_id']);
+        if ($prod) {
+            $prod['cantidad'] = $item['quantity'];
+            $prod['total'] = $prod['price'] * $item['quantity'];
+            $productos[] = $prod;
+            $subtotal += $prod['total'];
+        }
+    }
+
+    $envio = 1000;
+    $impuestos = $subtotal * 0.10;
+    $total = $subtotal + $envio + $impuestos;
+
+    // Guardar en sesión para usar en la vista
+    session()->set('checkout_productos', $productos);
+    session()->set('checkout_subtotal', $subtotal);
+    session()->set('checkout_envio_costo', $envio);
+    session()->set('checkout_impuestos', $impuestos);
+    session()->set('checkout_total', $total);
+
+    return view('checkout/revision', compact('productos', 'subtotal', 'envio', 'impuestos', 'total'));
+}
+
 
 
     public function guardarEnvio()
@@ -143,17 +173,14 @@ public function confirmarPedido()
         }
     }
 
-    $envio = session('checkout_envio');
-    $contacto = session('checkout_contacto');
-    $pago = session('checkout_pago');
-
-
-    $total = $subtotal;
+    $envio = 1000;
+    $impuestos = $subtotal * 0.10;
+    $total = $subtotal + $envio + $impuestos;
 
     $invoiceModel = new InvoiceModel();
     $invoiceData = [
-        'user_id' => $user_id,
-        'total' => $total,
+        'user_id'    => $user_id,
+        'total'      => $total,
         'created_at' => date('Y-m-d H:i:s')
     ];
     $invoice_id = $invoiceModel->insert($invoiceData);
@@ -161,11 +188,11 @@ public function confirmarPedido()
     $invoiceItemModel = new InvoiceItemModel();
     foreach ($productos as $prod) {
         $invoiceItemModel->insert([
-            'invoice_id' => $invoice_id,
-            'product_id' => $prod['product_id'],
-            'quantity' => $prod['cantidad'],
+            'invoice_id'        => $invoice_id,
+            'product_id'        => $prod['product_id'],
+            'quantity'          => $prod['cantidad'],
             'price_at_purchase' => $prod['price'],
-            'subtotal' => $prod['cantidad'] * $prod['price'] // ✅ Campo agregado correctamente
+            'subtotal'          => $prod['cantidad'] * $prod['price']
         ]);
 
         $productoModel->set('stock', 'stock - ' . (int)$prod['cantidad'], false)
@@ -175,17 +202,27 @@ public function confirmarPedido()
 
     $carritoModel->where('user_id', $user_id)->delete();
 
-    // Guardar todo en sesión para mostrar en la vista confirmada
     session()->set('invoice_id', $invoice_id);
     session()->set('checkout_productos', $productos);
     session()->set('checkout_subtotal', $subtotal);
+    session()->set('checkout_envio_costo', $envio);
+    session()->set('checkout_impuestos', $impuestos);
     session()->set('checkout_total', $total);
 
     return redirect()->to('/checkout/confirmado');
 }
 
-    public function confirmado()
-    {
-        return view('checkout/confirmado');
-    }
+public function confirmado()
+{
+    $data = [
+        'invoice_id'   => session('invoice_id'),
+        'productos'    => session('checkout_productos'),
+        'subtotal'     => session('checkout_subtotal'),
+        'costoEnvio'   => session('checkout_envio_costo'),
+        'impuestos'    => session('checkout_impuestos'),
+        'total'        => session('checkout_total'),
+    ];
+    return view('checkout/confirmado', $data);
+}
+
 }

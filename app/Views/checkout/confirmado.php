@@ -2,14 +2,13 @@
 <?= $this->section('contenido') ?>
 
 <?php
-  $invoice_id   = session('invoice_id') ?? 0;
-  $productos    = session('checkout_productos') ?? [];
-  $subtotal     = session('checkout_subtotal') ?? 0;
-  $costoEnvio   = session('checkout_envio_costo') ?? 0;
-  $impuestos    = session('checkout_impuestos') ?? 0;
-  $total        = session('checkout_total') ?? 0;
+  $invoice_id  = $invoice_id ?? 0;
+  $productos   = $productos ?? [];
+  $subtotal    = $subtotal ?? 0;
+  $costoEnvio  = $costoEnvio ?? 0;
+  $impuestos   = $impuestos ?? 0;
+  $total       = $total ?? 0;
 ?>
-
 
 <div class="container py-5 text-center">
   <div class="text-success display-4 mb-3">
@@ -51,7 +50,15 @@
               <span>Subtotal</span>
               <span>$<?= number_format($subtotal, 2, ',', '.') ?></span>
             </li>
-            <li class="list-group-item d-flex justify-content-between fw-bold text-danger">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Envío</span>
+              <span>$<?= number_format($costoEnvio, 2, ',', '.') ?></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Impuestos (10%)</span>
+              <span>$<?= number_format($impuestos, 2, ',', '.') ?></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between fw-bold text-danger fs-5">
               <span>Total</span>
               <span>$<?= number_format($total, 2, ',', '.') ?></span>
             </li>
