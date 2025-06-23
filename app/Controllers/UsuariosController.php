@@ -59,19 +59,38 @@ class UsuariosController extends BaseController
 
     public function actualizarUsuario($id)
     {
-        $usuarioModel = new UserModel();
+    $usuarioModel = new UserModel();
+    $usuarioActual = $usuarioModel->find($id);
 
-        $data = [
-            'fname'    => $this->request->getPost('fname'),
-            'lname'    => $this->request->getPost('lname'),
-            'mail'     => $this->request->getPost('mail'),
-            'role'     => $this->request->getPost('role'),
-        ];
-
-        $usuarioModel->update($id, $data);
-
-        return redirect()->to('admin/usuarios')->with('success', 'Usuario actualizado correctamente.');
+    if (!$usuarioActual) {
+        return redirect()->to('admin/usuarios')->with('error', 'Usuario no encontrado.');
     }
+
+    $nuevoMail = $this->request->getPost('mail');
+
+    $usuarioModel->setValidationRules([
+        'fname' => 'required|max_length[255]',
+        'lname' => 'required|max_length[255]',
+        'mail'  => ($usuarioActual['mail'] === $nuevoMail)
+                    ? 'required|valid_email|max_length[255]'
+                    : 'required|valid_email|max_length[255]|is_unique[user.mail]',
+        'role'  => 'required|in_list[user,admin]'
+    ]);
+
+    $data = [
+        'fname' => $this->request->getPost('fname'),
+        'lname' => $this->request->getPost('lname'),
+        'mail'  => $nuevoMail,
+        'role'  => $this->request->getPost('role')
+    ];
+
+    if (!$usuarioModel->update($id, $data)) {
+        return redirect()->back()->withInput()->with('errors', $usuarioModel->errors());
+    }
+
+    return redirect()->to('admin/usuarios')->with('success', 'Usuario actualizado correctamente.');
+    }
+
 
     public function eliminarUsuario($id)
     {
@@ -80,15 +99,15 @@ class UsuariosController extends BaseController
 
         if ($usuario) {
             $usuarioModel->delete($id);
-            return redirect()->to(base_url('admin/usuarios'))->with('success', 'Usuario eliminado correctamente.');
-        } else {
-            return redirect()->to(base_url('admin/usuarios'))->with('error', 'Usuario no encontrado.');
+            return redirect()->to('admin/usuarios')->with('success', 'Usuario eliminado correctamente.');
         }
+
+        return redirect()->to('admin/usuarios')->with('error', 'Usuario no encontrado.');
     }
 
     public function eliminados()
     {
-        $usuarioModel = new \App\Models\UserModel();
+        $usuarioModel = new UserModel();
         $usuarios = $usuarioModel->onlyDeleted()->findAll();
 
         return view('admin/usuarios_eliminados', ['usuarios' => $usuarios]);
@@ -96,7 +115,7 @@ class UsuariosController extends BaseController
 
     public function restaurar($id)
     {
-        $usuarioModel = new \App\Models\UserModel();
+        $usuarioModel = new UserModel();
         $usuarioModel->update($id, ['deleted_at' => null]);
 
         return redirect()->to('admin/usuarios/eliminados')->with('success', 'Usuario restaurado correctamente.');

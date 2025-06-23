@@ -23,38 +23,69 @@ class PerfilController extends BaseController
     }
 
     public function actualizar()
-    {
-        $userModel = new UserModel();
-        $id = session('user_id');
+{
+    $userModel = new UserModel();
+    $id = session('user_id');
 
-        $fname = $this->request->getPost('fname');
-        $lname = $this->request->getPost('lname');
-        $mail = $this->request->getPost('mail');
-        $pass1 = $this->request->getPost('contraseña');
-        $pass2 = $this->request->getPost('contraseña2');
-
-        // Datos básicos obligatorios
-        $data = [
-            'fname' => $fname,
-            'lname' => $lname,
-            'mail'  => $mail
-        ];
-
-        // Si el usuario escribió una nueva contraseña...
-        if (!empty($pass1) || !empty($pass2)) {
-            if ($pass1 !== $pass2) {
-                return redirect()->back()->withInput()->with('error', 'Las contraseñas no coinciden.');
-            }
-
-            // Hasheamos la nueva contraseña
-            $data['password'] = password_hash($pass1, PASSWORD_DEFAULT);
-        }
-
-        $userModel->update($id, $data);
-
-        return redirect()->to('/perfil')->with('success', 'Datos actualizados correctamente.');
+    $usuarioActual = $userModel->find($id);
+    if (!$usuarioActual) {
+        return redirect()->back()->with('error', 'Usuario no encontrado.');
     }
 
+    // Limpiar entradas
+    $fname = trim($this->request->getPost('fname'));
+    $lname = trim($this->request->getPost('lname'));
+    $mailNuevo = strtolower(trim($this->request->getPost('mail')));
+    $mailActual = strtolower(trim($usuarioActual['mail']));
+    $pass1 = $this->request->getPost('password');
+    $pass2 = $this->request->getPost('password2');
+
+    // Reglas dinámicas
+    $rules = [
+        'fname' => 'required|max_length[255]',
+        'lname' => 'required|max_length[255]',
+        'mail'  => ($mailActual === $mailNuevo)
+                    ? 'required|valid_email|max_length[255]'
+                    : 'required|valid_email|max_length[255]|is_unique[user.mail]',
+    ];
+
+    if (!empty($pass1) || !empty($pass2)) {
+        if ($pass1 !== $pass2) {
+            return redirect()->back()->withInput()->with('error', 'Las contraseñas no coinciden.');
+        }
+        $rules['password'] = 'required|min_length[6]|max_length[255]';
+    }
+
+    if (!$this->validate($rules)) {
+        return redirect()->back()->withInput()->with('error', implode(' ', $this->validator->getErrors()));
+    }
+
+    // Armar datos a guardar
+    $data = [
+        'fname' => $fname,
+        'lname' => $lname,
+        'mail'  => $mailNuevo
+    ];
+
+    if (!empty($pass1)) {
+        $data['password'] = password_hash($pass1, PASSWORD_DEFAULT);
+    }
+
+    // Aplicar reglas personalizadas al modelo
+    $userModel->setValidationRules($rules);
+
+    // Intentar actualizar
+    if (!$userModel->update($id, $data)) {
+        echo '<h2>Errores:</h2><pre>';
+        print_r($userModel->errors());
+        echo '</pre><h2>Datos enviados:</h2><pre>';
+        print_r($data);
+        echo '</pre>';
+        exit;
+    }
+
+    return redirect()->to('/perfil')->with('success', 'Datos actualizados correctamente.');
+    }
 
     public function pedidos()
     {

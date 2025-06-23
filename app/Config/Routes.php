@@ -31,7 +31,7 @@ $routes->group('admin', ['filter' => 'adminFilter'], function($routes) {
     $routes->get('usuarios', 'UsuariosController::index');
     $routes->get('usuarios/nuevo', 'UsuariosController::nuevoUsuario');
     $routes->get('usuarios/editar/(:num)', 'UsuariosController::editarUsuario/$1');
-    $routes->post('usuarios/actualizar/(:num)', 'AdminController::actualizarUsuario/$1');
+    $routes->post('usuarios/actualizar/(:num)', 'UsuariosController::actualizarUsuario/$1');
     $routes->get('usuarios/eliminar/(:num)', 'UsuariosController::eliminarUsuario/$1');
     $routes->get('usuarios/eliminados', 'UsuariosController::eliminados');
     $routes->get('usuarios/restaurar/(:num)', 'UsuariosController::restaurar/$1');
