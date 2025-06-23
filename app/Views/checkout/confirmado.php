@@ -15,7 +15,7 @@
     <i class="bi bi-check-circle-fill"></i>
   </div>
   <h2 class="fw-bold text-white mb-2">¡Pedido Confirmado!</h2>
-  <p class="text-muted">Gracias por tu compra. Te enviaremos un correo con los detalles.</p>
+  <p class="text-light">Gracias por tu compra. Te enviaremos un correo con los detalles.</p>
 
   <div class="row justify-content-center">
     <div class="col-lg-10">
