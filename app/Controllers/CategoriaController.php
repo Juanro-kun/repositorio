@@ -42,9 +42,19 @@ class CategoriaController extends BaseController
     public function eliminarCategoria($id)
     {
         $categoria = new CategoryModel();
+        $productoModel = new \App\Models\ProductModel();
 
+        // Verifica si hay productos asociados a esta categoría
+        $productosAsociados = $productoModel->where('category_id', $id)->countAllResults();
+
+        if ($productosAsociados > 0) {
+            return redirect()->to('admin/categorias')->with('error', 'No se puede eliminar la categoría porque tiene productos asociados.');
+        }
+
+        // Si no tiene productos, se elimina normalmente
         $categoria->delete($id);
 
         return redirect()->to('admin/categorias')->with('success', 'Categoría eliminada correctamente.');
     }
+
 }

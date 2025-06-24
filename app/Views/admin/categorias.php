@@ -3,6 +3,14 @@
 <?= $this->extend('admin/layout_admin') ?>
 <?= $this->section('contenido') ?>
 
+<?php if (session()->getFlashdata('error')): ?>
+  <div class="alert alert-danger"><?= session('error') ?></div>
+<?php endif ?>
+
+<?php if (session()->getFlashdata('success')): ?>
+  <div class="alert alert-success"><?= session('success') ?></div>
+<?php endif ?>
+
 <h2 class="fw-bold mb-3">Categorías</h2>
 <p class="text-muted">Gestiona las categorías de productos de la tienda.</p>
 
