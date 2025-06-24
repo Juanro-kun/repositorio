@@ -91,9 +91,9 @@ Este proyecto representó la culminación de los contenidos de la materia:
 Para probar el sistema con datos reales, podés importar el archivo `taberna_del_gnomo.sql` incluido en el repositorio.  
 Este contiene:
 
-- 🧪 **15 productos**
-- 📦 **25 pedidos**
-- 👥 **9 usuarios**
+- 🧪 **17 productos**
+- 📦 **27 pedidos**
+- 👥 **11 usuarios**
 - 🛡️ **1 cuenta admin preconfigurada**
 
 ### ▶️ Pasos para importar
