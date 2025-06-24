@@ -92,7 +92,7 @@ Para probar el sistema con datos reales, podés importar el archivo `taberna_del
 Este contiene:
 
 - 🧪 **15 productos**
-- 📦 **28 pedidos**
+- 📦 **25 pedidos**
 - 👥 **9 usuarios**
 - 🛡️ **1 cuenta admin preconfigurada**
 
@@ -108,13 +108,11 @@ Este contiene:
 
 #### 👑 Administrador
 - **Correo:** `admin@gmail.com`
-- **Contraseña:** `admin`  
-- *(la contraseña real está hasheada con bcrypt)*
+- **Contraseña:** `admin` 
 
 #### 🙋 Cliente
 - **Correo:** `cliente@cliente.com`
 - **Contraseña:** `cliente123`  
-- *(ya precargado en la base de datos)*
 
 ---
 
