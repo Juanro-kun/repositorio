@@ -97,6 +97,9 @@ class UsuariosController extends BaseController
         $usuarioModel = new UserModel();
         $usuario = $usuarioModel->find($id);
 
+        if ($usuario['user_id'] == 6){
+            return redirect()->to('admin/usuarios')->with('error', 'Este usuario no puede ser eliminado');
+        }
         if ($usuario) {
             $usuarioModel->delete($id);
             return redirect()->to('admin/usuarios')->with('success', 'Usuario eliminado correctamente.');
