@@ -23,12 +23,6 @@
       <div class="text-muted">Valor Medio</div>
     </div>
   </div>
-  <div class="col-md-3">
-    <div class="bg-white border p-3 rounded text-center shadow-sm">
-      <h4><?= number_format($conversion, 1, ',', '.') ?>%</h4>
-      <div class="text-muted">Conversión</div>
-    </div>
-  </div>
 </div>
 
 <h5 class="fw-bold mt-4 mb-3">Ventas por Categoría</h5>
