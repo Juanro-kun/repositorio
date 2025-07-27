@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white"/>
   <img src="https://img.shields.io/badge/CodeIgniter-EE4623?style=for-the-badge&logo=codeigniter&logoColor=white"/>
   <img src="https://img.shields.io/badge/UNNE-Taller_de_Programación_I-blue?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Estado-Completado-green?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Estado-Completado-brightgreen?style=for-the-badge"/>
 </p>
 
 # 🐲 La Taberna del Gnomo Errante - Ecommerce D&D (UNNE 2025)
